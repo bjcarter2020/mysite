@@ -1,54 +1,48 @@
 <html>
 <head>
-    <title>Benjamin J. Carter</title> 
+    <title>Benjamin J. Carter</title>
     <link rel="stylesheet" href="css/Main.css";>
-    
+
 <style type="text/css">
     header {
     background-image: url(amFlag.jpg);
     padding: 15px;
-    color:floralwhite; 
-    
+    color:floralwhite;
 
-    font:  24px bold perpetua, serif;
+
+    font:  24px bold "Lucida Console", Monaco, monospace;
     text-shadow: 1px 1px firebrick;
         line-height: 50%;
 }
 
 body {
-        background-color:lightsteelblue; 
+        background-color:floralwhite;
 }
 #banner {
-    border-bottom-color:gold;
-    border-bottom-width: 2px;
-    background: #4175b5; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(top, #4175b5 , #0a4792); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(top, #4175b5 , #0a4792); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(top, #4175b5 , #0a4792); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to top, #4175b5 , #0a4792); /* Standard syntax */
-    
-    background-color: #4175b5;
+background-color: #1168d2;
+
     width:100%;
-    min-height:150px;
     position: absolute;
 
-    top: 0; 
-       left: 0; 
+    top: 0;
+       left: 0;
     box-shadow: 1px 1px 2px #1f3a5a;}
-    
+
 .upperTbl{
-   border-style:solid; border-width: 1px; border-color: #c19b00;
-    width:100%;
-    margin-left:-10%;
-    margin-top:70px;
-    margin-right:80px;
-    background-color:#ffcc00;
-    padding: 15px;
-    padding-top:7px;
-     
-   
-    box-shadow: 1px 1px 6px;
-}
+  /*border-style: solid;
+  border-width: 1px;
+  border-color: #003d77;
+  width: 100%;
+  margin-left: -15%;
+  margin-top: 7px;
+  background-color: #233152;*/
+margin-top:-7px;
+  border-color:white;
+  border-radius:10px;
+  border-width: 0px;
+  background: #06356f; /* For browsers that do not support gradients */
+  width:500px
+  }
 .upperTitle{
     font-size:32px;
     margin:3;
@@ -57,21 +51,35 @@ body {
 }
 
 .lowerTitle{
-    font-size:32px;
     margin:0;
     text-align: center;
+    font: 32px/32px "Trebuchet MS", Helvetica, sans-serif;
 }
 
 .lowerTbl{
-   border-style: solid; border-width: 2px; border-color:darkslateblue;
-    width:55%;
+   border-style: solid; border-width: 2px; border-color:#06356f;
+    width:65%;
+    min-width:650px;
     margin-left:auto;
     margin-right:auto;
-        background-color:floralwhite;
-        
-        
+        background-color: white;
+
+
          padding: 18px;
 .
+}
+button:hover {
+  background-color: #861a1a;
+}
+.button{
+  padding:5px;
+  background-color: #0e4a93;
+  border-radius: 5px;
+  border-style:solid;
+  border-width:1px;
+  font-color:antiquewhite;
+  on-hove
+
 }
 table#t021{
    border-style: solid; border-width: 2px; border-color:darkslateblue;
@@ -79,7 +87,7 @@ table#t021{
     margin-left:auto;
     margin-right:auto;
         background-color:floralwhite;
-        
+
         display: none;
          padding: 28px;
 }
@@ -90,8 +98,8 @@ table#t021{
     margin-left:auto;
     margin-right:auto;
         background-color:floralwhite;
-        
-        
+
+
     padding: 20px;}
 
 table#t031{
@@ -100,8 +108,8 @@ table#t031{
     margin-left:auto;
     margin-right:auto;
         background-color:floralwhite;
-        
-        
+
+
     padding: 20px;}
 table#t04{
    border-style: solid; border-width: 2px; border-color:darkslateblue;
@@ -109,32 +117,42 @@ table#t04{
     margin-left:auto;
     margin-right:auto;
         background-color:floralwhite;
-        
-        
+
+
          padding: 28px;
 }
     #profilePic{
        margin-bottom:10px;
-        border-radius:25px;
-    
-        box-shadow: 1px 1px 2px #504c44;
-        
+        box-shadow: 2px 2px 2px #504c44;
+
     }
     h1{
-        font: 40px/48px Georgia, serif;
+        font: 28px/28px "Trebuchet MS", Helvetica, sans-serif;
         color: floralwhite;
     text-shadow: 0px 2px 0px #092950;
     margin: 0px;
     }
-    
-    p1{ 
-            font: 12px/22px Arial, Helvetica, sans-serif;
+
+    p1{
+            font: 12px/22px "Trebuchet MS", Helvetica, sans-serif;
     color:gainsboro;
     text-shadow: 0px 1px 0px #092950;
     font-size: 15px;
     margin: 0px;
     }
-    
+    p2{
+            font: 12px/22px "Lucida Console", Monaco, monospace;
+    color:floralwhite;
+    text-shadow: 0px 1px 0px #092950;
+    font-size: 15px;
+    margin: 5px;
+    margin-top:5px;
+    }
+    p3{
+      text-align: justify;
+      font: 16px/26px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    }
+
 .objects{
     display:inline-block;
     background-image:url(block.png);
@@ -151,15 +169,15 @@ table#t04{
     width: 500px;
     height: 155px;
     align-self: center;
-    
+
 }
     </style>
-    
-    
-    
+
+
+
     <script>
 function _(id){
-   return document.getElementById(id);	
+   return document.getElementById(id);
 }
 var droppedIn = false;
 function drag_start(event) {
@@ -192,9 +210,9 @@ function readDropZone(){
     for(var i=0; i < _("Construction_Zone").children.length; i++){
         alert(_("Construction_Zone").children[i].id+" is in the construction zone");
     }
-    
+
 }
-   
+
 
 function hide(id)  {
     var divelement = document.getElementById(id);
@@ -206,11 +224,11 @@ function show(id)  {
     var divelement = document.getElementById(id);
         divelement.style.display = 'block';
  }
- 
+
 function gf(){
-    
+
     var gen = document.querySelector('input[name = "gender"]:checked').value;
-    document.getElementById("gr").innerHTML = gen; 
+    document.getElementById("gr").innerHTML = gen;
 }
 
 function nameSave(){
@@ -218,19 +236,19 @@ function nameSave(){
     var first = document.getElementById('firstName').value;
     //var last = document.querySelector('input[name = "lastName"]');
     var last = document.getElementById('lastName').value;
-    
+
     document.getElementById('name').innerHTML = first + "&nbsp" + last;
-       
+
     document.getElementById('first1').innerHTML = first;
-    
- 
+
+
 }
 
 
 
 
 function tally(){
-    
+
     var Q1a = document.querySelector('input[name = "immigration"]:checked').value;
     var Q1 = parseInt(Q1a);
     var Q2a = document.querySelector('input[name ="insurance"]:checked').value;
@@ -242,185 +260,54 @@ function tally(){
     var Q5a = document.querySelector('input[name ="outsider"]:checked').value;
     var Q5 = parseInt(Q5a);
 
-  
-    
-    document.getElementById('trumpScore').innerHTML = Q1 + Q2 + Q3 + Q4 + Q5;    
+
+
+    document.getElementById('trumpScore').innerHTML = Q1 + Q2 + Q3 + Q4 + Q5;
 }
 
     </script>
-    
+
 </head>
 <header>
-   
-    
-    
+
+
+
     </header>
-           
+
 <body>
     <br><br>
-    
+
 <div id="startpage">
-<div id="banner"><div id="heading">
-    
-    <center><br><br><h1>Benjamin Carter</h1><p1>PhD Student - Department of Politial Science<br><b>Stony Brook University</b></p1></center></div>    <br></div>
+<div id="banner"><div id="heading" style="margin-left:35px">
+    <br><h1><b>Benjamin Carter</b></h1>
+      <p1>PhD Student - Stony Brook University</p1></div>    <br></div>
 
   <table class ="upperTbl">
-     
-        
-    
+
+
+
     <tr>
-        <td>
-      </td></tr></table><br>
-    
+        <td><br><p2><center><button class="button"> <p2>CV</p2> </button>&nbsp;&nbsp;&nbsp;&nbsp; <button class="button"><p2>HPRS Profile</p2></button> &nbsp;&nbsp;&nbsp;&nbsp; <button class="button"><p2>Voting Game</p2> </button></p2>
+      </center></td></tr></table><br>
+
 
   <table class='lowerTbl'>
-        
-        <tr>
-   <td colspan="2" style="width:100%"><center><img src="css/profilePic.jpg" id="profilePic" style=" max-width:90%;max-height:300px; z-index=1;  "></center><p class="lowerTitle" style="font-size:26px">Basic Information</p></td></tr>
-            
-   <td><i><br> Please enter your full name below:</i><br><br>
-            
-     First name:<br>
-     <input type="text" id="firstName" name="firstName"><br>
-     Last name:<br>
-       <input type="text" id="lastName" name="lastName"><br></td>
-        
-        
-    <td><i>Please indicate your gender:</i><br><br>
 
-     <input type="radio" name="gender" id="g1" onchange="gf()" value="Male"> Male<br>
-     <input type="radio" name="gender" id="g2" onchange="gf()" value="Female"> Female<br>
-     <input type="radio" name="gender" id="g3" onchange="gf()"  value="Other"> Other 
-      <br></td>
-                
-
-      <tr><td colspan="2" style="width:100%"><br><br><center><button onclick="nameSave(); hide('startpage'); show('surveypage');"> Continue</button></center></td></tr>
-   
-        </table>
-        
- </div>
-    
-    
-    
-    
- <div id="surveypage" style="display:none;">
-            
-             <br> 
-    <table class="upperTbl">
-    
-    <tr>
-        <td><p class="upperTitle">What do you think, <span id = 'first1'></span>?</p>
-            <!--<center> Gender: (<span id='gr'></span>)</center><br> -->
-          <center>  Please answer <i><u>all</u></i> of the following questions on the scale from "strongly agree" to "strongly disagree".</center>
-      </td></tr></table><br>
-            
-            
-    <table class='lowerTbl'>  
-                  
-            <tr><td><span class="question">1. &nbsp; Immigration is one of the most important problems facing our country.<br></span><br>
-                <input type="radio" name="immigration"  value="4"> Strongly Agree <br>
-                <input type="radio" name="immigration"   value="3"> Somewhat Agree<br>
-                <input type="radio" name="immigration"  value="2"> Neutral <br>
-                <input type="radio" name="immigration"  value="1"> Somewhat Disagree<br>
-                <input type="radio" name="immigration"  value="0" > Strongly Disagree<br><br><br>
-                
-               </td></tr>
-                
-                <tr><td>2. &nbsp; Health insurance would function best if it were sold on the free market across state lines.<br><br>
-                
-                <input type="radio" name="insurance" value= "4"> Strongly Agree <br>
-                <input type="radio" name="insurance" value= "3"> Somewhat Agree<br>    
-                <input type="radio" name="insurance" value="2"> Neutral <br>   
-                <input type="radio" name="insurance" value="1"> Somewhat Disagree<br>
-                <input type="radio" name="insurance" value="0" > Strongly Disagree<br>
-                    <br><br>
-                   </td></tr>
-     
-       <tr><td>3. &nbsp; It is important for presidential candidates to have previously held an elected office. <br><br>
-                <input type="radio" name="office" value="0"> Strongly Agree <br>
-                <input type="radio" name="office" value="1"> Somewhat Agree<br>
-                <input type="radio" name="office" value="2"> Neutral <br>
-                <input type="radio" name="office"  value="3"> Somewhat Disagree<br>
-                <input type="radio" name="office"  value="4" > Strongly Disagree<br>         
-           <br><br><br>
-               </td></tr>
-            
-        <tr><td>4. &nbsp; It is important to be strong on the world stage, even if that means appearing rude or agressive. <br><br>
-               
-                <input type="radio" name="strong"  value="4"> Strongly Agree <br>
-                <input type="radio" name="strong"  value="3"> Somewhat Agree<br>
-                <input type="radio" name="strong"  value="2"> Neutral <br>
-                <input type="radio" name="strong"  value="1"> Somewhat Disagree<br>
-                <input type="radio" name="strong"  value="0" > Strongly Disagree<br>         
-           <br><br><br>
-            </td></tr>
-     
-  <tr><td>5. &nbsp; Right now, the United States needs a political outsider to come in and fix Washington.<br><br>
-               
-                <input type="radio" name="outsider"  value="4"> Strongly Agree <br>
-                <input type="radio" name="outsider" value="3"> Somewhat Agree<br>
-                <input type="radio" name="outsider"  value="2"> Neutral <br>
-                <input type="radio" name="outsider"  value="1"> Somewhat Disagree<br>
-                <input type="radio" name="outsider"  value="0" > Strongly Disagree<br>         
-           <br><br>
-           
-     
-        <center><button onclick="gf(); tally(); hide('surveypage'); show('gamepage');">Continue</button></center>    
-   
-     </td></tr>
-        
-        </table>
-        </div> 
- 
-                
-        
- <div id="gamepage" style="display:none;">       
- <table class="upperTbl">
-    
-    
-        <td><center><h3>Game Time: Build the Wall!</h3><style style="line-height:1%"><small><small><small><small><small><small><br><br></small></small></small></small></small></small>  </style>
-            Click and drag the bricks to build up the wall. </center>
-      </td></table><br>
-    
-<br>
- <center><h4 id="app_status"><i>Status...</i></h4>
-    <h4>Construction Zone</h4>     
+   <td style="width:40%;"><i><center><img src="css/profilePic.png" id="profilePic" style="top:10px; max-width:90%;max-height:200px; z-index=1;  "></center>
 
 
-    <div id="Construction_Zone" ondragenter="drag_enter(event)" ondrop="drag_drop(event)" ondragover="return false" ondragleave="drag_leave(event)" ></div></center>
-    <div id="object1" class="objects" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)"></div>
-     <div id="object2" class="objects" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)"></div>
-     <div id="object3" class="objects" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)"></div>
-     <div id="object4" class="objects" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)"></div>
-     <div id="object5" class="objects" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)"></div>
-     <div id="object6" class="objects" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)"></div>
 
-<hr>
-     <center><button onclick="hide('gamepage'); show('resultspage');">Continue</button></center>
-<!--<button onclick="readDropZone()">Get Construction Data</button></center>  -->
-        <tr></tr>
-        
-    </div>
-    
-    
- <div id="resultspage" style="display:none;"> 
-        
- <table class='lowerTbl'>
-    
-    
-        <td><center><h3>Results:</h3><style style="line-height:1%"><small><small><small><small><small><small><br><br></small></small></small></small></small></small>  </style></center>
-         <b>Name:</b> <span id = 'name'></span><br>
-       <b>Gender: &nbsp;</b><span id= 'gr'></span><br>
-        <b>Trump Support Score:</b>  <span id='trumpScore'></span> / 20
-        
-        
-        </td></table><br>
-    
 
-        
-        
-        
-    </div>
+    <td style="padding-left:15px;"><p class="lowerTitle" style="font-size:26px"><b>Biography</b></p><br><p3 style="text-align: justify; text-justify: inter-word;">
+      I am a PhD student in the Department of Political Science at Stony Brook University.
+      I am also a Robert Wood Johnson Foundation Health Policy Research Scholar and a member of Stony Brook’s Center for Behavioral Political Economy.<br>
+      My research uses incentivized economic experiments along with other quantitative methods to study how people understand social welfare policies and vote about the public distribution of benefits.
+      Click to play an economic voting game I designed and programmed to study how people vote about taxes and redistribution with Peter DeScioli and Alessandro Del Ponte.<br><br>
+
+      A copy of my CV can be found here.</p3>
+
+
+
 
 </body>
 </html>
