@@ -16,7 +16,7 @@
 }
 
 body {
-        background-color:floralwhite;
+        background-color:#fcf3e4;
 }
 #banner {
 background-color: #1168d2;
@@ -30,27 +30,27 @@ background-color: #1168d2;
 
 .upperTbl{
 
-  /*border-color:#396eaf;
+  border-color:#396eaf;
   border-radius:5px;
   border-style:solid;
   border-width: 2px;
-  background: #cecece; */
+  background: #092950;
   width:500px
   }
 
 a:link {
-  color: #dd6f6f;
+  color: #396eaf;
   background-color: transparent;
   text-decoration: none;
 }
 a:visited {
-  color: #dd6f6f;
+  color: #396eaf;
   background-color: transparent;
   text-decoration: none;
 }
 
 a:hover {
-  color: #396eaf;
+  color: #1ec470;
   background-color: transparent;
   text-decoration: none;
 }
@@ -68,7 +68,7 @@ a:hover {
     margin-bottom:40px;
 }
 button:hover {
-  background-color:#e2f0ff;
+  background-color:#dbecff;
   border-color: #396eaf;
   color:black;
 
@@ -80,26 +80,28 @@ button:hover {
   font-color:firebrick;
 }
 .button{
-    padding:4px;
-    padding-left:9px;
-    padding-right:9px;
-  background-color: #eef4f9;
-  border-radius: 5px;
-  border-style:solid;
-  border-width:2px;
-  border-color: #7fa2cc;
-  font-color:antiquewhite;
-  cursor: pointer;
-  margin: 6px;
-  text-align: justify;
-  font: 14px/26px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  color:#7b7b7b;
+
+    padding: 0px;
+    padding-left: 9px;
+    padding-right: 9px;
+    background-color: #adb9c7;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #224879;
+    font-color: antiquewhite;
+    cursor: pointer;
+    margin: 6px;
+    text-align: justify;
+    font: 14px/26px "Lucida Console", Monaco, monospace;
+    color: #5b5959;
+    box-shadow: 2px 2px 2px #031224;
 }
 .buttonSelect{
-    padding:4px;
+    padding:0px;
     padding-left:9px;
     padding-right:9px;
-  background-color: #e2f0ff;
+  background-color: #bbdcff;
   border-radius: 5px;
   border-style:solid;
   border-width:2px;
@@ -108,7 +110,9 @@ button:hover {
   cursor: pointer;
   margin: 6px;
   text-align: justify;
-  font: 14px/26px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font: 14px/26px "Lucida Console", Monaco, monospace;
+      box-shadow: 2px 2px 2px #031224;
+
   }
 
     #profilePic{
@@ -124,7 +128,7 @@ button:hover {
     .lowerTitle{
         margin:0;
         text-align: center;
-          font: 12px/22px "Trebuchet MS", Helvetica, sans-serif;
+          font: 12px/22px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     }
     h1{
         font: 28px/28px "Trebuchet MS", Helvetica, sans-serif;
@@ -152,7 +156,7 @@ button:hover {
     }
     p3{
       text-align: justify;
-      font: 14px/26px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+      font: 15px/26px "Trebuchet MS", Helvetica, sans-serif;
     }
 
 .notSelected{
@@ -216,31 +220,31 @@ function show(id)  {
 <body>
     <br><br>
 <meta name="viewport" content="width=500, initial-scale=1">
-<div id="startpage" style="top: 20; position: absolute;">
+<div id="startpage" style="top: 10; position: absolute;">
 
   <center><table class ="upperTbl">
 
 
 
     <tr>
-        <td><p2><center><button class="buttonSelect"><b> about</b></a> </button> &nbsp;&nbsp;&nbsp;&nbsp; <button class="button"><b>research</b></button></a> &nbsp;&nbsp;&nbsp;&nbsp;
-        <button class="button"><b>web games</button></b></a>
+        <td><p2><center><button class="buttonSelect"><b> About</b></a> </button> &nbsp;&nbsp;&nbsp;&nbsp; <button class="button"><b>Research</b></button></a> &nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="button"><b>Web Games</button></b></a>
 
-		</center></td></tr></table></center><br>
+		</center></td></tr></table></center>
 
-  <table class='lowerTbl'>
-  <tr><td><center><br><p class="lowerTitle" style="font-size:30px">Benjamin Carter</p>  <div style="margin-top:20px;"></div><img src="CSS/profilePic.png" id="profilePic" style="border: 1px solid #e2e2e2;top:10px; max-width:90%;max-height:200px; z-index=1;  "><br></center>
+  <table class='lowerTbl'><div style="margin-top:5px;"></div>
+  <tr><td><center><p class="lowerTitle" style="font-size:26px;"><b>Benjamin Carter</b></p>  <div style="margin-top:10px;"></div><img src="CSS/profilePic.png" id="profilePic" style="border: 1px solid #e2e2e2;top:10px; max-width:90%;max-height:200px; z-index=1;  "><br></center>
 
-      <div style="margin-top:10px; margin-left:4%;margin-right:4%; text-align: justify;text-justify: inter-word;"><p3 id="content">
+      <div style="margin-top:15px; margin-left:4%;margin-right:4%; text-align: justify;text-justify: inter-word;"><p3 id="content">
       Hello. I am a PhD student in the Department of Political Science at Stony Brook University.
-      I am also a Health Policy Research Scholar with the Robert Wood Johnson Foundation.<br><p></p>
+      I am also a <a href="">Health Policy Research Scholar</a> with the Robert Wood Johnson Foundation.<br><p></p>
       My research uses incentivized economic experiments along with other quantitative methods to study how people understand social welfare policies and vote about the public distribution of benefits. For more information, see Research.
       <!--Click to play an economic <a class="redlink" href="https://www.stonybrook.edu/commcms/cbpe/games/CSS/Voting.T.CBPE.demo.html" target="_blank" rel="noopener noreferrer">voting game</a> I designed and programmed to study how people vote about taxes and redistribution with <a class="redlink" href="http://pdescioli.com/home.html" target="_blank" rel="noopener noreferrer">Peter DeScioli</a> and <a class="redlink" href="https://sites.google.com/view/alessandrodelponte/home" target="_blank" rel="noopener noreferrer">Alessandro Del Ponte</a>.--><br><br>
 
       A copy of my CV can be found <a class="redlink" href="https://drive.google.com/file/d/1DmVkv5zJsEgVBqv5dl2Zs5y6Rlnl4JhG/view?usp=sharing" target="_blank" rel="noopener noreferrer">here</a>.</p3></td></tr>
 
-      <tr><td colspan="2"><br><br></p3></div>
-      <small><small><center><div style="max-width:75%">Photo Credit: (c) 2018 Flynn Larsen. Photo Courtesy of the Robert Wood Johnson Foundation.</small></small></center>
+      <tr><td colspan="2"><div style="margin-top:30px;"></div></p3></div>
+      <p3><small><small><center><div style="max-width:75%">Photo Credit: (c) 2018 Flynn Larsen. Photo Courtesy of the Robert Wood Johnson Foundation.</small></small></p3></center>
 
 
 
