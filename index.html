@@ -1,7 +1,7 @@
 <html>
-<head>
+<head> <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet"></head>
     <title>Benjamin Carter</title>
-    <link rel="stylesheet" href="css/Main.css";>
+
 
 <style type="text/css">
     header {
@@ -29,45 +29,28 @@ background-color: #1168d2;
     box-shadow: 1px 1px 2px #1f3a5a;}
 
 .upperTbl{
-  /*border-style: solid;
-  border-width: 1px;
-  border-color: #003d77;
-  width: 100%;
-  margin-left: -15%;
-  margin-top: 7px;
-  background-color: #233152;*/
-margin-top:-7px;
-  border-color:white;
-  border-radius:10px;
-  border-width: 0px;
-  background: #06356f; /* For browsers that do not support gradients */
+
+  /*border-color:#396eaf;
+  border-radius:5px;
+  border-style:solid;
+  border-width: 2px;
+  background: #cecece; */
   width:500px
   }
-.upperTitle{
-    font-size:32px;
-    margin:3;
-    text-align: center;
 
-}
-
-.lowerTitle{
-    margin:0;
-    text-align: center;
-    font: 32px/32px "Trebuchet MS", Helvetica, sans-serif;
-}
 a:link {
-  color: firebrick;
+  color: #dd6f6f;
   background-color: transparent;
   text-decoration: none;
 }
 a:visited {
-  color: firebrick;
+  color: #dd6f6f;
   background-color: transparent;
   text-decoration: none;
 }
 
 a:hover {
-  color: firebrick;
+  color: #396eaf;
   background-color: transparent;
   text-decoration: none;
 }
@@ -77,76 +60,71 @@ a:hover {
     min-width:650px;
     margin-left:auto;
     margin-right:auto;
-        background-color: white;
-    border-radius:10px;
+        background-color: #fafafa;
+    border-radius:5px;
 
 
          padding: 18px;
-.
+    margin-bottom:40px;
 }
 button:hover {
-  background-color: #861a1a;
+  background-color:#e2f0ff;
+  border-color: #396eaf;
+  color:black;
+
 }
+
+
 
 .redlink{
   font-color:firebrick;
 }
 .button{
-  padding:5px;
-  background-color: #0e4a93;
+    padding:4px;
+    padding-left:9px;
+    padding-right:9px;
+  background-color: #eef4f9;
   border-radius: 5px;
   border-style:solid;
-  border-width:1px;
+  border-width:2px;
+  border-color: #7fa2cc;
   font-color:antiquewhite;
   cursor: pointer;
   margin: 6px;
-
+  text-align: justify;
+  font: 14px/26px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  color:#7b7b7b;
 }
-table#t021{
-   border-style: solid; border-width: 2px; border-color:darkslateblue;
-    width:55%;
-    margin-left:auto;
-    margin-right:auto;
-        background-color:floralwhite;
+.buttonSelect{
+    padding:4px;
+    padding-left:9px;
+    padding-right:9px;
+  background-color: #e2f0ff;
+  border-radius: 5px;
+  border-style:solid;
+  border-width:2px;
+  border-color: #396eaf;
+  font-color:antiquewhite;
+  cursor: pointer;
+  margin: 6px;
+  text-align: justify;
+  font: 14px/26px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  }
 
-        display: none;
-         padding: 28px;
-}
-
-.gameTbl{
-   border-style:ridge; border-width: 5px; border-color:firebrick;
-    width:75%;
-    margin-left:auto;
-    margin-right:auto;
-        background-color:floralwhite;
-
-
-    padding: 20px;}
-
-table#t031{
-   border-style:ridge; border-width: 5px; border-color:firebrick;
-    width:50%;
-    margin-left:auto;
-    margin-right:auto;
-        background-color:floralwhite;
-
-
-    padding: 20px;}
-table#t04{
-   border-style: solid; border-width: 2px; border-color:darkslateblue;
-    width:85%;
-    margin-left:auto;
-    margin-right:auto;
-        background-color:floralwhite;
-
-
-         padding: 28px;
-}
     #profilePic{
        margin-bottom:10px;
+    }
+    .upperTitle{
+        font-size:32px;
+        margin:3;
+        text-align: center;
 
+    }
 
-
+    .lowerTitle{
+        margin:0;
+        text-align: center;
+          font: 12px/22px "Trebuchet MS", Helvetica, sans-serif;
     }
     h1{
         font: 28px/28px "Trebuchet MS", Helvetica, sans-serif;
@@ -161,6 +139,7 @@ table#t04{
     text-shadow: 0px 1px 0px #092950;
     font-size: 15px;
     margin: 0px;
+    text-align: justify;
     }
     p2{
             font: 10px/16px "Lucida Console", Monaco, monospace;
@@ -169,11 +148,22 @@ table#t04{
     font-size: 15px;
     margin:4px;
     margin-top:5px;
+    text-align: justify;
     }
     p3{
       text-align: justify;
-      font: 16px/26px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+      font: 14px/26px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     }
+
+.notSelected{
+  color:#7b7b7b;
+}
+p3: hover{
+  color:black;
+}
+  #content{
+    text-align: justify;
+  }
 
 .objects{
     display:inline-block;
@@ -198,94 +188,21 @@ table#t04{
 
 
     <script>
-function _(id){
-   return document.getElementById(id);
-}
-var droppedIn = false;
-function drag_start(event) {
-    _('app_status').innerHTML = "Dragging the "+event.target.getAttribute('id');
-    event.dataTransfer.dropEffect = "move";
-    event.dataTransfer.setData("text", event.target.getAttribute('id') );
-}
-function drag_enter(event) {
-    _('app_status').innerHTML = "You are dragging over the "+event.target.getAttribute('id');
-}
-function drag_leave(event) {
-    _('app_status').innerHTML = "You left the "+event.target.getAttribute('id');
-}
-function drag_drop(event) {
-    event.preventDefault(); /* Prevent undesirable default behavior while dropping */
-    var elem_id = event.dataTransfer.getData("text");
-    event.target.appendChild( _(elem_id) );
-    _('app_status').innerHTML = "Dropped "+elem_id+" into the "+event.target.getAttribute('id')+". Great Job!";
-    _(elem_id).removeAttribute("draggable");
-    _(elem_id).style.cursor = "default";
-    droppedIn = true;
-}
-function drag_end(event) {
-    if(droppedIn == false){
-        _('app_status').innerHTML = "You let the "+event.target.getAttribute('id')+" go.";
-    }
-	droppedIn = false;
-}
-function readDropZone(){
-    for(var i=0; i < _("Construction_Zone").children.length; i++){
-        alert(_("Construction_Zone").children[i].id+" is in the construction zone");
-    }
-
-}
-
-
 function hide(id)  {
     var divelement = document.getElementById(id);
      divelement.style.display = 'none';
  }
-
 
 function show(id)  {
     var divelement = document.getElementById(id);
         divelement.style.display = 'block';
  }
 
-function gf(){
-
-    var gen = document.querySelector('input[name = "gender"]:checked').value;
-    document.getElementById("gr").innerHTML = gen;
-}
-
-function nameSave(){
-    //var first = document.querySelector('input[name = "firstName"]');
-    var first = document.getElementById('firstName').value;
-    //var last = document.querySelector('input[name = "lastName"]');
-    var last = document.getElementById('lastName').value;
-
-    document.getElementById('name').innerHTML = first + "&nbsp" + last;
-
-    document.getElementById('first1').innerHTML = first;
-
-
-}
 
 
 
 
-function tally(){
 
-    var Q1a = document.querySelector('input[name = "immigration"]:checked').value;
-    var Q1 = parseInt(Q1a);
-    var Q2a = document.querySelector('input[name ="insurance"]:checked').value;
-    var Q2 = parseInt(Q2a);
-    var Q3a = document.querySelector('input[name ="office"]:checked').value;
-    var Q3 = parseInt(Q3a);
-    var Q4a = document.querySelector('input[name ="strong"]:checked').value;
-    var Q4 = parseInt(Q4a);
-    var Q5a = document.querySelector('input[name ="outsider"]:checked').value;
-    var Q5 = parseInt(Q5a);
-
-
-
-    document.getElementById('trumpScore').innerHTML = Q1 + Q2 + Q3 + Q4 + Q5;
-}
 
     </script>
 
@@ -298,35 +215,31 @@ function tally(){
 
 <body>
     <br><br>
-
-<div id="startpage" style="top: 20; position: absolute;>
+<meta name="viewport" content="width=500, initial-scale=1">
+<div id="startpage" style="top: 20; position: absolute;">
 
   <center><table class ="upperTbl">
 
 
 
     <tr>
-        <td><p2><center><a href="https://drive.google.com/file/d/1DmVkv5zJsEgVBqv5dl2Zs5y6Rlnl4JhG/view?usp=sharing" target="_blank" rel="noopener noreferrer"><button class="button"> <p2>CV</p2></a> </button> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://healthpolicyresearch-scholars.org/meetthescholars/benjamin-carter" target="_blank" rel="noopener noreferrer"><button class="button"><p2>HPRS Profile</p2></button></a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.stonybrook.edu/commcms/cbpe/games/CSS/Voting.T.CBPE.demo.html" target="_blank" rel="noopener noreferrer"><button class="button"><p2>Voting Game</p2> </button></p2></a>
-
+        <td><p2><center><button class="buttonSelect"> ABOUT</a> </button> &nbsp;&nbsp;&nbsp;&nbsp; <button class="button">RESEARCH</button></a> &nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="button">WEB GAMES </button></p3></a>
 
 		</center></td></tr></table></center><br>
 
   <table class='lowerTbl'>
-  <tr><td colspan="2"><i><center><p class="lowerTitle" style="font-size:26px"><b>Benjamin Carter</b></p><p></p><br><img src="CSS/profilePic.png" id="profilePic" style="border: 1px solid #e2e2e2;top:10px; max-width:90%;max-height:200px; z-index=1;  "><br></center>
-   <br><br><br><br><br><br><br><br><br><br>
+  <tr><td><center><p class="lowerTitle" style="font-size:30px">Benjamin Carter</p>  <div style="margin-top:20px;"></div><img src="CSS/profilePic.png" id="profilePic" style="border: 1px solid #e2e2e2;top:10px; max-width:90%;max-height:200px; z-index=1;  "><br></center>
 
-
-
-
-    <td style="padding-left:15px;"><p3 style="text-align: justify; text-justify: inter-word;">
-      I am a PhD student in the Department of Political Science at Stony Brook University.
+      <div style="margin-top:10px; text-align: justify;text-justify: inter-word;"><p3 id="content">
+      Hello. I am a PhD student in the Department of Political Science at Stony Brook University.
       I am also a Robert Wood Johnson Foundation Health Policy Research Scholar</a> and a member of Stony Brook’s Center for Behavioral Political Economy.<br><p></p>
-      My research uses incentivized economic experiments along with other quantitative methods to study how people understand social welfare policies and vote about the public distribution of benefits.
-      Click to play an economic <a class="redlink" href="https://www.stonybrook.edu/commcms/cbpe/games/CSS/Voting.T.CBPE.demo.html" target="_blank" rel="noopener noreferrer">voting game</a> I designed and programmed to study how people vote about taxes and redistribution with <a class="redlink" href="http://pdescioli.com/home.html" target="_blank" rel="noopener noreferrer">Peter DeScioli</a> and <a class="redlink" href="https://sites.google.com/view/alessandrodelponte/home" target="_blank" rel="noopener noreferrer">Alessandro Del Ponte</a>.<br><br>
+      My research uses incentivized economic experiments along with other quantitative methods to study how people understand social welfare policies and vote about the public distribution of benefits. For more information, see Research.
+      <!--Click to play an economic <a class="redlink" href="https://www.stonybrook.edu/commcms/cbpe/games/CSS/Voting.T.CBPE.demo.html" target="_blank" rel="noopener noreferrer">voting game</a> I designed and programmed to study how people vote about taxes and redistribution with <a class="redlink" href="http://pdescioli.com/home.html" target="_blank" rel="noopener noreferrer">Peter DeScioli</a> and <a class="redlink" href="https://sites.google.com/view/alessandrodelponte/home" target="_blank" rel="noopener noreferrer">Alessandro Del Ponte</a>.--><br><br>
 
       A copy of my CV can be found <a class="redlink" href="https://drive.google.com/file/d/1DmVkv5zJsEgVBqv5dl2Zs5y6Rlnl4JhG/view?usp=sharing" target="_blank" rel="noopener noreferrer">here</a>.</p3></td></tr>
 
-      <tr><td colspan="2"><br><br>
+      <tr><td colspan="2"><br><br></p3></div>
       <small><small><center><div style="max-width:75%">Photo Credit: (c) 2018 Flynn Larsen. Photo Courtesy of the Robert Wood Johnson Foundation.</small></small></center>
 
 
