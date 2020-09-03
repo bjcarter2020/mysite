@@ -29,8 +29,29 @@ background-color: #1168d2;
     top: 0;
        left: 0;
     box-shadow: 1px 1px 2px #1f3a5a;}
-
-
+.cubes{
+width: 100px;
+margin-top:-31px;
+ z-index:-1;
+ /* Firefox */
+-moz-transition: all 1s ease;
+/* WebKit */
+-webkit-transition: all 1s ease;
+/* Opera */
+-o-transition: all 1s ease;
+/* Standard */
+transition: all 1s ease;
+-webkit-user-drag: none;
+}
+.cubes:hover{
+  -moz-transform: rotate(-90deg) ;
+	/* WebKit */
+	-webkit-transform:  rotate(-90deg);
+	/* Opera */
+	-o-transform: rotate(-90deg) ;
+	/* Standard */
+	transform: rotate(-90deg) ;
+    }
 a:link {
   color: #396eaf;
   background-color: transparent;
@@ -236,7 +257,7 @@ function show(id)  {
 
       <tr><td colspan="2"><div style="margin-top:30px;"></div></p3></div>
       <p3><small><small><center><div style="max-width:90%">Photo Credit: (c) 2018 Flynn Larsen. Photo Courtesy of the Robert Wood Johnson Foundation.</small></small></p3></center></table>
-        <br><img src="CSS/cubes.png" style="width: 100px; margin-top:-31px; position:relative; z-index:-1;">
+        <br><img class="cubes"  src="CSS/cubes.png" >
 
 
 
