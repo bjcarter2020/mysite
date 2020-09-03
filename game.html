@@ -4,13 +4,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
- <base href="https://benjaminjcarter.com/">
+<!-- <base href="https://www.stonybrook.edu/commcms/cbpe/games/"> -->
 <script type="text/javascript"></script>
 
 <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 <script>
 //Global Variables Declared
-var mTurkVersion = false;
+var mTurkVersion = true;
 var playerID = "ID" + Math.random().toString().substring(2,7);
 var timerSpeed = 800;
 var numberOfVillagers = 9; // variable for total number of villagers in game, including player;
@@ -20,14 +20,16 @@ var totalFound = 0;
 var bushCountSetting = 5; //max number of bushes for the day
 var foundBerries = [0, 0, 0, 0, 0, 0, 0, 0, 0];   //total number of berries found from all bushes by each villager in a day
 var counter = 0;
+var heartCounter = 0;
 var vilIncome = [10,10,5,5,10,10,5,5];
 var p1Income = [10,10,10,10,10,5,5,5,5,5];
+var bushOrder = [1,2,3,4,5]
 var taxOutcomeHigh = 0.6;
 var taxOutcomeLow = 0.2;
 var correctHigh = 0;
 var correctLow = 0;
 var shareTime= 10;
-var selfishVote = 0.9; // probability that each bot votes in their self interest
+var selfishVote = 1; // probability that each bot votes in their self interest
 var dailyAverage = 0; // group income average for the day
 var voteOutcome = 0;
 var tally = 0;
@@ -141,7 +143,7 @@ function getMTurkId() {
     // Get the value of the input field with id="MTurkId"
     var x = element("MTurkId").value;
     // Validate MTurk code
-     if (x.length < 12 || x.length > 14){
+     if (x.length < 6 || x.length > 6){
 		element("validation").innerHTML = "Input not valid";
     } else {
 		//Hide welcome, show Join Game page using turnpage
@@ -153,19 +155,30 @@ function getMTurkId() {
     }
 }
 function begin(){
+    shuffle(bushOrder);
     totalDays++;
 	//console.log(p1Income);
+    shuffle(p1Income);
     hide('startTbl');
     invisible('button4');
-    classChange('popupTbl3', 'fadingOut', 'fadingIn');
+    fadeOutEffect('popupTbl3');
     classChange('instructionsBttn', 'fadingIn', 'fadingOut');
-    show('settingsBttn');
     setTimeout(function(){
 
 		//element('bush1').style.display = "block";
 
-           for (var i=1; i<6; i++){
-                 classChange('bush'+[i],'fadingIn', 'hide');}
+    setTimeout(function(){classChange('bush' + bushOrder[0],'fadingIn', 'hide');}, 0);
+    setTimeout(function(){classChange('bush' + bushOrder[1],'fadingIn', 'hide');}, 500);
+    setTimeout(function(){classChange('bush' + bushOrder[2],'fadingIn', 'hide');}, 1000);
+    setTimeout(function(){classChange('bush' + bushOrder[3],'fadingIn', 'hide');}, 1500);
+    setTimeout(function(){classChange('bush' + bushOrder[4],'fadingIn', 'hide');}, 2000);
+
+           //for (var i=0; i<5; i++){
+
+              // classChange('bush'+ [bushOrder[i]],'fadingIn', 'hide');
+
+
+               //}
 
 
         timer(); //console.log("totalDays = " + totalDays);
@@ -178,6 +191,22 @@ function flashPoints(id, id2){ //ADP: you are calling this function just once. I
 	classChange(divelement, 'showInline', 'hide');
 	divelement2.innerHTML = "$" + bushBerries + " "; console.log('divelement2.innerHTML ==' + divelement2.innerHTML + '; flash divelement == ' + divelement);
 	setTimeout(function() { classChange(divelement, 'hide', 'show');}, 950);
+}
+// Fade Out Animation
+function fadeOutEffect(id) {
+    var fadeTarget = element(id);
+    var fadeEffect = setInterval(function () {
+        if (!fadeTarget.style.opacity) {
+            fadeTarget.style.opacity = 1;
+        }
+        if (fadeTarget.style.opacity > 0) {
+            fadeTarget.style.opacity -= 0.1;
+        } else {
+            clearInterval(fadeEffect);
+        }
+    }, 20);
+    setTimeout(function(){classChange(id, 'fadingOut', 'fadingIn');}, 1000);
+    setTimeout(function() {fadeTarget.style.opacity= 1;}, 2100);
 }
 //Throbbing animation
 function pulse(id) {
@@ -199,23 +228,28 @@ function shrink(id){
 //Displays Player's Found Berries
 function search1(){
     iBasket++;
-    x1String += "<img id='berrySaved" + iBasket + "'src=CSS/dollarSmall.png class='berries'>";
+    if (Number.isInteger(iBasket/5) == true){
+        x1String += "<img id='berrySaved" + iBasket + "'src=CSS/dollarStack.png class='berries'>";
+      }
     element("findBasket").innerHTML =  x1String;
     element('foundBerry').innerHTML = ' $' +iBasket;
     element('foundBerries2').innerHTML = ' $' +iBasket;
     element('p1Berries').innerHTML = '$' + iBasket;
 	if (iBasket < foundBerries[0]){
-         search1(); //ADP: why do you call the function within the same function? what does this code mean? I think that this if statement is not doing anything good for us (unless you have a good reason for it)
+         search1();
         }
     }
 function reduce(){ //console.log('foundBerries[0] == ' + foundBerries[0] + '; reduceVal == ' + reduceVal);
 	yString = "";
-	yString = "<img id='berrySaved" + iBasket + "'src=CSS/dollarSmall.png class='berries'>";
-	x1String = x1String.replace(yString, '');
+  if (Number.isInteger(iBasket/5) == true){
+	   yString = "<img id='berrySaved" + (iBasket+5) + "'src=CSS/dollarStack.png class='berries'>";
+   }
+
     element("findBasket").innerHTML = x1String;
-    var VAL = (foundBerries[0]-1)
+    var VAL = (foundBerries[0]-1);
     iBasket--;
         if (iBasket >= VAL){
+          x1String = x1String.replace(yString, '');
            reduce();}
         if (iBasket < VAL){
             iBasket++;
@@ -227,7 +261,9 @@ function reduce(){ //console.log('foundBerries[0] == ' + foundBerries[0] + '; re
 		}
 }
 function collect(){
-    x1String += "<img id='berrySaved" + iBasket + "'src=CSS/dollarSmall.png class='berries'>";
+    if (Number.isInteger(iBasket/5) == true){
+      x1String += "<img id='berrySaved" + iBasket + "'src=CSS/dollarStack.png class='berries'>";
+    }
     iBasket++;
     element("findBasket").innerHTML = x1String;
     element('foundBerry').innerHTML = ' $' +foundBerries[0];
@@ -247,11 +283,12 @@ function communityShare(){
 	}
 }
 function communityDistribute(){
+    iCOM--;
     yString = "";
     yString = "<img id='basketSaved" + iCOM + "'src=CSS/dollarStack.png class='comBerries'>";
     xString = xString.replace(yString, '');
     element("comBasket").innerHTML = xString;
-    iCOM--;
+
     if (iCOM >= communityBasket){ //console.log('comDist "if" running...;' + ' iCOM == ' + iCOM);
         setTimeout(function() {communityDistribute();}, shareTime);
 	}
@@ -289,10 +326,11 @@ function villageRedistribute(){
         foundBerries[i1]= foundBerries[i1] + distValue;
         if (vChange[chg] > 0){
             numFormat('p' + player + 'Change', "positive");
-            plus[i1] = "+"}
+            plus[i1] = "+ $"}
         if (vChange[chg]< 0){
             numFormat('p' + player + 'Change', 'negative');
-            plus[i1] = "";}
+            vChange[chg] = Math.abs(vChange[chg]);
+            plus[i1] = "- $";}
         /*visible('berry' + [i1]); //console.log('p' + player + 'Change = ' + vChange[chg]);*/
         element('p' + player + 'Change').innerHTML = plus[i1] + vChange[chg];
         element('p' + player + 'Berries').innerHTML = ' $' + foundBerries[i1];
@@ -353,8 +391,7 @@ function timer(){
         setTimeout(function() {
 		clearTimeout(t);
 		bushCount = 0;
-		element('v1').checked = false;
-		element('v2').checked = false;
+
         classChange('popupTbl3', 'fadingIn', 'fadingOut');
 		classChange('voteScreen', 'fadingIn', 'fadingOut');
 		classChange('voting', 'fadingIn', 'fadingOut');
@@ -384,24 +421,39 @@ function robotVoting(){
     selfishVote = (selfInt)/100;
     element("selfInterestPercent").innerHTML = Math.round(selfishVote * 100); //console.log('selfishVote = ' + selfishVote);
 }
+function v1chk(){
+  element('v1').checked = true;
+}
+function v2chk(){
+  element('v2').checked = true;
+}
+
 //Eating Berries
 function eatBerries(){ //console.log('foundBerries[0] == ' + foundBerries[0] + '; counter ==' + counter + ';  iBasket ==' + iBasket); //consolidating the console logs into one
-    yString = "<img id='berrySaved" + foundBerries[0] + "'src=CSS/dollarSmall.png class='berries'>";
+  if (Number.isInteger(foundBerries[0]/5) == true){
+    yString = "<img id='berrySaved" + foundBerries[0] + "'src=CSS/dollarStack.png class='berries'>";
+  }
     x1String = x1String.replace(yString, '');
     totalPoints++;
     element("findBasket").innerHTML = x1String;
     foundBerries[0]--;
     counter++;
+    heartCounter++;
     element("totalPoints").innerHTML = ' ' +totalPoints;
     element("iconPoints").innerHTML = ' ' +totalPoints;
     element('foundBerry').innerHTML = ' $' +foundBerries[0];
     element('foundBerries2').innerHTML = ' $' +foundBerries[0];
     healthBar();
+    if (heartCounter ==5){
+      pulse('heart1');
+      heartCounter = 0;
+    }
     if (counter < iBasket){
              setTimeout(function() {eatBerries();}, 100);}
     if (counter == iBasket){
         classChange('ogBasket', 'fadingIn', 'fadingOut');
-        classChange('eatTbl3', 'fadingOut', 'fadingIn');
+          setTimeout(function(){fadeOutEffect('eatTbl3')}, 1500);
+        heartCounter = 0;
         counter = 0;
         iBasket = 0;
         setTimeout(function(){
@@ -416,31 +468,31 @@ function eatBerries(){ //console.log('foundBerries[0] == ' + foundBerries[0] + '
 				}, 1000);
 			element("code").innerHTML = playerID;
 			} //end continueCheck
-		}, 1500);
+		}, 3000);
     }
 }
 
 function finishedClick(){
-				classChange('finalTbl', 'fadingOut', 'fadingIn');
-				classChange('gameTbl', 'fadingOut', 'fadingIn');
-				classChange('instructionsBttn', 'fadingOut', 'fadingIn');
-                classChange('dist', 'fadingOut', 'fadingIn');
-				classChange('dist2', 'fadingOut', 'fadingIn');
-				classChange('voteComp', 'fadingOut', 'fadingIn');
-				classChange('voteHead', 'fadingOut', 'fadingIn');
-				hideChanges();invisible('button4');
-				classChange('dist3', 'fadingOut', 'fadingIn');
-				classChange('dist4', 'fadingOut', 'fadingIn');
-				classChange('dist5', 'fadingOut', 'fadingIn');
-				classChange('dist6', 'fadingOut', 'fadingIn');
-				classChange('popupTbl3', 'fadingOut', 'fadingIn');
-				classChange('redistribute', 'fadingOut', 'fadingIn');
-				resetVillage();
-				classChange('energyBar', 'fadingOut', 'fadingIn');
-				classChange('scoreTbl', 'fadingOut', 'fadingIn');
-				invisible('button1');
-				setTimeout(function(){
-					classChange('surveyPage1', 'fadingIn', 'fadingOut');}, 500);
+    fadeOutEffect('finalTbl');
+    fadeOutEffect('gameTbl');
+    fadeOutEffect('instructionsBttn');
+    fadeOutEffect('dist');
+    fadeOutEffect('dist2');
+    fadeOutEffect('voteComp');
+    fadeOutEffect('voteHead');
+		hideChanges();invisible('button4');
+    fadeOutEffect('dist3');
+    fadeOutEffect('dist4');
+    fadeOutEffect('dist5');
+    fadeOutEffect('dist6');
+    fadeOutEffect('popupTbl3');
+    fadeOutEffect('redistribute');
+		resetVillage();
+    fadeOutEffect('energyBar');
+    fadeOutEffect('scoreTbl');
+		invisible('button1');
+		setTimeout(function(){
+		classChange('surveyPage1', 'fadingIn', 'fadingOut');}, 500);
 }
 
 
@@ -451,7 +503,7 @@ function finishedClick(){
     var sharingData = {};
     //This sends data to firebase via the push command
 function submitSurvey(){
-    classChange('surveyPage3', 'fadingOut', 'fadingIn');
+      fadeOutEffect('surveyPage3');
     var survey = {};
     survey.Q1 = "'" + element("q1").value + "'";
     survey.Q2 = element("q2").value;
@@ -533,15 +585,17 @@ function download(csvString){
     flashPoints(divelement +'flash', divelement + 'flasha');  //this makes points flash above bushes upon click
 }
 function voteClick(){
+  	var voteSelection = document.querySelector('input[name = "voteShare"]:checked').value; //begin groupVote
+    if (voteSelection == 0 || voteSelection == 1){
     for (var i=0; i< numberOfVillagers; i++){ //Calculate Villager Average
 		dailyAverage = dailyAverage + foundBerries[i];}
     dailyAverage = dailyAverage/numberOfVillagers; //console.log('dailyAverage == ' + dailyAverage);
     show('outcome');
     invisible('outcome');
     invisible('button4');
-    classChange('voting', 'fadingOut', 'fadingIn');
+    fadeOutEffect('voting');
     setTimeout(function(){
-		var voteSelection = document.querySelector('input[name = "voteShare"]:checked').value; //begin groupVote
+
 		voteVal = parseInt(voteSelection); //console.log('my vote = ' + voteVal);
 		var vVote = 0; //Villager Voting
 		for (var i=1; i<numberOfVillagers; i++){
@@ -560,9 +614,12 @@ function voteClick(){
                     vote = 0;}}
               vVote = vVote + vote;
 		}
+
 		tally = (voteVal + vVote);
-		if (tally > 4){ voteOutcome = taxOutcomeHigh; shareTime = 60;}
-		if (tally < 5){ voteOutcome = taxOutcomeLow; shareTime = 150;}  //end groupVote
+		if (tally > 4){ voteOutcome = taxOutcomeHigh; shareTime = 60;
+                    element('animal').src="CSS/dem.png";}
+		if (tally < 5){ voteOutcome = taxOutcomeLow; shareTime = 150;
+                    element('animal').src="CSS/rep.png";}  //end groupVote
 		if (voteVal == 0){ //begin correctCount
 			if (foundBerries[0] > 33){
 				correctHigh ++;}
@@ -576,10 +633,10 @@ function voteClick(){
 		var outcome = "";
 		if (voteOutcome == taxOutcomeLow){
 			shareVal = 0.2;
-			outcome = "Low Taxes";}
+			outcome = "Republican President, low taxes";}
 		if (voteOutcome == taxOutcomeHigh){
 			shareVal = 0.6;
-			outcome = "High Taxes";}
+			outcome = "Democratic President, high taxes";}
 		element('voteMore').innerHTML = moreVote;
 		element('voteLess').innerHTML = lessVote;
 		element('outcomeVote').innerHTML = outcome;
@@ -626,8 +683,8 @@ function voteClick(){
 			element('distVal').innerHTML = distValue;
 		}, 500);
 	}, 3000);  //newinstructions2 ends before the }, 7000)
-    setTimeout(function(){classChange('dist', 'fadingOut', 'fadingIn'); }, 6500);
-    setTimeout(function(){classChange('dist2', 'fadingIn', 'fadingOut'); }, 7000);
+    setTimeout(function(){fadeOutEffect('dist');}, 6000);
+    setTimeout(function(){classChange('dist2', 'fadingIn', 'fadingOut'); }, 7100);
     setTimeout(function(){
 	    foundBerries[0] = Math.round(foundBerries[0] + distValue); // begin redistribute() Berries
 		collect();
@@ -637,10 +694,12 @@ function voteClick(){
 		iBasket = foundBerries[0];
 		if (p1Change > 0){
 			numFormat('v0Change', "positive");
-			plus[0] = "+"}
+			plus[0] = "+ $"}
 		if (p1Change < 0){
+       p1Change = Math.abs(p1Change);
 		   numFormat('v0Change', "negative");
-			plus[0] = "";}
+
+       plus[0] = "- $";}
 		/*visible('berry');*/
 		element('p1Berries').innerHTML = ' $' +foundBerries[0];
 		pulse('basket0');
@@ -648,25 +707,30 @@ function voteClick(){
 		element('netChange').innerHTML = (plus[0] + p1Change);
 		element('v0Change').innerHTML =(plus[0] +p1Change);
 		vBasketCalc();
-		i1 = 1; //what is i1?
+		i1 = 1;
 		villageRedistribute();
 		element('foundBerry').innerHTML = ' $' +foundBerries[0];
 		element('foundBerries2').innerHTML = ' $' +foundBerries[0];
-		setTimeout(function() {classChange('allBaskets', 'fadingOut', 'fadingIn');
-							   classChange('dist2', 'fadingOut', 'fadingIn'); }, 5000);
+    console.log("error here1?");
+		setTimeout(function() {fadeOutEffect('allBaskets'); fadeOutEffect('dist2'); }, 5000);
+    console.log("error here2?");
+
 		setTimeout(function() {classChange('dist5', 'fadingIn', 'fadingOut');}, 1500);
 		setTimeout(function() {classChange('dist6', 'fadingIn', 'fadingOut');}, 4000);
 		setTimeout(function() {classChange('eatTbl3', 'fadingIn', 'fadingOut');}, 6000);
-		setTimeout(function(){eatBerries(); pulse('heart1');}, 7000);
+		setTimeout(function(){eatBerries();}, 7000);
 		vBasketCalc(); //end redistribute() Berries
 	}, 7000);
-}
+}}
 function newDayClick(){
+  element('v1').checked = false;
+  element('v2').checked = false;
+  shuffle(bushOrder);
 	totalFound = 0;
-    classChange('dist', 'fadingOut', 'fadingIn');
-	classChange('dist2', 'fadingOut', 'fadingIn');
-	classChange('voteComp', 'fadingOut', 'fadingIn');
-	classChange('voteHead', 'fadingOut', 'fadingIn');
+  fadeOutEffect('dist');
+  fadeOutEffect('dist2');
+  fadeOutEffect('voteComp');
+  fadeOutEffect('voteHead');
     setTimeout(function(){
 		invisible('outcome');
 		classChange('outcome', 'fadingOut', 'fadingIn');
@@ -685,8 +749,12 @@ function newDayClick(){
     totalDays++;
 	element("dayCounter").innerHTML = totalDays;
     x1String = "";
-      setTimeout(function(){  for (var i=1; i<6; i++){
-		classChange('bush'+[i], 'fadingIn', 'fadingOut');};
+      setTimeout(function(){
+        setTimeout(function(){classChange('bush' + bushOrder[0],'fadingIn', 'hide');}, 0);
+        setTimeout(function(){classChange('bush' + bushOrder[1],'fadingIn', 'hide');}, 500);
+        setTimeout(function(){classChange('bush' + bushOrder[2],'fadingIn', 'hide');}, 1000);
+        setTimeout(function(){classChange('bush' + bushOrder[3],'fadingIn', 'hide');}, 1500);
+        setTimeout(function(){classChange('bush' + bushOrder[4],'fadingIn', 'hide');}, 2000);
 		/*classChange('energyBar', 'fadingIn', 'fadingOut');
 		classChange('instructionsBttn', 'fadingIn', 'fadingOut');
 		classChange('scoreTbl', 'fadingIn', 'fadingOut');*/
@@ -726,7 +794,7 @@ body {
 	border-radius: 25px;
 	width: 600px;
 	min-height: 520px;
-	top: 5px;
+	top: 10px;
 	left:25%;
 	border-style: solid;
 	border-width: 3px;
@@ -850,13 +918,13 @@ body {
 	text-align: center;
 	border-color: #5a90b8;
 	border-radius: 100px;
-	cursor:pointer;
+	:pointer;
 }
 .lowerTitleB{
 	text-align: center;
 	border-color: #5a90b8;
 	border-radius: 100px;
-	cursor: default;
+	: default;
    }
 #scoreboard td{
 	width: 30px;
@@ -872,7 +940,7 @@ body {
 #energyBar {
 	position: relative;
 	top: 2px;
-	width: 290px;
+	width: 350px;
 	height: 34px;
 	border-radius: 40px;
 	border-color: #701300;
@@ -886,7 +954,7 @@ body {
 	background-color: rgba(255, 250, 240, 0.6);
 }
 #findBasket{
-	width:110px;
+	width:140px;
 	height: 120px;
 	-moz-transform: scaleY(-1);
 	-o-transform: scaleY(-1);
@@ -896,7 +964,7 @@ body {
 	-ms-filter: "FlipV";
   }
 #comBasket{
-	width:140px;
+	width:250px;
 	position: absolute;
 	-moz-transform: scaleY(-1);
 	-o-transform: scaleY(-1);
@@ -906,7 +974,7 @@ body {
 	-ms-filter: "FlipV";
 }
 .berries{
-	width: 15px;
+	width: 40px;
 	-moz-transform: scaleY(-1);
 	-o-transform: scaleY(-1);
 	-webkit-transform: scaleY(-1);
@@ -917,7 +985,7 @@ body {
 	z-index: inherit;
 }
 .comBerries{
-	width:22px;
+	width:28px;
 	-moz-transform: scaleY(-1);
 	-o-transform: scaleY(-1);
 	-webkit-transform: scaleY(-1);
@@ -935,7 +1003,7 @@ body {
 	border-color:#701300;
 	background-color:antiquewhite;
 	padding: 9px;
-	cursor:pointer;
+	:pointer;
 	display:none;
 	z-index:5;
 }
@@ -953,7 +1021,7 @@ body {
 	width: 700px;
 	height: 350px;
 	table-layout: fixed;
-	top: 42px;
+	top: 52px;
 	border-color: #701300;
 	background-color: floralwhite;
 	padding-top: 5px;
@@ -1033,7 +1101,7 @@ body {
     position: absolute;
     width: 360px;
     height: 165px;
-    top: 408px;
+    top: 413px;
     left: 322px;
     box-shadow: 7px 7px 12px rgba(48, 90, 122, 0.8);
     box-shadow: 7px 7px 12px r;
@@ -1066,7 +1134,7 @@ body {
 	-webkit-animation: Rising 1s linear;
 	-moz-animation: Rising 1s linear;
 	animation: Rising 1s linear;
-	cursor:default;
+	:default;
 }
 </style>
 </head>
@@ -1074,7 +1142,7 @@ body {
 <!--Welcome page-->
 <div id="welcome" class="greetings" style="display:none">
 	<h2 style="color:#337ab7">Welcome to the Voting Game</h2>
-	<p> Please enter your Amazon Mechanical Turk Worker ID:</p><input id="MTurkId" >
+	<p> Please enter your ID:</p><input id="MTurkId">
 	<button type="button" class="btn btn-success" onclick="getMTurkId();">Submit</button>
 	<p id="validation" style="color:orangeRed"></p>
 </div>
@@ -1083,21 +1151,21 @@ body {
 			<div id="gameTbl" class = "tables" style="display:none">
 				<table id="energyBar" style="display:none">
 						<td style="width:190px; text-align: center; vertical-align:top; padding-top:2;"><img src='CSS/heart2.png' id="heart1" style="width:30px; padding-left:5px"><span id="totalPoints" style="font-size:18">60</span></td>
-						<td style="width:280px;">&nbsp;<canvas id="myCanvas" style="visibility:visible; padding-top:3px" width="100" height="41" ></canvas></td>
-						<td style="width:80px; text-align: center; vertical-align:top;"><div style="padding-top:5; padding-right:5;"><b>Term:</b><span id="dayCounter">1</span></div></td>
+						<td style="width:126px;">&nbsp;<canvas id="myCanvas" style="visibility:visible; padding-top:3px" width="100" height="41" ></canvas></td>
+						<td style="width:180px; text-align: center; vertical-align:top;"><div style="padding-top:5; padding-right:5;"><b>Round: </b><span id="dayCounter">1</span></div></td>
 				</table>
 				<tr><td>
 
 				<div id ="bush1flash" class="flashScore hide" style=" top: 307px; left: 295px; " draggable="false"><div id="bush1flasha" ></div></div>
-<!--bush1-->	<img src="CSS/job.png" id="bush1" class="hide job" style = "position: absolute; top: 307px; left: 295px; cursor: url(CSS/hand.png) 15 15, default;" draggable="false" onclick="bushClick('bush1');"></img>
+<!--bush1-->	<img src="CSS/job.png" id="bush1" class="hide job" style = "position: absolute; top: 307px; left: 295px; cursor: pointer;" draggable="false" onclick="bushClick('bush1');"></img>
 				<div id ="bush4flash" class="flashScore hide" style = "top: 265px; right: 165px;" draggable="false"><span id="bush4flasha" ></span></div>
-<!--bush4-->	<img src="CSS/job.png" id="bush4" class="hide job" style = "position: absolute; top: 265px; right: 165px;  cursor: url(CSS/hand.png) 15 15, default;" draggable="false" onclick=" bushClick('bush4');"></img>
+<!--bush4-->	<img src="CSS/job.png" id="bush4" class="hide job" style = "position: absolute; top: 265px; right: 165px;  cursor: pointer;" draggable="false" onclick=" bushClick('bush4');"></img>
 				<div id ="bush3flash" class="flashScore hide" style = "top: 247px; left: 347px;" draggable="false"><span id="bush3flasha" ></span></div>
-<!--bush3-->	<img src="CSS/job.png" id="bush3" class="hide job" style = "position: absolute; top: 247px; left: 347px; cursor: url(CSS/hand.png) 15 15, default;" draggable="false" onclick="bushClick('bush3');"></img>
+<!--bush3-->	<img src="CSS/job.png" id="bush3" class="hide job" style = "position: absolute; top: 247px; left: 347px; cursor: pointer;" draggable="false" onclick="bushClick('bush3');"></img>
 				<div id ="bush2flash" class="flashScore hide" style= " top: 305px; right: 250px; " draggable="false"><span id="bush2flasha" ></span></div>
-<!--bush2-->	<img src="CSS/job.png" id="bush2" class="hide job" style = "position: absolute; top: 305px; right: 250px; cursor: url(CSS/hand.png) 15 15, default;" draggable="false" onclick="bushClick('bush2');"></img>
+<!--bush2-->	<img src="CSS/job.png" id="bush2" class="hide job" style = "position: absolute; top: 305px; right: 250px; cursor: pointer;" draggable="false" onclick="bushClick('bush2');"></img>
 				<div id ="bush5flash" class="flashScore hide" style = "top: 260px; right: 70px;" draggable="false"><span id="bush5flasha"></span></div>
-<!--bush5-->	<img src="CSS/job.png" id="bush5" class="hide job" style = "position: absolute; top: 260px; right: 70px; cursor: url(CSS/hand.png) 15 15, default;" draggable="false" onclick="bushClick('bush5');"></img>
+<!--bush5-->	<img src="CSS/job.png" id="bush5" class="hide job" style = "position: absolute; top: 260px; right: 70px; cursor:pointer;" draggable="false" onclick="bushClick('bush5');"></img>
 
 
 
@@ -1107,73 +1175,62 @@ body {
 			</div>  <!--Instructions -->
 				<div id= "instructions1" class = "instructions">
 					<h2 style= "text-align:center";><b>Overview</b></h2>
-					In this game, you are a forager who lives in a small village settled deep in a remote forest.<br><br>
-					The village contains nine foragers who survive by eating berries <img src="CSS/dollar.png" style="width:22px;"> to boost their health <img src="CSS/heart.png" style="width:15px; height:14px;">.
-					<br><br>Each day, the villagers set out on their own to find berries. Afterwards, they meet to vote on how much each villager will pay in taxes from their berries to the community.
-					<br><br>You will be one of the villagers and the other  eight villagers will be played by the computer. The computer will make decisions for the villagers similar to how people make decisions in this game.
-					<br><br>At the end of the game, you will earn <font color="green">1 cent</font> per point of your final health score.  This money will be paid to you as an <b>Mturk bonus</b>.
+					In this game, you are a citizen of the United States who lives in a city.<br><br>
+					You are one of nine citizens who survive by earning money <img src="CSS/dollar.png" style="width:22px;"> to boost their health <img src="CSS/heart.png" style="width:15px; height:14px;">.
+					<br><br>Each round, the citizens set out on their own to find jobs that earn them money. Afterwards, they meet to vote for the next president based on each candidate's policy for taxing income.
+					<br><br>You will be one of the citizens and the other eight citizens will be played by the computer. The computer will make decisions for the citizens similar to how people make decisions in this game.
+					<br><br>At the end of the game, you will earn <font color="green">1 cent</font> per point of your final health score. This money will be paid to you as a <b>Qualtrics bonus</b>.
 					<center><br><button  id='button1' style="bottom: 38px; "class="lowerTitleA" onclick="turnPage('instructions1','instructions2');"> Next --></button></center>
 				</div>
 				<div id= "instructions2" class = "instructions">
-					<h2 style= "text-align:center";><b>Searching for Food</b></h2>
-					<p><center>Each day you search for berries by clicking on bushes.</center><p>
-					<br><center><img src="CSS/bushes-hi.png" style="width:150px; height:65px;"></center>
-                    <br> Some villagers will find meager bushes and gather 25 berries each day, and some villagers will find lush bushes and gather 50 berries each day.<br>
-                    <br>When you find berries, they will appear in your basket.
+					<h2 style= "text-align:center";><b>Searching for Jobs</b></h2>
+					<p><center>Each round you search for jobs by clicking on job ads.</center><p>
+					<br><center><img src="CSS/job.png" style="height:85px;"></center>
+                    <br> Some rounds, you find jobs with a low pay of $25, and some rounds you find jobs with a high pay of $50. To be exact, you have a 50% chance of earning $25 and a 50% chance of earning $50. The computer will use these chances to determine how much money you earn each round.<br>
+                    <br>When you find jobs, your earnings appear in your bank account.
 					<br><br><center><button  id='button21' style=" bottom: 38px;" class="lowerTitleA"  onclick="turnPage('instructions2','instructions1');"><-- Back </button>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<button id="button2" style=" bottom: 38px;" class="lowerTitleA"onclick="turnPage('instructions2','instructions3');"> Next --> </button></center>
 				</div>
 				<div id= "instructions3" class = "instructions">
 					<h2 style= "text-align:center";><b>Health</b></h2>
-                   <center>You will start with 60 health points.<br><br><img src="CSS/healthbar.png" style="width:300px; border-radius:25px;"></center><br><br> Each day, your health decreases by 25 health points from the energy your body consumes through metabolism.<br>
+                   <center>You will start with 60 health points.<br><br><img src="CSS/healthbar.png" style="width:300px; border-radius:25px;"></center><br><br> Each round, your health decreases by 35 health points from the energy your body consumes through metabolism.<br>
 
-					<br>You can add to your health points by eating berries. Each berry adds 1 health point. <br><br>   <br>
+					<br>You can add to your health points by consuming food that you buy with money. Each dollar adds 1 health point. <br><br>   <br>
 					<center> <button  id='button34' style=" bottom: 38;" class="lowerTitleA"  onclick="turnPage('instructions3','instructions2');"> <-- Back</button>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<button id="button3" style="bottom: 38; " class="lowerTitleA" onclick="turnPage('instructions3','instructions4'); "> Next --></button></center>
 				</div>
 				<div id= "instructions4" class = "instructions">
-					<h2 style= "text-align:center";><b>Taxes &amp; Voting </b></h2>
-					<p>After the villagers collect berries, they hold a village meeting to vote on how to tax their income.</p>
-					<center>
-						<img src="CSS/villlager1.png" style="width:20px; height:40px;">
-						<img src="CSS/villlager2.png" style="width:20px; height:40px;">
-						<img src="CSS/villlager3.png" style="width:20px; height:40px;">
-						<img src="CSS/villlager4.png" style="width:20px; height:40px;">
-						<img src="CSS/villlager5.png" style="width:20px; height:40px;">
-						<img src="CSS/villlager6.png" style="width:20px; height:40px;">
-						<img src="CSS/villlager7.png" style="width:20px; height:40px;">
-						<img src="CSS/villlager8.png" style="width:20px; height:40px;">
-						<img src="CSS/villlager9.png" style="width:20px; height:40px;">
-					</center><br>
-					<p>By custom, there are two options on the ballot:</p>
-						<ul><li>Low Taxes: Each villager is taxed 1 out of every 5 berries they found (20%) which are added to the community basket, or </li>
-							<li>High Taxes: Each villager is taxed 3 out of every 5 berries they found (60%) which are added to the community basket.</li>
+					<h2 style= "text-align:center";><b>Voting and Taxes </b></h2>
+					<p>After the citizens search for jobs, they hold a national election to vote on the next president. Each candidate proposes a different tax policy that will be enacted if they are elected.</p>
+					<p>There are two candidates on the ballot:</p>
+						<ul><li>Republican Candidate <img src="CSS/rep.png" style="width: 19px;">, Low Taxes: Each citizen is taxed $1 per $5 they earn (20%)</li>
+							<li>Democratic Candidate <img src="CSS/dem.png" style="width: 19px;">, High Taxes: Each citizen is taxed $3 per $5 they earn (60%).</li>
 						</ul>
-					<p>The tax rule that receives the most votes is enacted. The rule is automatically applied to all of the villagers by withdrawing berries from each villager's basket according to the rule.</p>
+					<p>The candidate that receives the most votes is elected president and their tax rule is enacted. The rule is automatically applied to all of the citizens by deducting money from each citizen's bank account according to the rule.</p>
 
-					<center> <button  id='button31' style=" bottom: 38;" class="lowerTitleA"  onclick="turnPage('instructions4','instructions3'); "> <-- Back</button>
+					<br><center> <button  id='button31' style=" bottom: 38;" class="lowerTitleA"  onclick="turnPage('instructions4','instructions3'); "> <-- Back</button>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<button id="button3" style="bottom: 38; " class="lowerTitleA" onclick="turnPage('instructions4','instructions5'); "> Next --></button></center>
 				</div>
 				<div id= "instructions5" class = "instructions">
-					<h2 style= "text-align:center";><b>Distributing &amp; Eating</b></h2>
-					<br><center><img src="CSS/garden-basket.png" style="width:150px;"></center>
-                    <br><br>After voting, the berries in the community basket are divided equally among the nine villagers and distributed to their baskets.
-					<br><br>At the end of the day, each villager eats their berries to gain health points. Then they continue to the next day for a total of 10 days.
-					<br><br><center> <button  id='button3d1' style=" bottom: 38;" class="lowerTitleA"  onclick="turnPage('instructions5','instructions4');"><-- Back</button>
+					<h2 style= "text-align:center";><b>Distributing and Eating</b></h2>
+				<br>After voting, the money collected by the government is divided equally among the nine citizens and distributed to their bank accounts.
+        <br><center><img src="CSS/irs.png" style="width:250px;"></center>
+          <br>At the end of the round, each citizen spends their money on food to gain health points. Then they continue to the next round for a total of 10 rounds.
+					<br><br><br><center> <button  id='button3d1' style=" bottom: 38;" class="lowerTitleA"  onclick="turnPage('instructions5','instructions4');"><-- Back</button>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<button id="button3d" style="bottom: 38; " class="lowerTitleA" onclick="turnPage('instructions5','instructions6'); "> Next --></button></center>
 				</div>
 				<div id= "instructions6" class = "instructions">
 					<h2 style= "text-align:center";><b>Summary</b></h2>
-					<ul><li>  You start with 60 health points and you lose 25 per day due to metabolism.</li>
-                        <li> Some villagers will find 25 berries each day and some villagers will find 50 each day. </li>
-						<li>You and the other villagers vote on whether everyone pays Low Taxes (1 out of 5) or High Taxes (3 out of 5). </li>
-						<li>The tax rule that receives the most votes is enacted. Berries are collected into the community basket according to the rule and then these berries are divided equally among the nine villagers.</li>
-						<li>After the community berries are divided, you eat your berries to add to your health and proceed to the next day.</li>
-						<li>The game continues for 10 days. You will earn 1 cent per point of your final health score, paid to you as an Mturk bonus.<br><br>
+					<ul><li>  You start with 60 health points and you lose 35 each round due to metabolism.</li>
+                        <li> Each round, you have equal chances of earning $25 or $50.</li>
+						<li>You and the other citizens vote for the Republican candidate who proposes low taxes ($1 per $5 of income) or the Democratic candidate who proposes high taxes ($3 per $5 of income).</li>
+						<li>The candidate that receives the most votes is elected president and their tax rule is enacted. Money is collected by the government according to the rule and then it is divided equally among the nine citizens.</li>
+						<li>After the money is divided, you buy food to add to your health and proceed to the next round.</li>
+						<li>The game continues for 10 rounds. You will earn 1 cent per point of your final health score, paid to you as a Qualtrics bonus.<br><br>
 					</ul>
 					<p>You can refer to these instructions at any point during the game by clicking the "Instructions" button.</p>
 					<center><button class="lowerTitleA" id='button4d2' style=" bottom: 38; " onclick="turnPage('instructions6','instructions5');"><-- Back</button>
@@ -1190,11 +1247,11 @@ body {
 				</div><center>
 				<tr><th style="padding:0">
 				    <hr width="2" size="145" style="position:absolute; top:0px; left:115px;">
-					<img src="CSS/bottomBag.png"  style="height: 150px; width:223px; position:absolute; top:5px; right:53px; z-index:1" draggable="false" >
-					<img src="CSS/topBag.png"  style="height: 150px; width:223px; position:absolute; top:5px; right:53px; z-index: 3;" draggable="false" >
-					<img src="CSS/bag.png" id="ogBasket" style="height: 150px; width:223px; position:absolute; top:5px; right:53px; z-index: 4;" draggable="false" >
-					<div id="findBasket" style="position:absolute; z-index: 2; top:28px; right:115px; border: 0px solid blue;"></div>
-					<div style="position:absolute; top:87px; right:24px;" align="left"><span id="foundBerry" style="font-size:36px; color:forestgreen;">$0</span></div></th>
+					<img src="CSS/bank.png"  style="height: 150px; width:160px; position:absolute; top:5px; right:85px; z-index:1" draggable="false" >
+					<img src="CSS/bank.png"  style="height: 150px; width:160px; position:absolute; top:5px; right:85px; z-index: 3;" draggable="false" >
+					<img src="CSS/bank.png" id="ogBasket" style="height: 150px; width:160px; position:absolute; top:5px; right:85px; z-index: 4;" draggable="false" >
+					<div id="findBasket" style="position:absolute; z-index: 3; top:25px; right:96px; border: 0px solid blue;"></div>
+					<div style="position:absolute; top:67px; right:24px;" align="left"><span id="foundBerry" style="font-size:36px; color:forestgreen;">$0</span></div></th>
 				</tr></center>
 			</div> 			<center>
 			<div id='startTbl' class = 'tables' style="top:180px;" onclick="begin();"><center>Click Here To Begin!</center></div></center>
@@ -1214,7 +1271,7 @@ body {
 					# of Bushes : <i><span id="bushCountSetting1">5</span></i><br><br>
 					<b>Download Data File<br></b>
 					<button class="lowerTitleA" onclick="getData();">Data</button><br><br><br>
-					<center><button class="lowerTitleA" onclick="classChange('settingsTable', 'fadingOut', 'fadingIn');">Hide Settings</button></center>
+					<center><button class="lowerTitleA" onclick="fadeOutEffect('settingsTable');">Hide Settings</button></center>
 				</div><br></td></tr>
 			</table>
 			<button id="settingsBttn" style="display:none;" onclick="classChange('settingsTable', 'fadingIn', 'fadingOut');">Settings</button>
@@ -1222,14 +1279,15 @@ body {
 
 		<center><table id='popupTbl3' class = "tables" style="display:none"><tr>  <!--Large Eating and Redistributing Table -->
 			<td colspan="2" style="width:100%">
-				<div id='eatTbl3' style="display:none; position: absolute; border-radius: 25px; font-size:22px; top: 170px; left: 276px; padding: 9px;"><center>Eating Berries...</center></div>
+				<div id='eatTbl3' style="display:none; position: absolute; border-radius: 25px; font-size:22px; top: 115px; left: 256px; padding: 9px;"><center>Buying food <br> to gain health...
+                   <br><br><img src="CSS/food.png" style="height: 135px"></center></div>
                 <center>
-			<div id='eatTbl1' style="display:none; position:absolute; max-width:240px; top:140px; left:220px; cursor:pointer;" onclick="newDayClick();"><center>Click here to begin a New Day! <br> <img src='CSS/3-2-sun-png-clipart.png' style="height:60px; cursor:pointer;"></center></div>
-                    <div id='finalTbl' class='tables' style="display:none; position:absolute; top:130px; left:227px; box-shadow: 22px 12px 12px #55555596; cursor:pointer;" onclick="finishedClick();"><center><div id = "gameOver"><text style = "font-size:23px; font-family: Tahoma; margin:0; text-align: center;">Congratulations!</text><br><br><text>You finished the game with <br><img src="CSS/heart.png" style="width:15px; height:14px;"><b><span id='final'></span></b>&nbsp;Health Points!</text><br><br><i>~Please click here to continue to a short survey~</i></div></center></div></center>
+			<div id='eatTbl1' style="display:none; position:absolute; max-width:240px; top:140px; left:230px; :pointer;" onclick="newDayClick();"><center>Click here to begin a new round! <br> <img src='CSS/3-2-sun-png-clipart.png' style="height:60px; :pointer;"></center></div>
+                    <div id='finalTbl' class='tables' style="display:none; position:absolute; top:130px; left:227px; box-shadow: 22px 12px 12px #55555596; :pointer;" onclick="finishedClick();"><center><div id = "gameOver"><text style = "font-size:23px; font-family: Tahoma; margin:0; text-align: center;">Congratulations!</text><br><br><text>You finished the game with <br><img src="CSS/heart.png" style="width:15px; height:14px;"><b><span id='final'></span></b>&nbsp;Health Points!</text><br><br><i>~Please click here to continue to a short survey~</i></div></center></div></center>
 			<div id='allBaskets' class="hide">
-				<img src="CSS/garden-basket.png" style="width 180px; height: 119px; position:absolute; bottom:7px; left:280px; z-index:1" draggable="false">
-				<div id="comBasket" style="position:absolute; z-index: 2; bottom:50px; left:298px; border: 0px solid blue;"></div>
-				<img src="CSS/garden-basket-front.png"  style="width 180px; height: 119px; position:absolute; bottom:7px; left:280px; z-index: 3;" draggable="false">
+				<img src="CSS/irs.png" style=" height: 195px; position:absolute; bottom:0px; left:205px; z-index:1" draggable="false">
+				<div id="comBasket" style="position:absolute; z-index: 2; bottom:60px; left:250px; border: 0px solid blue;"></div>
+				<img src="CSS/irs2.png"  style=" height: 195px; position:absolute; bottom:0px; left:205px; z-index: 3;" draggable="false">
 			</div>
 			<div id="voteScreen" style="display:none;"><text style="visibility:hidden">abcdefghijklmnopqrstuvwxyz I am making this to take up space so that the table will occupy the entire area. asdfasdfasdf</text>
 				<div style="position:absolute; top:0px; left:15px">
@@ -1266,30 +1324,29 @@ body {
 					<td><text class="topVote"><span id="p9Change"></span></text></td></tr></center></text>
 				</table></div>
 			 <!--Village Vote -->
-			<div id="voting" style='padding:4px; width: 350px;height: 310px;position: absolute;left: 260px;top: 20px;display: block;border-width: 2px; border-radius:10px; border-style: dashed;padding: 15;border-color: #96c769;'>
+			<div id="voting" style='padding:4px; width: 360px;height: 310px;position: absolute;left: 260px;top: 20px;display: block;border-width: 2px; border-radius:10px; border-style: dashed;padding: 15;border-color: #96c769;'>
 				 <p style = "font-size:27px; font-family: Tahoma; margin:0; text-align: center;" >Presidential Election</p><br>
-				<font class="lowerTitleB"><input type="radio" name="voteShare" id="v1" value="0"  onchange="visible('button4');" style="cursor:pointer;"> <b>Republican Candidate</b><br><font style="max-width:250px; position:relative; left:25px;"> Each citizen is taxed $1 out of every $5 they earn.<br><br></font>
-				<input type="radio" name="voteShare" id="v2" value="1"  onchange="visible('button4');" style="cursor:pointer;"> <b>Democratic Candidate</b><br><font style="max-width:250px; position:relative; left:25px;"> Each citizen is taxed $3 out of every $5 they earn.</font></font> <!--<font> tag is not supported in HTML5. Use CSS instead. See W3Schools.com for further details.-->
+				<font class="lowerTitleB"><input type="radio" name="voteShare" id="v1" value="0"  onchange="v1chk(); visible('button4');" style=":pointer;"> <b>Republican Candidate <img src="CSS/rep.png" style="width: 19px; margin-right:2px;">, Low Taxes </b><br><font style="max-width:250px; position:relative; left:25px;"> Each citizen is taxed $1 per $5 they earn.<br><br><br></font>
+				<input type="radio" name="voteShare" id="v2" value="1"  onchange="v2chk(); visible('button4');" style=":pointer;"> <b>Democratic Candidate <img src="CSS/dem.png" style="width: 20px;">, High Taxes </b><br><font style="max-width:250px; position:relative; left:25px;"> Each citizen is taxed $3 per $5 they earn. <br></font></font> <!--<font> tag is not supported in HTML5. Use CSS instead. See W3Schools.com for further details.-->
 				<br><br><center><button class="lowerTitleA" id="button4" style="visibility:hidden; z-index:1;" onclick="voteClick();"> Vote!</button><br></center>
 			</div>   <!--Redistribution-->
 			<div id="redistribute" style=' padding:4px; display: none; width: 410px; position: absolute; left: 234px;top: 0px;'>
 				<div style="border-style: solid;background-color: #fff0ed;border-width: 2px;border-color: #701300;border-radius:25px;padding:9px;">
 					<div id="voteComp" style="display:none"><p id="lowerTitleVote" style = "font-size:23px; margin-top: -10; text-align: center;" >Vote Complete</p></div>
-					<center><font class="lowerTitleB"><div id="voteHead">The results of the vote are <span id="voteLess"></span> for Low Taxes and <span id="voteMore"></span> for High Taxes.  <b>&nbsp;&nbsp;&nbsp;Outcome: </b><div id="outcome" style="visibility:hidden;"><span id="outcomeVote"></span> </div> <br></div></font></center>
+					<center><font class="lowerTitleB"><div id="voteHead">The results of the vote are <b><span id="voteLess" style="color:firebrick"></span></b> for Republican and <b><span id="voteMore" style="color:#337ab7"></span></b> for Democrat.  <b>&nbsp;&nbsp;&nbsp;<br>Outcome: </b><div id="outcome" style="visibility:hidden;"><span id="outcomeVote"></span>&nbsp;<img id="animal" src="CSS/dem.png" style="width: 16px;"> </div> <br></div></font></center>
 				</div>
 				<div id="dist" style="display:none; border-color: #5a90b8; border-radius: 100px;">
-                    <div style="max-width:250px; margin-top:30px; margin-left: 0px; padding-top:5px; border-color: #5a90b8; border-radius: 100px;"><center><b><span id="sharedBerries"></span> Berries</b> are added into the community basket.</center></div>
+                    <div style="max-width:250px; margin-top:10px; margin-left: 0px; padding-top:5px; border-color: #5a90b8; border-radius: 100px;"><center><b>$<span id="sharedBerries"></span></b> is collected by the government.</center></div>
 				</div>
 				<div id="dist2" style="display:none; border-color: #5a90b8; border-radius: 100px;">
-					<div style="max-width:250px; margin-top:30px;margin-left:0px; padding-top:5px; border-color: #5a90b8; border-radius: 100px;"><center><b><span id="distVal"></span> Berries</b> are distributed to every villager. </center></div>
+					<div style="max-width:250px; margin-top:10px;margin-left:0px; padding-top:5px; border-color: #5a90b8; border-radius: 100px;"><center><b>$<span id="distVal"></span></b> is distributed to every citizen. </center></div>
 				</div>
 			</div>
-				<div id="dist3" style="display: none;background-color: #f3feea;position: absolute;width: 200px;top: 125px;border-width: 2px;border-color: rgb(150, 199, 105);border-radius: 25px;right: 5px;border-style: dashed;">
-					<p id="lowerTitle1" style = "font-size:23px; font-family: Tahoma; margin:0; text-align: center;">Today:</p>
+				<div id="dist3" style="display: none;background-color: #fbfdff;position: absolute;width: 200px;top: 125px;border-width: 2px;border-color: rgb(51, 122, 183);border-radius: 25px;right: 5px;border-style: dashed;">
 					<div>
-						<div id="dist4" style="display:none; margin:10px">You were taxed <span id="shared"></span></div>
-						<div id="dist5" style="display:none; margin:10px;">You received <span id="distVal2"></span></div>
-						<div id="dist6" style="display:none; margin-bottom:9px; margin-left:10px;">Your net change after taxes was <span id="netChange"></span></div>
+						<div id="dist4" style="display:none; margin:10px"> • You were taxed $<span id="shared"></span></div>
+						<div id="dist5" style="display:none; margin:10px;"> • You received $<span id="distVal2"></span></div>
+						<div id="dist6" style="display:none; margin-bottom:9px; margin-left:10px;"> • Your net change after taxes was <span id="netChange"></span></div>
 					</div>
                 </div></td></tr></table></center>
 					</div>
@@ -1372,7 +1429,7 @@ body {
 				<p><b>9.</b> What is your ethnicity? <input type="text" id="q9"></p>
 				<p><b>10.</b> Please write any other comments about the study below.</p>
 				<textarea id="q10" rows="2" cols="55" ></textarea>
-				<p>Submit this survey to receive your unique validation code for Mturk. Please enter this code into Mturk to complete the HIT.</p>
+				<p>Submit this survey to receive your unique validation code for Qualtrics. Please enter this code into Qualtrics to complete the survey.</p>
 				<button type="button" onclick="turnPage('surveyPage3','surveyPage2')" class="btn btn-primary">Previous</button>
 				<button type="button" class="btn btn-primary" onclick="submitSurvey();">Submit</button>
 			</div>
@@ -1380,6 +1437,6 @@ body {
 <!--Giant Box that covers the page after Survey-->
 <div id="bye" class="greetings" style="display: none;">
 	<h2 style="color:#337ab7">Thank you for participating!</h2>
-	Remember to enter your validation code into Mturk and submit the HIT.<br>Your code is:<p id="code" style="font-size:20px; user-select: text;	-moz-user-select: text;"></p>
+	Remember to enter your validation code into Qualtrics.<br>Your code is:<p id="code" style="font-size:20px; user-select: text;	-moz-user-select: text;"></p>
 </div>
 </body></html>
