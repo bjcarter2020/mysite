@@ -899,7 +899,7 @@ body {
 	border-width: 3px;
 }
 #gameTbl{
-    top: 0px;
+    top: 10px;
     position: absolute;
     width: 760px;
     height: 410px;
@@ -1101,7 +1101,7 @@ body {
     position: absolute;
     width: 360px;
     height: 165px;
-    top: 413px;
+    top: 423px;
     left: 322px;
     box-shadow: 7px 7px 12px rgba(48, 90, 122, 0.8);
     box-shadow: 7px 7px 12px r;
@@ -1184,7 +1184,7 @@ body {
 				</div>
 				<div id= "instructions2" class = "instructions">
 					<h2 style= "text-align:center";><b>Searching for Jobs</b></h2>
-					<p><center>Each round you search for jobs by clicking on job ads.</center><p>
+					<p>Each round you search for jobs by clicking on job ads.<p>
 					<br><center><img src="CSS/job.png" style="height:85px;"></center>
                     <br> Some rounds, you find jobs with a low pay of $25, and some rounds you find jobs with a high pay of $50. To be exact, you have a 50% chance of earning $25 and a 50% chance of earning $50. The computer will use these chances to determine how much money you earn each round.<br>
                     <br>When you find jobs, your earnings appear in your bank account.
@@ -1194,7 +1194,7 @@ body {
 				</div>
 				<div id= "instructions3" class = "instructions">
 					<h2 style= "text-align:center";><b>Health</b></h2>
-                   <center>You will start with 60 health points.<br><br><img src="CSS/healthbar.png" style="width:300px; border-radius:25px;"></center><br><br> Each round, your health decreases by 35 health points from the energy your body consumes through metabolism.<br>
+                   You will start with 60 health points.<br><br><center><img src="CSS/healthbar.png" style="width:300px; border-radius:25px;"></center><br><br> Each round, your health decreases by 35 health points from the energy your body consumes through metabolism.<br>
 
 					<br>You can add to your health points by consuming food that you buy with money. Each dollar adds 1 health point. <br><br>   <br>
 					<center> <button  id='button34' style=" bottom: 38;" class="lowerTitleA"  onclick="turnPage('instructions3','instructions2');"> <-- Back</button>
@@ -1205,7 +1205,7 @@ body {
 					<h2 style= "text-align:center";><b>Voting and Taxes </b></h2>
 					<p>After the citizens search for jobs, they hold a national election to vote on the next president. Each candidate proposes a different tax policy that will be enacted if they are elected.</p>
 					<p>There are two candidates on the ballot:</p>
-						<ul><li>Republican Candidate <img src="CSS/rep.png" style="width: 19px;">, Low Taxes: Each citizen is taxed $1 per $5 they earn (20%)</li>
+						<ul><li>Republican Candidate <img src="CSS/rep.png" style="width: 19px;">, Low Taxes: Each citizen is taxed $1 per $5 they earn (20%).</li>
 							<li>Democratic Candidate <img src="CSS/dem.png" style="width: 19px;">, High Taxes: Each citizen is taxed $3 per $5 they earn (60%).</li>
 						</ul>
 					<p>The candidate that receives the most votes is elected president and their tax rule is enacted. The rule is automatically applied to all of the citizens by deducting money from each citizen's bank account according to the rule.</p>
@@ -1215,7 +1215,7 @@ body {
 					<button id="button3" style="bottom: 38; " class="lowerTitleA" onclick="turnPage('instructions4','instructions5'); "> Next --></button></center>
 				</div>
 				<div id= "instructions5" class = "instructions">
-					<h2 style= "text-align:center";><b>Distributing and Eating</b></h2>
+					<h2 style= "text-align:center";><b>Distributing Benefits and Buying Food</b></h2>
 				<br>After voting, the money collected by the government is divided equally among the nine citizens and distributed to their bank accounts.
         <br><center><img src="CSS/irs.png" style="width:250px;"></center>
           <br>At the end of the round, each citizen spends their money on food to gain health points. Then they continue to the next round for a total of 10 rounds.
@@ -1332,8 +1332,8 @@ body {
 			</div>   <!--Redistribution-->
 			<div id="redistribute" style=' padding:4px; display: none; width: 410px; position: absolute; left: 234px;top: 0px;'>
 				<div style="border-style: solid;background-color: #fff0ed;border-width: 2px;border-color: #701300;border-radius:25px;padding:9px;">
-					<div id="voteComp" style="display:none"><p id="lowerTitleVote" style = "font-size:23px; margin-top: -10; text-align: center;" >Vote Complete</p></div>
-					<center><font class="lowerTitleB"><div id="voteHead">The results of the vote are <b><span id="voteLess" style="color:firebrick"></span></b> for Republican and <b><span id="voteMore" style="color:#337ab7"></span></b> for Democrat.  <b>&nbsp;&nbsp;&nbsp;<br>Outcome: </b><div id="outcome" style="visibility:hidden;"><span id="outcomeVote"></span>&nbsp;<img id="animal" src="CSS/dem.png" style="width: 16px;"> </div> <br></div></font></center>
+					<div id="voteComp" style="display:none"><p id="lowerTitleVote" style = "font-size:23px; margin-top: -5; text-align: center;" >Voting Complete</p></div>
+					<center><font class="lowerTitleB"><div id="voteHead">Results: <b><span id="voteLess" style="color:firebrick"></span></b> for Republican and <b><span id="voteMore" style="color:#337ab7"></span></b> for Democrat.  <b>&nbsp;&nbsp;&nbsp;<br>Outcome: </b><div id="outcome" style="visibility:hidden;"><span id="outcomeVote"></span>&nbsp;<img id="animal" src="CSS/dem.png" style="width: 16px;"> </div> <br></div></font></center>
 				</div>
 				<div id="dist" style="display:none; border-color: #5a90b8; border-radius: 100px;">
                     <div style="max-width:250px; margin-top:10px; margin-left: 0px; padding-top:5px; border-color: #5a90b8; border-radius: 100px;"><center><b>$<span id="sharedBerries"></span></b> is collected by the government.</center></div>
