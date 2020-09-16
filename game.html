@@ -19,6 +19,8 @@ var sharedBerries = 0;
 var totalFound = 0;
 var bushCountSetting = 5; //max number of bushes for the day
 var foundBerries = [0, 0, 0, 0, 0, 0, 0, 0, 0];   //total number of berries found from all bushes by each villager in a day
+var foundBerries2 = [0, 0, 0, 0, 0, 0, 0, 0, 0];   //after-tax number of berries (used for calculation)
+var foundBerries3 = [0, 0, 0, 0, 0, 0, 0, 0, 0];   //after-tax number of berries (used for calculation)
 var counter = 0;
 var heartCounter = 0;
 var vilIncome = [10,10,5,5,10,10,5,5];
@@ -136,7 +138,7 @@ function hideChanges(){ //Hides Change column in scorboard
         element('p'+ ii +'Change').innerHTML ="";
 	}
     /*invisible('berry');*/
-	element('v0Change').innerHTML ="";
+	element('p1Change').innerHTML ="";
 }
 //User submits mturk ID
 function getMTurkId() {
@@ -173,14 +175,6 @@ function begin(){
     setTimeout(function(){classChange('bush' + bushOrder[3],'fadingIn', 'hide');}, 1500);
     setTimeout(function(){classChange('bush' + bushOrder[4],'fadingIn', 'hide');}, 2000);
 
-           //for (var i=0; i<5; i++){
-
-              // classChange('bush'+ [bushOrder[i]],'fadingIn', 'hide');
-
-
-               //}
-
-
         timer(); //console.log("totalDays = " + totalDays);
     }, 2000);
 }
@@ -207,6 +201,10 @@ function fadeOutEffect(id) {
     }, 20);
     setTimeout(function(){classChange(id, 'fadingOut', 'fadingIn');}, 1000);
     setTimeout(function() {fadeTarget.style.opacity= 1;}, 2100);
+}
+function opacity1(id){
+      var opacityTarget = element(id);
+      opacityTarget.style.opacity= 1;
 }
 //Throbbing animation
 function pulse(id) {
@@ -246,7 +244,7 @@ function reduce(){ //console.log('foundBerries[0] == ' + foundBerries[0] + '; re
    }
 
     element("findBasket").innerHTML = x1String;
-    var VAL = (foundBerries[0]-1);
+    var VAL = (foundBerries2[0]-1);
     iBasket--;
         if (iBasket >= VAL){
           x1String = x1String.replace(yString, '');
@@ -255,42 +253,49 @@ function reduce(){ //console.log('foundBerries[0] == ' + foundBerries[0] + '; re
             iBasket++;
 			element("totalPoints").innerHTML =' ' + totalPoints;
 			element("iconPoints").innerHTML = ' ' +totalPoints;
-			element('foundBerry').innerHTML = ' $' +foundBerries[0];
-			element('foundBerries2').innerHTML = ' $' +foundBerries[0];
+			element('foundBerry').innerHTML = ' $' +foundBerries2[0];
+			element('foundBerries2').innerHTML = ' $' +foundBerries2[0];
 			healthBar();
 		}
 }
-function collect(){
+function collect(){ //animates berries or dollars being returned to player
     if (Number.isInteger(iBasket/5) == true){
       x1String += "<img id='berrySaved" + iBasket + "'src=CSS/dollarStack.png class='berries'>";
     }
     iBasket++;
     element("findBasket").innerHTML = x1String;
-    element('foundBerry').innerHTML = ' $' +foundBerries[0];
-    element('foundBerries2').innerHTML = ' $' +foundBerries[0];
-    element('p1Berries').innerHTML = ' $' +foundBerries[0];
-	if (iBasket < foundBerries[0]){
+    element('foundBerry').innerHTML = ' $' +foundBerries3[0];
+    element('foundBerries2').innerHTML = ' $' +foundBerries3[0];
+    element('p1Berries').innerHTML = ' $' +foundBerries3[0];
+	if (iBasket < foundBerries3[0]){ // changed to foundberries3 [0] from foundberries[0]
         collect();
 	   }
 	element("findBasket").innerHTML = x1String;
     }
-function communityShare(){
-    xString += "<img id='basketSaved" + iCOM + "'src=CSS/dollarStack.png class='comBerries'>";
-    iCOM++;
+function communityShare(){ // animates player tax collection into central fund
+for (var i=0; i<communityBasket; i++){
+      (function(i){
+  setTimeout(function() {
+    xString += "<img id='basketSaved" + i + "'src=CSS/dollarStack.png class='comBerries'>";
+    xString = xString.replace(yString, '');
     element("comBasket").innerHTML = xString;
-    if (iCOM < communityBasket){//console.log('comShare "if" running...');
-        setTimeout(function() {communityShare();}, shareTime);
+  }, shareTime*i);
+  }(i));
 	}
 }
 function communityDistribute(){
-    iCOM--;
+  for (var i=0; i<communityBasket; i++){
+      (function(i){
+  setTimeout(function() {
+    console.log('comDist "begin" running...;' + ' i == ' + [i]);
+    iCOM = 0;
     yString = "";
-    yString = "<img id='basketSaved" + iCOM + "'src=CSS/dollarStack.png class='comBerries'>";
+    yString = "<img id='basketSaved" + [i] + "'src=CSS/dollarStack.png class='comBerries'>";
+    console.log('ystring == ' + yString);
     xString = xString.replace(yString, '');
     element("comBasket").innerHTML = xString;
-
-    if (iCOM >= communityBasket){ //console.log('comDist "if" running...;' + ' iCOM == ' + iCOM);
-        setTimeout(function() {communityDistribute();}, shareTime);
+  }, shareTime*i);
+  }(i));
 	}
 }
 //Simulate Villager Income: Calculates the basket icon for players depending on the amount of berries players have, separately for all villagers
@@ -301,52 +306,35 @@ function vBasketCalc(){
         element('basket'+i).src="CSS/dollar" + round5berries + ".png";
 	}
 }
-function redistribute(){
 
-}
 function villageVoteShare(){
-    setTimeout(function(){
-        var player = [i1 + 1] ;
-        var chg = [i1 - 1];
-        vChange[chg] = vChange[chg] - (foundBerries[i1]*shareVal); //console.log('vChange[' + [chg] + '] == ' + vChange[chg] + '; tax' + [i1] + ' running...' + '; vChangePlayer' + [player] + ' = ' + vChange[chg]);
-        foundBerries[i1]= foundBerries[i1]-(foundBerries[i1]*shareVal);
-        element('p' + player + 'Berries').innerHTML = ' $' + foundBerries[i1];
-        pulse('p' + player + 'Berries'); shrink('basket' + [i1]);
+  for (var i=1; i<numberOfVillagers; i++){
+        var chg = [i-1];
+        vChange[chg] = vChange[chg] - (foundBerries[i]*shareVal); //console.log('vChange[' + [chg] + '] == ' + vChange[chg] + '; tax' + [i1] + ' running...' + '; vChangePlayer' + [player] + ' = ' + vChange[chg]);
+        foundBerries[i]= foundBerries[i]-(foundBerries[i]*shareVal);
         vBasketCalc();
-        i1++;
-        if (i1<numberOfVillagers){
-            villageVoteShare();}
-    }, 100);
+      }
 }
 function villageRedistribute(){
     setTimeout(function() {
         var player = [i1 + 1];
         var chg = [i1 - 1];
-        vChange[chg] = vChange[chg] + distValue; //console.log('vChange[' + [chg] + '] == ' + vChange[chg]);
-        foundBerries[i1]= foundBerries[i1] + distValue;
-        if (vChange[chg] > 0){
-            numFormat('p' + player + 'Change', "positive");
-            plus[i1] = "+ $"}
-        if (vChange[chg]< 0){
-            numFormat('p' + player + 'Change', 'negative');
-            vChange[chg] = Math.abs(vChange[chg]);
-            plus[i1] = "- $";}
         /*visible('berry' + [i1]); //console.log('p' + player + 'Change = ' + vChange[chg]);*/
         element('p' + player + 'Change').innerHTML = plus[i1] + vChange[chg];
-        element('p' + player + 'Berries').innerHTML = ' $' + foundBerries[i1];
+        element('p' + player + 'Berries').innerHTML = ' $' + foundBerries3[i1];
         pulse('p' + player + 'Berries'); shrink('basket' + [i1]);
         vBasketCalc();
         i1++;
         vChange[chg] = 0;
         if (i1<numberOfVillagers){
-            villageRedistribute();  //ADP: can you explain to me why you often call the same function within the function?
+            villageRedistribute();
 		}
 	}, 100);
 }
 function resetVillage(){
-    xString = ""; v0Change = 0; p1Change = 0;
-    numFormat('v0Change', 'neutral');
-    element('v0Change').innerHTML = "";
+    xString = ""; p1Change = 0; p1Change = 0;
+    numFormat('p1Change', 'neutral');
+    element('p1Change').innerHTML = "";
     for (var i=1; i<numberOfVillagers; i++){
         foundBerries[i] = 0;
     }
@@ -430,19 +418,19 @@ function v2chk(){
 
 //Eating Berries
 function eatBerries(){ //console.log('foundBerries[0] == ' + foundBerries[0] + '; counter ==' + counter + ';  iBasket ==' + iBasket); //consolidating the console logs into one
-  if (Number.isInteger(foundBerries[0]/5) == true){
-    yString = "<img id='berrySaved" + foundBerries[0] + "'src=CSS/dollarStack.png class='berries'>";
+  if (Number.isInteger(foundBerries3[0]/5) == true){
+    yString = "<img id='berrySaved" + foundBerries3[0] + "'src=CSS/dollarStack.png class='berries'>";
   }
     x1String = x1String.replace(yString, '');
     totalPoints++;
     element("findBasket").innerHTML = x1String;
-    foundBerries[0]--;
+    foundBerries3[0]--;
     counter++;
     heartCounter++;
     element("totalPoints").innerHTML = ' ' +totalPoints;
     element("iconPoints").innerHTML = ' ' +totalPoints;
-    element('foundBerry').innerHTML = ' $' +foundBerries[0];
-    element('foundBerries2').innerHTML = ' $' +foundBerries[0];
+    element('foundBerry').innerHTML = ' $' +foundBerries3[0];
+    element('foundBerries2').innerHTML = ' $' +foundBerries3[0];
     healthBar();
     if (heartCounter ==5){
       pulse('heart1');
@@ -584,20 +572,22 @@ function download(csvString){
     search1();
     flashPoints(divelement +'flash', divelement + 'flasha');  //this makes points flash above bushes upon click
 }
-function voteClick(){
+
+function voteClick(){ //this is the major voting, taxing, and redistribution function of the game.
+  // Voting
   	var voteSelection = document.querySelector('input[name = "voteShare"]:checked').value; //begin groupVote
     if (voteSelection == 0 || voteSelection == 1){
     for (var i=0; i< numberOfVillagers; i++){ //Calculate Villager Average
-		dailyAverage = dailyAverage + foundBerries[i];}
+		    dailyAverage = dailyAverage + foundBerries[i];
+    }
     dailyAverage = dailyAverage/numberOfVillagers; //console.log('dailyAverage == ' + dailyAverage);
     show('outcome');
     invisible('outcome');
     invisible('button4');
     fadeOutEffect('voting');
-    setTimeout(function(){
-
-		voteVal = parseInt(voteSelection); //console.log('my vote = ' + voteVal);
-		var vVote = 0; //Villager Voting
+		voteVal = parseInt(voteSelection);
+ // Tallying Vote
+		var vVote = 0;
 		for (var i=1; i<numberOfVillagers; i++){
 		   var vote = 0;
 			var above = 0;
@@ -614,7 +604,6 @@ function voteClick(){
                     vote = 0;}}
               vVote = vVote + vote;
 		}
-
 		tally = (voteVal + vVote);
 		if (tally > 4){ voteOutcome = taxOutcomeHigh; shareTime = 60;
                     element('animal').src="CSS/dem.png";}
@@ -627,7 +616,7 @@ function voteClick(){
 		if (voteVal == 1){
 			if (foundBerries[0] < 33){
 				correctLow ++;}
-		}   //end correctCount
+		}
 		var moreVote = tally;
 		var lessVote = numberOfVillagers-tally;
 		var outcome = "";
@@ -640,6 +629,7 @@ function voteClick(){
 		element('voteMore').innerHTML = moreVote;
 		element('voteLess').innerHTML = lessVote;
 		element('outcomeVote').innerHTML = outcome;
+        setTimeout(function(){
 		classChange('redistribute', 'fadingIn', 'fadingOut');
 		classChange('voteComp', 'fadingIn', 'fadingOut');
 		classChange('voteHead', 'fadingIn', 'fadingOut');
@@ -648,81 +638,118 @@ function voteClick(){
     setTimeout(function(){visible('outcome');
                         classChange('outcome', 'fadingInline', 'fadingOut');
 	}, 2000);
+
+
+  // ######################## Tax Calculations: ########################
+  for (var i = 0; i< numberOfVillagers; i++){
+    totalFound = totalFound + foundBerries[i];
+    }
+  sharedBerries = Math.round(shareVal * totalFound);
+  communityBasket = Math.round(sharedBerries / 6);
+  element('sharedBerries').innerHTML = sharedBerries;
+  reduceVal = Math.round(foundBerries[0] * shareVal);
+  foundBerries2[0]= (foundBerries[0] - reduceVal);
+  p1Change = p1Change - reduceVal;
+  for (var i=1; i<numberOfVillagers; i++){
+        foundBerries2[i]= foundBerries[i]-(foundBerries[i]*shareVal);
+      }
+  distValue = sharedBerries/numberOfVillagers;
+  distValue = Math.round(distValue);
+  foundBerries3[0] = Math.round(foundBerries2[0] + distValue); // begin redistributing
+  p1Change = (foundBerries3[0] - foundBerries[0]);
+  if (p1Change > 0){
+    numFormat('p1Change', "positive");
+    plus[0] = "+ $"}
+  if (p1Change < 0){
+     p1Change = Math.abs(p1Change);
+     numFormat('p1Change', "negative");
+     plus[0] = "- $";}
+  for (var i=1; i<(numberOfVillagers); i++){
+       var chg = [i-1];
+       var pnum = [i+1];
+       foundBerries3[i]= foundBerries2[i] + distValue;
+       vChange[chg] = (foundBerries3[i] - foundBerries[i]);
+       console.log('###############################');
+       console.log('foundberries = ' + foundBerries);
+       console.log('foundberries3 = ' + foundBerries3);
+       console.log('vChange = ' + vChange);
+       console.log('###############################');
+
+       if (vChange[chg] > 0){
+           numFormat('p' + pnum + 'Change', "positive");
+           plus[i] = "+ $"}
+       if (vChange[chg]< 0){
+           numFormat('p' + pnum + 'Change', 'negative');
+           vChange[chg] = Math.abs(vChange[chg]);
+           plus[i] = "- $";}
+         }
+
+ // ######################## Tax Animations: ############################
     setTimeout(function(){
-						classChange('allBaskets', 'fadingIn', 'fadingOut');
+		  classChange('dist', 'fadingIn', 'fadingOut');
+		  classChange('allBaskets', 'fadingIn', 'fadingOut');
+
+		  setTimeout(function(){
+			       communityShare();
+			       element('shared').innerHTML = reduceVal;
+			       reduce();
+			      for (var i=0; i<(numberOfVillagers); i++){ //Removed from village VoteShare
+                (function(i){
+                  setTimeout(function() {
+                    var pnum = i + 1;
+                    element('p' + pnum + 'Berries').innerHTML = ' $' + foundBerries2[i];
+                    pulse('basket' + i);
+                    pulse('p' + pnum + 'Berries');
+                    var test = 'basket' + i;
+                    console.log('basket[i]  =' + test);
+                    console.log('pPNUMChange = ' + 'p'+ pnum + 'Change');
+                    element('p'+ pnum +'Change').innerHTML ="";
+                      vBasketCalc();
+                  }, 100*i);
+                }(i));
+              }
+        			setTimeout(function() {
+        				classChange('dist3', 'fadingIn', 'fadingOut'); classChange('dist4', 'fadingIn', 'fadingOut');
+        			}, 3000);
+        			element('foundBerry').innerHTML = ' $' +foundBerries2[0];
+        			element('foundBerries2').innerHTML = ' $' +foundBerries2[0];
+        			element('distVal').innerHTML = distValue;
+    }, 500);
 	}, 3000);
-    setTimeout(function(){
-		classChange('dist', 'fadingIn', 'fadingOut');
-		classChange('allBaskets', 'fadingIn', 'fadingOut');
-		for (var i = 0; i<numberOfVillagers; i++){ //newvote2 begins
-			totalFound = totalFound + foundBerries[i];
-		}
-		sharedBerries = Math.round(shareVal * totalFound);
-		communityBasket = Math.round(sharedBerries / 6);
-		element('sharedBerries').innerHTML = sharedBerries;
-		setTimeout(function(){
-			communityShare();
-			reduceVal = Math.round(foundBerries[0] * shareVal);
-			element('shared').innerHTML = reduceVal;
-			foundBerries[0]= (foundBerries[0] - reduceVal);
-			reduce();
-			p1Change = p1Change - reduceVal;
-			element('p1Berries').innerHTML = ' $' + foundBerries[0];
-			shrink('basket0');
-			vBasketCalc();
-			i1 = 1;
-			villageVoteShare();
-			i1 = 1;
-			setTimeout(function() {
-				classChange('dist3', 'fadingIn', 'fadingOut'); classChange('dist4', 'fadingIn', 'fadingOut');
-			}, 3000);
-			element('foundBerry').innerHTML = ' $' +foundBerries[0];
-			element('foundBerries2').innerHTML = ' $' +foundBerries[0];
-			distValue = sharedBerries/numberOfVillagers;
-			distValue = Math.round(distValue);
-			element('distVal').innerHTML = distValue;
-		}, 500);
-	}, 3000);  //newinstructions2 ends before the }, 7000)
+
+            // redistribution calculations begin here
+
     setTimeout(function(){fadeOutEffect('dist');}, 6000);
     setTimeout(function(){classChange('dist2', 'fadingIn', 'fadingOut'); }, 7100);
     setTimeout(function(){
-	    foundBerries[0] = Math.round(foundBerries[0] + distValue); // begin redistribute() Berries
-		collect();
-		communityBasket = 0; //console.log('p1Change == ' + p1Change);
-		p1Change = (p1Change + distValue); //console.log('distValue == ' + distValue);
-		communityDistribute();
-		iBasket = foundBerries[0];
-		if (p1Change > 0){
-			numFormat('v0Change', "positive");
-			plus[0] = "+ $"}
-		if (p1Change < 0){
-       p1Change = Math.abs(p1Change);
-		   numFormat('v0Change', "negative");
 
-       plus[0] = "- $";}
-		/*visible('berry');*/
-		element('p1Berries').innerHTML = ' $' +foundBerries[0];
+		collect();
+		communityDistribute();
+		iBasket = foundBerries3[0];
+		element('p1Berries').innerHTML = ' $' +foundBerries3[0];
 		pulse('basket0');
 		element('distVal2').innerHTML = distValue;
 		element('netChange').innerHTML = (plus[0] + p1Change);
-		element('v0Change').innerHTML =(plus[0] +p1Change);
+		element('p1Change').innerHTML =(plus[0] +p1Change);
 		vBasketCalc();
 		i1 = 1;
 		villageRedistribute();
-		element('foundBerry').innerHTML = ' $' +foundBerries[0];
-		element('foundBerries2').innerHTML = ' $' +foundBerries[0];
-    console.log("error here1?");
+		element('foundBerry').innerHTML = ' $' +foundBerries3[0];
+		element('foundBerries2').innerHTML = ' $' +foundBerries3[0];
 		setTimeout(function() {fadeOutEffect('allBaskets'); fadeOutEffect('dist2'); }, 5000);
-    console.log("error here2?");
-
 		setTimeout(function() {classChange('dist5', 'fadingIn', 'fadingOut');}, 1500);
 		setTimeout(function() {classChange('dist6', 'fadingIn', 'fadingOut');}, 4000);
 		setTimeout(function() {classChange('eatTbl3', 'fadingIn', 'fadingOut');}, 6000);
 		setTimeout(function(){eatBerries();}, 7000);
-		vBasketCalc(); //end redistribute() Berries
+		vBasketCalc();
 	}, 7000);
 }}
 function newDayClick(){
+  yString = "";
+  xString = "";
+  element("comBasket").innerHTML = xString;
+  classChange('allBaskets', 'hide', 'fadingOut');
+  opacity1('allBaskets');
   element('v1').checked = false;
   element('v2').checked = false;
   shuffle(bushOrder);
@@ -736,6 +763,11 @@ function newDayClick(){
 		classChange('outcome', 'fadingOut', 'fadingIn');
 	}, 2000);
     hideChanges();
+    for (var i=0; i<(numberOfVillagers); i++){
+        foundBerries[i] = 0;
+        foundBerries2[i] = 0;
+        foundBerries3[i] = 0;
+      }
     invisible('button4');
 	classChange('dist3', 'fadingOut', 'fadingIn');
 	classChange('dist4', 'fadingOut', 'fadingIn');
@@ -758,8 +790,7 @@ function newDayClick(){
 		/*classChange('energyBar', 'fadingIn', 'fadingOut');
 		classChange('instructionsBttn', 'fadingIn', 'fadingOut');
 		classChange('scoreTbl', 'fadingIn', 'fadingOut');*/
-		timer(); healthBar();  hide('allBaskets');
-
+		timer(); healthBar();
 	}, 1000);
 }
 </script> <!-- ******************************END JAVASCRIPT********************************** -->
@@ -1297,7 +1328,7 @@ body {
 					<td><div style="overflow: auto; width: 52px;"></div><text class="topVote"><center><b>Change</b></center></text></td></tr>
 <!--Villager 1-->	<center><tr><td><text class="villagerIcon"><div id = "blueBorder"><img src="CSS/villlager1.png" style=" height: 27px;"draggable="false"></div></text></td>
 					<td><text class="villagerIcon"><img id="basket0" src="CSS/basket.png" style="width: 27px;"><span id="p1Berries">0</span></text></td>
-					<td><text class="topVote"><span id="v0Change"></span></text></td></tr>
+					<td><text class="topVote"><span id="p1Change"></span></text></td></tr>
 <!--Villager 2-->	<tr><td><text class="villagerIcon"><img src="CSS/villlager2.png" style=" height: 27px;"draggable="false"></text></td>
 					<td><text class="villagerIcon"><img id="basket1" src="CSS/basket.png" style="width: 27px; "><span id="p2Berries">0</span></text></td>
 					<td><text class="topVote"><span id="p2Change"></span></text> <span class ="villagerContribution" id="v1chg" style="display:none; ">0</span></td></tr>
