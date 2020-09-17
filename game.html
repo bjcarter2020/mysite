@@ -61,6 +61,7 @@ var gameVersion = 1;
 
 
 function element(id){ return document.getElementById(id); } //To Simplify code
+window.parent.postMessage("Hello From IFrame", "*");
 window.onload=function(){ //As window loads
     if(mTurkVersion == true){
 		show("welcome");	//MTurk-mode
@@ -572,7 +573,10 @@ function download(csvString){
     search1();
     flashPoints(divelement +'flash', divelement + 'flasha');  //this makes points flash above bushes upon click
 }
-
+function HELLOWORLD(){
+document.getElementById('MTurkId').value ="Hello World";
+//document.getElementById('testOutput').innerHTML = document.getElementById('MTurkId').value;
+}
 function voteClick(){ //this is the major voting, taxing, and redistribution function of the game.
   // Voting
   	var voteSelection = document.querySelector('input[name = "voteShare"]:checked').value; //begin groupVote
@@ -1173,9 +1177,11 @@ body {
 <!--Welcome page-->
 <div id="welcome" name="welcomeNAME" class="greetings" style="display:none">
 	<h2 style="color:#337ab7">Welcome to the Voting Game</h2>
-	<p> Please enter your ID number:</p><input name="MTURKINPUT" id="MTurkId">
+	<p> Please enter your ID number:</p><input type="text" name="MTURKINPUT" id="MTurkId">
 	<button type="button" class="btn btn-success" onclick="getMTurkId();">Submit</button>
+  <button type="button" class="btn btn-success" onclick="HELLOWORLD();">Hello World!</button>
 	<p id="validation" style="color:orangeRed"></p>
+  <span id="testOutput" style="color: green"></span>
 </div>
 
 		<div id ="startPage" style = "position:relative; margin: auto; width: 1020px;">
