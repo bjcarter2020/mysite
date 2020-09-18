@@ -517,9 +517,7 @@ function submitSurvey(){
     lobbyRef.child('Records').push(x);
    //Adding this to scroll to top after survey.
     window.scrollTo(0, 0);
-	if (mTurkVersion==true){
 		turnPage('surveyPage3','bye');
-	}
 }
 //This will mean storing the data locally.
 function storeData(){
