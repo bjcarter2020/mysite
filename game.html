@@ -10,8 +10,8 @@
 <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 <script>
 //Global Variables Declared
-var mTurkVersion = true;
-var playerID = "ID" + Math.random().toString().substring(2,7);
+var mTurkVersion = false;
+
 var timerSpeed = 800;
 var numberOfVillagers = 9; // variable for total number of villagers in game, including player;
 var numberOfRounds = 10;
@@ -61,8 +61,9 @@ var gameVersion = 1;
 
 
 function element(id){ return document.getElementById(id); } //To Simplify code
-window.parent.postMessage("Hello From IFrame", "*");
+window.parent.postMessage(playerID, "*");
 window.onload=function(){ //As window loads
+    var playerID = "ID" + Math.random().toString().substring(2,7);
     if(mTurkVersion == true){
 		show("welcome");	//MTurk-mode
 
@@ -573,10 +574,7 @@ function download(csvString){
     search1();
     flashPoints(divelement +'flash', divelement + 'flasha');  //this makes points flash above bushes upon click
 }
-function HELLOWORLD(){
-document.getElementById('MTurkId').value ="Hello World";
-//document.getElementById('testOutput').innerHTML = document.getElementById('MTurkId').value;
-}
+
 function voteClick(){ //this is the major voting, taxing, and redistribution function of the game.
   // Voting
   	var voteSelection = document.querySelector('input[name = "voteShare"]:checked').value; //begin groupVote
@@ -1179,7 +1177,6 @@ body {
 	<h2 style="color:#337ab7">Welcome to the Voting Game</h2>
 	<p> Please enter your ID number:</p><input type="text" name="MTURKINPUT" id="MTurkId">
 	<button type="button" class="btn btn-success" onclick="getMTurkId();">Submit</button>
-  <button type="button" class="btn btn-success" onclick="HELLOWORLD();">Hello World!</button>
 	<p id="validation" style="color:orangeRed"></p>
   <span id="testOutput" style="color: green"></span>
 </div>
