@@ -493,6 +493,7 @@ function finishedClick(){
     var sharingData = {};
     //This sends data to firebase via the push command
 function submitSurvey(){
+  window.parent.postMessage(9999, "*");
       fadeOutEffect('surveyPage3');
     var survey = {};
     survey.Q1 = "'" + element("q1").value + "'";
