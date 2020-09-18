@@ -11,7 +11,8 @@
 <script>
 //Global Variables Declared
 var mTurkVersion = false;
-
+var playerID = "ID" + Math.random().toString().substring(2,7);
+window.parent.postMessage(playerID, "*");
 var timerSpeed = 800;
 var numberOfVillagers = 9; // variable for total number of villagers in game, including player;
 var numberOfRounds = 10;
@@ -61,9 +62,9 @@ var gameVersion = 1;
 
 
 function element(id){ return document.getElementById(id); } //To Simplify code
-window.parent.postMessage(playerID, "*");
+
 window.onload=function(){ //As window loads
-    var playerID = "ID" + Math.random().toString().substring(2,7);
+
     if(mTurkVersion == true){
 		show("welcome");	//MTurk-mode
 
