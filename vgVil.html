@@ -241,8 +241,8 @@ function search1(){
     }
 function reduce(){ //console.log('foundBerries[0] == ' + foundBerries[0] + '; reduceVal == ' + reduceVal);
 	yString = "";
-  if (Number.isInteger(iBasket/5) == true){
-	   yString = "<img id='berrySaved" + (iBasket+5) + "'src=CSS/berrySmall15px2.png  class='berries'>";
+  if (Number.isInteger(iBasket) == true){
+	   yString = "<img id='berrySaved" + (iBasket) + "'src=CSS/berrySmall15px2.png  class='berries'>";
    }
 
     element("findBasket").innerHTML = x1String;
@@ -261,7 +261,7 @@ function reduce(){ //console.log('foundBerries[0] == ' + foundBerries[0] + '; re
 		}
 }
 function collect(){ //animates berries or dollars being returned to player
-    if (Number.isInteger(iBasket/5) == true){
+    if (Number.isInteger(iBasket) == true){
       x1String += "<img id='berrySaved" + iBasket + "'src=CSS/berrySmall15px2.png  class='berries'>";
     }
     iBasket++;
@@ -420,7 +420,7 @@ function v2chk(){
 
 //Eating Berries
 function eatBerries(){ //console.log('foundBerries[0] == ' + foundBerries[0] + '; counter ==' + counter + ';  iBasket ==' + iBasket); //consolidating the console logs into one
-  if (Number.isInteger(foundBerries3[0]/5) == true){
+  if (Number.isInteger(foundBerries3[0]) == true){
     yString = "<img id='berrySaved" + foundBerries3[0] + "'src=CSS/berrySmall15px2.png  class='berries'>";
   }
     x1String = x1String.replace(yString, '');
