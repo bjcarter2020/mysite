@@ -507,7 +507,8 @@ function submitSurvey(){
     survey.Q7 = element("q7").value;
     survey.Q8 = element("q8").value;
     survey.Q9 = element("q9").value;
-    survey.Q10 = "'" + element("q10").value + "'";
+    survey.Q10 = element("q9").value;
+    survey.Q11 = "'" + element("q11").value + "'";
 	survey.finalScore = totalPoints;
     survey.playerID = playerID;
     survey.CorrectHigh = correctHigh;
@@ -538,10 +539,10 @@ function getData(){
 				csvString += data[x].survey.playerID + "," + days[i].totalDays + "," + days[i].totalPoints + "," + days[i].foundBerries0 + "," +  days[i].voteVal + "," + days[i].voteTally + "," + days[i].voteOutcome + "," + days[i].gameVersion + "\n";
 			}	}
 		}
-		csvString += "player, MTurkId, correctHigh, correctLow, DecisionHow,GovBenefits,GovTaxes,PayTaxes,Ideology,PID,Gender,Age,Ethnicity,AnyComments,FinalScore,Time,gameVersion\n";
+		csvString += "player, MTurkId, correctHigh, correctLow, DecisionHow,GovBenefits,GovTaxes,PayTaxes,Ideology,PID,President,Gender,Age,Ethnicity,AnyComments,FinalScore,Time,gameVersion\n";
 		for (x in data){
 			if(data[x].survey != undefined){
-				csvString += data[x].survey.playerID + "," + data[x].survey.MTurkID + "," + data[x].survey.CorrectHigh + "," + data[x].survey.CorrectLow + "," +  data[x].survey.Q1 + "," + data[x].survey.Q2 + "," + data[x].survey.Q3 + "," + data[x].survey.Q4 + "," + data[x].survey.Q5 + "," + data[x].survey.Q6 + "," + data[x].survey.Q7 + "," + data[x].survey.Q8 + "," + data[x].survey.Q9 + "," + data[x].survey.Q10 + "," + data[x].survey.finalScore + "," + data[x].survey.TimeStamp +  "," + data[x].survey.gameVersion + "\n";
+				csvString += data[x].survey.playerID + "," + data[x].survey.MTurkID + "," + data[x].survey.CorrectHigh + "," + data[x].survey.CorrectLow + "," +  data[x].survey.Q1 + "," + data[x].survey.Q2 + "," + data[x].survey.Q3 + "," + data[x].survey.Q4 + "," + data[x].survey.Q5 + "," + data[x].survey.Q6 + "," + data[x].survey.Q7 + "," + data[x].survey.Q8 + "," + data[x].survey.Q9 + "," + data[x].survey.Q10 + "," + data[x].survey.Q11 + ","+ data[x].survey.finalScore + "," + data[x].survey.TimeStamp +  "," + data[x].survey.gameVersion + "\n";
 			     }
 		      }
 		//if this breaks, put into a setTimeout
@@ -1446,24 +1447,32 @@ body {
 					<option value="5">Moderately Conservative</option>
 					<option value="6">Very Conservative</option>
 				</select></p>
-				<p><b>6.</b> Generally speaking, are you a Democrat, Republican, Independent, or something else?
+				<p><b>6.</b> Generally speaking, are you a Democrat, Independent, or Republican?
 				<select id="q6"><option selected value="blank" ></option>
-					<option value="0">Democrat</option>
-					<option value="1">Republican</option>
-					<option value="2">Independent, but closer to Democrat than Republican</option>
-					<option value="3">Independent, but closer to Republican than Democrat</option>
-					<option value="4">Independent, no preference for Democrat or Republican</option>
-					<option value="5">Other
+					<option value="0">Strong Democrat</option>
+					<option value="1">Moderate Democrat</option>
+					<option value="2">Independent, but lean Democrat</option>
+					<option value="3">Independent</option>
+					<option value="4">Independent, but lean Republican</option>
+          <option value="5">Moderate Republican </option>
+					<option value="6">Strong Republican </option>
 				</select></p>
-				<p><b>7.</b> What is your sex?
-				<select id="q7"><option selected value="blank" ></option>
+        <p><b>7.</b> Who will you vote for in the presidential election?
+        <select id="q7"><option selected value="blank" ></option>
+          <option value="biden">Joe Biden</option>
+          <option value="trump">Donald Trump</option>
+          <option value="other">Other</option>
+          <option value="dnv">I do not plan to vote</option>
+        </select></p>
+				<p><b>8.</b> What is your sex?
+				<select id="q8"><option selected value="blank" ></option>
 					<option value="Female">Female</option>
 					<option value="Male">Male</option>
 				</select></p>
-				<p><b>8.</b> What is your age? <input type="number" id="q8" value="" style="width:50px;"></p>
-				<p><b>9.</b> What is your ethnicity? <input type="text" id="q9"></p>
-				<p><b>10.</b> Please write any other comments about the study below.</p>
-				<textarea id="q10" rows="2" cols="55" ></textarea>
+				<p><b>9.</b> What is your age? <input type="number" id="q9" value="" style="width:50px;"></p>
+				<p><b>10.</b> What is your ethnicity? <input type="text" id="q10"></p>
+				<p><b>11.</b> Please write any other comments about the study below.</p>
+				<textarea id="q11" rows="2" cols="55" ></textarea>
 				<p>Submit this survey to receive your unique validation code for Qualtrics. Please enter this code into Qualtrics to complete the survey.</p>
 				<button type="button" onclick="turnPage('surveyPage3','surveyPage2')" class="btn btn-primary">Previous</button>
 				<button type="button" class="btn btn-primary" onclick="submitSurvey();">Submit</button>
