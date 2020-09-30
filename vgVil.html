@@ -1365,8 +1365,8 @@ body {
   			 <!--Village Vote -->
   			<div id="voting" style='padding:4px; width: 355px;height: 310px;position: absolute;left: 260px;top: 20px;display: block;border-width: 2px; border-radius:10px; border-style: dashed;padding: 15;border-color: #96c769;'>
   				 <p style = "font-size:27px; font-family: Tahoma; margin:0; text-align: center;" >Village Vote</p>
-  				<font class="lowerTitleB"><input type="radio" name="voteShare" id="v1" value="0"  onchange="visible('button4');" style="cursor:pointer;"> <b>Low Taxes</b><br><font style="max-width:250px; position:relative; left:25px;"> Villagers are taxed 1 berry for every 5 berries found (20%).<br><br></font>
-  				<input type="radio" name="voteShare" id="v2" value="1"  onchange="visible('button4');" style="cursor:pointer;"> <b>High Taxes</b><br><font style="max-width:250px; position:relative; left:25px;"> Villagers are taxed 3 berries for every 5 berries found (60%).</font></font> <!--<font> tag is not supported in HTML5. Use CSS instead. See W3Schools.com for further details.-->
+  				<font class="lowerTitleB"><input type="radio" name="voteShare" id="v1" value="0"  onchange="visible('button4');" style="cursor:pointer;"> <b>Low Taxes</b><br><font style="max-width:250px; position:relative; left:25px;"> Villagers are taxed 1 berry for every <br>5 berries found (20%).<br><br></font>
+  				<input type="radio" name="voteShare" id="v2" value="1"  onchange="visible('button4');" style="cursor:pointer;"> <b>High Taxes</b><br><font style="max-width:250px; position:relative; left:25px;"> Villagers are taxed 3 berries for every <br>5 berries found (60%).</font></font> <!--<font> tag is not supported in HTML5. Use CSS instead. See W3Schools.com for further details.-->
   				<br><br><center><button class="lowerTitleA" id="button4" style="visibility:hidden; z-index:1;" onclick="voteClick();"> Vote!</button><br></center>
   			</div>   <!--Redistribution-->
   			<div id="redistribute" style=' padding:4px; display: none; width: 410px; position: absolute; left: 234px;top: 0px;'>
@@ -1477,7 +1477,7 @@ body {
         				<p><b>10.</b> What is your ethnicity? <input type="text" id="q10"></p>
         				<p><b>11.</b> Please write any other comments about the study below.</p>
         				<textarea id="q11" rows="2" cols="55" ></textarea>
-        				<p>Submit this survey to receive your unique validation code for Qualtrics. Please enter this code into Qualtrics to complete the survey.</p>
+        				<p>Submit this survey to receive your Qualtrics bonus.</p>
         				<button type="button" onclick="turnPage('surveyPage3','surveyPage2')" class="btn btn-primary">Previous</button>
         				<button type="button" class="btn btn-primary" onclick="submitSurvey();">Submit</button>
         			</div>
