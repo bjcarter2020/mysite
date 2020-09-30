@@ -1186,11 +1186,12 @@ body {
 		<div id ="startPage" style = "position:relative; margin: auto; width: 1020px;">
 			<div id="gameTbl" class = "tables" style="display:none">
 				<table id="energyBar" style="display:none">
+          <tr>
 						<td style="width:190px; text-align: center; vertical-align:top; padding-top:2;"><img src='CSS/heart2.png' id="heart1" style="width:30px; padding-left:5px"><span id="totalPoints" style="font-size:18">60</span></td>
 						<td style="width:126px;">&nbsp;<canvas id="myCanvas" style="visibility:visible; padding-top:3px" width="100" height="41" ></canvas></td>
-						<td style="width:180px; text-align: center; vertical-align:top;"><div style="padding-top:5; padding-right:5;"><b>Round: </b><span id="dayCounter">1</span></div></td>
+						<td style="width:180px; text-align: center; vertical-align:top;"><div style="padding-top:5; padding-right:5;"><b>Round: </b><span id="dayCounter">1</span></div></td></tr>
 				</table>
-				<tr><td>
+
 
 				<div id ="bush1flash" class="flashScore hide" style=" top: 307px; left: 295px; " draggable="false"><div id="bush1flasha" ></div></div>
 <!--bush1-->	<img src="CSS/job.png" id="bush1" class="hide job" style = "position: absolute; top: 307px; left: 295px; cursor: pointer;" draggable="false" onclick="bushClick('bush1');"></img>
@@ -1473,7 +1474,7 @@ body {
 				<p><b>10.</b> What is your ethnicity? <input type="text" id="q10"></p>
 				<p><b>11.</b> Please write any other comments about the study below.</p>
 				<textarea id="q11" rows="2" cols="55" ></textarea>
-				<p><br>Submit this survey to receive your Qualtrics bonus.</p>
+				<p><br>Please submit this survey to receive your Qualtrics bonus.</p>
 				<button type="button" onclick="turnPage('surveyPage3','surveyPage2')" class="btn btn-primary">Previous</button>
 				<button type="button" class="btn btn-primary" onclick="submitSurvey();">Submit</button>
 			</div>
