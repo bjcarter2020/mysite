@@ -58,7 +58,7 @@ var MTURKID = "No MturkID Given";
 // Game Version:
     //  0 = "sharing"
     //  1 = "taxes"
-var gameVersion = 1;
+var gameVersion = "vgPol";
 
 
 function element(id){ return document.getElementById(id); } //To Simplify code
@@ -493,7 +493,9 @@ function finishedClick(){
     var sharingData = {};
     //This sends data to firebase via the push command
 function submitSurvey(){
-  window.parent.postMessage(9999, "*");
+  window.parent.postMessage("complete", "*");
+  var finalPoints = totalPoints / 100;
+  window.parent.postMessage(finalPoints, "*");
       fadeOutEffect('surveyPage3');
     var survey = {};
     survey.Q1 = "'" + element("q1").value + "'";
@@ -505,7 +507,8 @@ function submitSurvey(){
     survey.Q7 = element("q7").value;
     survey.Q8 = element("q8").value;
     survey.Q9 = element("q9").value;
-    survey.Q10 = "'" + element("q10").value + "'";
+    survey.Q10 = element("q9").value;
+    survey.Q11 = "'" + element("q11").value + "'";
 	survey.finalScore = totalPoints;
     survey.playerID = playerID;
     survey.CorrectHigh = correctHigh;
@@ -536,10 +539,10 @@ function getData(){
 				csvString += data[x].survey.playerID + "," + days[i].totalDays + "," + days[i].totalPoints + "," + days[i].foundBerries0 + "," +  days[i].voteVal + "," + days[i].voteTally + "," + days[i].voteOutcome + "," + days[i].gameVersion + "\n";
 			}	}
 		}
-		csvString += "player, MTurkId, correctHigh, correctLow, DecisionHow,GovBenefits,GovTaxes,PayTaxes,Ideology,PID,Gender,Age,Ethnicity,AnyComments,FinalScore,Time,gameVersion\n";
+		csvString += "player, MTurkId, correctHigh, correctLow, DecisionHow,GovBenefits,GovTaxes,PayTaxes,Ideology,PID,President,Gender,Age,Ethnicity,AnyComments,FinalScore,Time,gameVersion\n";
 		for (x in data){
 			if(data[x].survey != undefined){
-				csvString += data[x].survey.playerID + "," + data[x].survey.MTurkID + "," + data[x].survey.CorrectHigh + "," + data[x].survey.CorrectLow + "," +  data[x].survey.Q1 + "," + data[x].survey.Q2 + "," + data[x].survey.Q3 + "," + data[x].survey.Q4 + "," + data[x].survey.Q5 + "," + data[x].survey.Q6 + "," + data[x].survey.Q7 + "," + data[x].survey.Q8 + "," + data[x].survey.Q9 + "," + data[x].survey.Q10 + "," + data[x].survey.finalScore + "," + data[x].survey.TimeStamp +  "," + data[x].survey.gameVersion + "\n";
+				csvString += data[x].survey.playerID + "," + data[x].survey.MTurkID + "," + data[x].survey.CorrectHigh + "," + data[x].survey.CorrectLow + "," +  data[x].survey.Q1 + "," + data[x].survey.Q2 + "," + data[x].survey.Q3 + "," + data[x].survey.Q4 + "," + data[x].survey.Q5 + "," + data[x].survey.Q6 + "," + data[x].survey.Q7 + "," + data[x].survey.Q8 + "," + data[x].survey.Q9 + "," + data[x].survey.Q10 + "," + data[x].survey.Q11 + ","+ data[x].survey.finalScore + "," + data[x].survey.TimeStamp +  "," + data[x].survey.gameVersion + "\n";
 			     }
 		      }
 		//if this breaks, put into a setTimeout
@@ -971,6 +974,7 @@ body {
 }
 #energyBar {
 	position: relative;
+  border-collapse: separate;
 	top: 2px;
 	width: 350px;
 	height: 34px;
@@ -1183,11 +1187,12 @@ body {
 		<div id ="startPage" style = "position:relative; margin: auto; width: 1020px;">
 			<div id="gameTbl" class = "tables" style="display:none">
 				<table id="energyBar" style="display:none">
+          <tr>
 						<td style="width:190px; text-align: center; vertical-align:top; padding-top:2;"><img src='CSS/heart2.png' id="heart1" style="width:30px; padding-left:5px"><span id="totalPoints" style="font-size:18">60</span></td>
 						<td style="width:126px;">&nbsp;<canvas id="myCanvas" style="visibility:visible; padding-top:3px" width="100" height="41" ></canvas></td>
-						<td style="width:180px; text-align: center; vertical-align:top;"><div style="padding-top:5; padding-right:5;"><b>Round: </b><span id="dayCounter">1</span></div></td>
+						<td style="width:180px; text-align: center; vertical-align:top;"><div style="padding-top:5; padding-right:5;"><b>Round: </b><span id="dayCounter">1</span></div></td></tr>
 				</table>
-				<tr><td>
+
 
 				<div id ="bush1flash" class="flashScore hide" style=" top: 307px; left: 295px; " draggable="false"><div id="bush1flasha" ></div></div>
 <!--bush1-->	<img src="CSS/job.png" id="bush1" class="hide job" style = "position: absolute; top: 307px; left: 295px; cursor: pointer;" draggable="false" onclick="bushClick('bush1');"></img>
@@ -1316,7 +1321,7 @@ body {
                    <br><br><img src="CSS/food.png" style="height: 135px"></center></div>
                 <center>
 			<div id='eatTbl1' style="display:none; position:absolute; max-width:240px; top:140px; left:230px; :pointer;" onclick="newDayClick();"><center>Click here to begin a new round! <br> <img src='CSS/3-2-sun-png-clipart.png' style="height:60px; :pointer;"></center></div>
-                    <div id='finalTbl' class='tables' style="display:none; position:absolute; top:130px; left:227px; box-shadow: 22px 12px 12px #55555596; :pointer;" onclick="finishedClick();"><center><div id = "gameOver"><text style = "font-size:23px; font-family: Tahoma; margin:0; text-align: center;">Congratulations!</text><br><br><text>You finished the game with <br><img src="CSS/heart.png" style="width:15px; height:14px;"><b><span id='final'></span></b>&nbsp;Health Points!</text><br><br><i>~Please click here to continue to a short survey~</i></div></center></div></center>
+                    <div id='finalTbl' class='tables' style="display:none; position:absolute; top:130px; left:227px; box-shadow: 22px 12px 12px #55555596; :pointer;" onclick="finishedClick();"><center><div id = "gameOver"><text style = "font-size:23px; font-family: Tahoma; margin:0; text-align: center;">Congratulations!</text><br><br><text>You finished the game with <br><img src="CSS/heart.png" style="width:15px; height:14px;">&nbsp;<b><span id='final'></span></b>&nbsp;Health Points!</text><br><br><i>~Please click here to continue to a short survey~</i></div></center></div></center>
 			<div id='allBaskets' class="hide">
 				<img src="CSS/irs.png" style=" height: 195px; position:absolute; bottom:0px; left:205px; z-index:1" draggable="false">
 				<div id="comBasket" style="position:absolute; z-index: 2; bottom:60px; left:250px; border: 0px solid blue;"></div>
@@ -1359,8 +1364,8 @@ body {
 			 <!--Village Vote -->
 			<div id="voting" style='padding:4px; width: 360px;height: 310px;position: absolute;left: 260px;top: 20px;display: block;border-width: 2px; border-radius:10px; border-style: dashed;padding: 15;border-color: #96c769;'>
 				 <p style = "font-size:27px; font-family: Tahoma; margin:0; text-align: center;" >Presidential Election</p><br>
-				<font class="lowerTitleB"><input type="radio" name="voteShare" id="v1" value="0"  onchange="v1chk(); visible('button4');" style=":pointer;"> <b>Republican Candidate <img src="CSS/rep.png" style="width: 19px; margin-right:2px;">, Low Taxes </b><br><font style="max-width:250px; position:relative; left:25px;"> Each citizen is taxed $1 per $5 they earn.<br><br><br></font>
-				<input type="radio" name="voteShare" id="v2" value="1"  onchange="v2chk(); visible('button4');" style=":pointer;"> <b>Democratic Candidate <img src="CSS/dem.png" style="width: 20px;">, High Taxes </b><br><font style="max-width:250px; position:relative; left:25px;"> Each citizen is taxed $3 per $5 they earn. <br></font></font> <!--<font> tag is not supported in HTML5. Use CSS instead. See W3Schools.com for further details.-->
+				<font class="lowerTitleB"><input type="radio" name="voteShare" id="v1" value="0"  onchange="v1chk(); visible('button4');" style=":pointer;"> <b>Republican Candidate <img src="CSS/rep.png" style="width: 19px; margin-right:2px;">, Low Taxes </b><br><font style="max-width:250px; position:relative; left:25px;"> Each citizen is taxed $1 per <br>$5 they earn (20%).<br><br><br></font>
+				<input type="radio" name="voteShare" id="v2" value="1"  onchange="v2chk(); visible('button4');" style=":pointer;"> <b>Democratic Candidate <img src="CSS/dem.png" style="width: 20px;">, High Taxes </b><br><font style="max-width:250px; position:relative; left:25px;"> Each citizen is taxed $3 per <br> $5 they earn (60%). <br></font></font> <!--<font> tag is not supported in HTML5. Use CSS instead. See W3Schools.com for further details.-->
 				<br><br><center><button class="lowerTitleA" id="button4" style="visibility:hidden; z-index:1;" onclick="voteClick();"> Vote!</button><br></center>
 			</div>   <!--Redistribution-->
 			<div id="redistribute" style=' padding:4px; display: none; width: 410px; position: absolute; left: 234px;top: 0px;'>
@@ -1444,25 +1449,33 @@ body {
 					<option value="5">Moderately Conservative</option>
 					<option value="6">Very Conservative</option>
 				</select></p>
-				<p><b>6.</b> Generally speaking, are you a Democrat, Republican, Independent, or something else?
+				<p><b>6.</b> Generally speaking, are you a Democrat, Independent, or Republican?
 				<select id="q6"><option selected value="blank" ></option>
-					<option value="0">Democrat</option>
-					<option value="1">Republican</option>
-					<option value="2">Independent, but closer to Democrat than Republican</option>
-					<option value="3">Independent, but closer to Republican than Democrat</option>
-					<option value="4">Independent, no preference for Democrat or Republican</option>
-					<option value="5">Other
+					<option value="0">Strong Democrat</option>
+					<option value="1">Moderate Democrat</option>
+					<option value="2">Independent, but lean Democrat</option>
+					<option value="3">Independent</option>
+					<option value="4">Independent, but lean Republican</option>
+          <option value="5">Moderate Republican </option>
+					<option value="6">Strong Republican </option>
 				</select></p>
-				<p><b>7.</b> What is your sex?
-				<select id="q7"><option selected value="blank" ></option>
+        <p><b>7.</b> Who will you vote for in the presidential election?
+        <select id="q7"><option selected value="blank" ></option>
+          <option value="biden">Joe Biden</option>
+          <option value="trump">Donald Trump</option>
+          <option value="other">Other</option>
+          <option value="dnv">I do not plan to vote</option>
+        </select></p>
+				<p><b>8.</b> What is your sex?
+				<select id="q8"><option selected value="blank" ></option>
 					<option value="Female">Female</option>
 					<option value="Male">Male</option>
 				</select></p>
-				<p><b>8.</b> What is your age? <input type="number" id="q8" value="" style="width:50px;"></p>
-				<p><b>9.</b> What is your ethnicity? <input type="text" id="q9"></p>
-				<p><b>10.</b> Please write any other comments about the study below.</p>
-				<textarea id="q10" rows="2" cols="55" ></textarea>
-				<p>Submit this survey to receive your unique validation code for Qualtrics. Please enter this code into Qualtrics to complete the survey.</p>
+				<p><b>9.</b> What is your age? <input type="number" id="q9" value="" style="width:50px;"></p>
+				<p><b>10.</b> What is your ethnicity? <input type="text" id="q10"></p>
+				<p><b>11.</b> Please write any other comments about the study below.</p>
+				<textarea id="q11" rows="2" cols="55" ></textarea>
+				<p><br>Please submit this survey to receive your Qualtrics bonus.</p>
 				<button type="button" onclick="turnPage('surveyPage3','surveyPage2')" class="btn btn-primary">Previous</button>
 				<button type="button" class="btn btn-primary" onclick="submitSurvey();">Submit</button>
 			</div>
