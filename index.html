@@ -1,5 +1,6 @@
 <html>
 <head> <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benjamin Carter</title>
@@ -245,7 +246,16 @@ function show(id)  {
  }
 
 
+function selected(id, frameId){
 
+  document.getElementById('aboutBtn').classList.remove("buttonSelect");
+  document.getElementById('researchBtn').classList.remove("buttonSelect");
+  document.getElementById('gamesBtn').classList.remove("buttonSelect");
+
+  var divelement = document.getElementById(id);
+  divelement.classList.add("buttonSelect");
+    $(frameId).fadeIn("slow");
+}
 
 
 
@@ -265,9 +275,9 @@ function show(id)  {
 
     <tbody><div style="margin-top:20px;"></div>
     <tr>
-        <td class="paddingCl" ><p2><center><button onclick="hide('games'); hide('research'); show('about'); show('about2')" class="buttonSelect">About</a> </button></td><td class="paddingCl"><button onclick="hide('games');hide('about2'); hide('about'); show('research');" class="button">Research
+        <td class="paddingCl" ><p2><center><button id="aboutBtn" onclick="selected('aboutBtn', 'about'); hide('games'); hide('research'); show('about'); show('about2')" class="buttonSelect button">About</a> </button></td><td class="paddingCl"><button id="researchBtn" onclick="selected('researchBtn', 'research'); hide('games');hide('about2'); hide('about'); show('research');" class="button">Research
         </button></a></td><td class="paddingCl">
-        <button onclick="hide('about'); hide('about2'); hide('research'); show('games');" class="button">Games</button></a>
+        <button id="gamesBtn" onclick="selected('gamesBtn', 'games');hide('about'); hide('about2'); hide('research'); show('games');" class="button">Games</button></a>
 
 		</center></td></tr></tbody></table></center></center>
 <div style="margin-top:5px;"></div>
@@ -300,7 +310,7 @@ function show(id)  {
         <tr><td style=" vertical-align:top; width:90px; align:right;">
         <b>Summary: </b></td><td style="padding-bottom:6px;"> Why do citizens oppose policies that benefit them? My dissertation investigates several possibilities: people dislike taxes; people find it counterintuitive to pay higher taxes in order to gain benefits; people support political parties based on multiple issues rather than judging policies in isolation; people’s sense of ownership and merit make them perceive taxes as theft; and people imagine different relationships between the government and citizens, emphasizing either community, authority, or markets.</td></tr>
 
-        <tr><td style=" vertical-align:top;"><b>Committee: </b></td><td style="padding-bottom:6px;">Peter DeScioli, PhD (Chair)<br> Andrew Delton, PhD<br> John Ryan, PhD</td></tr>
+        <tr><td style=" vertical-align:top;"><b>Committee: </b></td><td style="padding-bottom:6px;">Peter DeScioli, PhD (Chair)<br> Andrew Delton, PhD<br> John Ryan, PhD<br> Jason Barabas, PhD (Outside Member)</td></tr>
         </table></p4></div><br>
       <p3 id="content">
       <b><big>Peer Reviewed Publications</big></b></p3>
@@ -309,6 +319,10 @@ function show(id)  {
         <br><br></div>
       <p3 id="content">
       <b><big>Works in Progress</big></b></p3>
+      <ul style="color: #585c60; margin-top:0px; margin-right:5px;">
+       <li style="padding:6px;"><b>Do people understand who benefits from higher taxes?</b><br>With Peter DeScioli and Alessandro Del Ponte <br>(Data Collection and Analysis)</li>
+      <li style="padding:6px;"><b>Is it more intuitive to tax only the rich?</b><br>With Peter DeScioli and Alessandro Del Ponte <br>(Data Collection and Analysis)</li>
+      <li style="padding:6px;"><b>Altruism in the Covid-19 Pandemic: Do People Who Wear a Mask Care More About Others?</b><br>With Alessandro Del Ponte and Andrew Delton <br>(Pre Data Collection)</li></ul>
 
 
   </div>
