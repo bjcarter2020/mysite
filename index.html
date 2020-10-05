@@ -31,8 +31,7 @@ background-color: #1168d2;
        left: 0;
     box-shadow: 1px 1px 2px #1f3a5a;}
 .cubes{
-filter: brightness(1.35);
-
+filter: brightness(1.15);
   opacity:0.8;
 width: 100px;
 margin-top:-30px;
@@ -272,22 +271,10 @@ function show(id)  {
 
 function selected(id, frameId){
 
-function selected(id, frameId){
 
   document.getElementById('aboutBtn').classList.remove("buttonSelect");
   document.getElementById('researchBtn').classList.remove("buttonSelect");
   document.getElementById('gamesBtn').classList.remove("buttonSelect");
-
-<<<<<<< HEAD
-  document.getElementById('aboutBtn').classList.remove("buttonSelect");
-  document.getElementById('researchBtn').classList.remove("buttonSelect");
-  document.getElementById('gamesBtn').classList.remove("buttonSelect");
-=======
-  var divelement = document.getElementById(id);
-  divelement.classList.add("buttonSelect");
-    $(frameId).fadeIn("slow");
-}
->>>>>>> ffec8a9090070f41e6e50d04d71fcfbaed4a5ef3
 
   var divelement = document.getElementById(id);
   divelement.classList.add("buttonSelect");
@@ -317,15 +304,9 @@ function classChange(id, class1){
 
     <tbody><div style="margin-top:20px;"></div>
     <tr>
-<<<<<<< HEAD
         <td class="paddingCl" ><p2><center><button id="aboutBtn" onclick="selected('aboutBtn', 'about'); classChange('games', 'hide'); classChange('research','hide'); classChange('about','fadingIn'); classChange('about2','fadingIn')" class="buttonSelect button">About</a> </button></td><td class="paddingCl"><button id="researchBtn" onclick="selected('researchBtn', 'research');  classChange('games', 'hide');  classChange('about','hide'); classChange('about2','hide'); classChange('research','fadingIn');" class="button">Research
         </button></a></td><td class="paddingCl">
         <button id="gamesBtn" onclick="selected('gamesBtn', 'games');   classChange('research','hide'); classChange('about','hide'); classChange('about2','hide'); classChange('games', 'fadingIn')" class="button">Games</button></a>
-=======
-        <td class="paddingCl" ><p2><center><button id="aboutBtn" onclick="selected('aboutBtn', 'about'); hide('games'); hide('research'); show('about'); show('about2')" class="buttonSelect button">About</a> </button></td><td class="paddingCl"><button id="researchBtn" onclick="selected('researchBtn', 'research'); hide('games');hide('about2'); hide('about'); show('research');" class="button">Research
-        </button></a></td><td class="paddingCl">
-        <button id="gamesBtn" onclick="selected('gamesBtn', 'games');hide('about'); hide('about2'); hide('research'); show('games');" class="button">Games</button></a>
->>>>>>> ffec8a9090070f41e6e50d04d71fcfbaed4a5ef3
 
 		</center></td></tr></tbody></table></center></center>
 <div style="margin-top:5px;"></div>
@@ -358,11 +339,7 @@ function classChange(id, class1){
         <tr><td style=" vertical-align:top; width:90px; align:right;">
         <b>Summary: </b></td><td style="padding-bottom:6px;"> Why do citizens oppose policies that benefit them? My dissertation investigates several possibilities: people dislike taxes; people find it counterintuitive to pay higher taxes in order to gain benefits; people support political parties based on multiple issues rather than judging policies in isolation; people’s sense of ownership and merit make them perceive taxes as theft; and people imagine different relationships between the government and citizens, emphasizing either community, authority, or markets.</td></tr>
 
-<<<<<<< HEAD
         <tr><td style=" vertical-align:top;"><b>Committee: </b></td><td style="padding-bottom:6px;">Peter DeScioli, PhD (Chair)<br>Andrew Delton, PhD<br>John Ryan, PhD<br>Jason Barabas, PhD (Outside Member)</td></tr>
-=======
-        <tr><td style=" vertical-align:top;"><b>Committee: </b></td><td style="padding-bottom:6px;">Peter DeScioli, PhD (Chair)<br> Andrew Delton, PhD<br> John Ryan, PhD<br> Jason Barabas, PhD (Outside Member)</td></tr>
->>>>>>> ffec8a9090070f41e6e50d04d71fcfbaed4a5ef3
         </table></p4></div><br>
       <p3 id="content">
       <b><big>Peer Reviewed Publications</big></b></p3>
