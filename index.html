@@ -56,6 +56,31 @@ transition: all .7s ease;
 	/* Standard */
 	transform: rotate(-90deg) scale(1.3);
     }
+
+    .gameImg{
+    filter: brightness(.95);
+     /* Firefox */
+    -moz-transition: all .1s ease;
+    /* WebKit */
+    -webkit-transition: all .1s ease;
+    /* Opera */
+    -o-transition: all .1s ease;
+    /* Standard */
+    transition: all .1s ease;
+    -webkit-user-drag: none;
+    }
+    .gameImg:hover{
+      cursor:pointer;
+      filter: brightness(1.03);
+      -moz-transform: scale(1.03) ;
+
+    	/* WebKit */
+    	-webkit-transform: scale(1.03);
+    	/* Opera */
+    	-o-transform: scale(1.03);
+    	/* Standard */
+    	transform: scale(1.03);
+        }
     a{
       /* Firefox */
      -moz-transition: all 0.2s ease;
@@ -86,13 +111,13 @@ a:hover {
   font-weight: bold;
 }
 .lowerTbl{
-  -moz-transition: all 0.35s ease;
+  -moz-transition: all 0.25s ease;
   /* WebKit */
-  -webkit-transition: all 0.35s ease;
+  -webkit-transition: all 0.25s ease;
   /* Opera */
-  -o-transition: all 0.35s ease;
+  -o-transition: all 0.25s ease;
   /* Standard */
-  transition: all 0.35s ease;
+  transition: all 0.25s ease;
 
     border: solid 2px #092950;
 width:90%;
@@ -332,31 +357,36 @@ function classChange(id, class1){
         <div style="margin-top:15px; width:100%; column-span: all;margin-left:4%;margin-right:4%;">
         <p3 id="content">
         <b><big>Dissertation</big></b></p3>
-        <p4><div style="">
-          <table style="color: #585c60; padding-right:10px; margin-left:7px; margin-top:5px; width: 100%; height:100%;">
-            <tr><td style=" vertical-align:top; width:90px; align:right;">
-        <b>Title: </b></td><td style="padding-bottom:6px;"> Do people understand the benefits of government? Experiments on voting, taxes, and health care.</td></tr>
-        <tr><td style=" vertical-align:top; width:90px; align:right;">
-        <b>Summary: </b></td><td style="padding-bottom:6px;"> Why do citizens oppose policies that benefit them? My dissertation investigates several possibilities: people dislike taxes; people find it counterintuitive to pay higher taxes in order to gain benefits; people support political parties based on multiple issues rather than judging policies in isolation; people’s sense of ownership and merit make them perceive taxes as theft; and people imagine different relationships between the government and citizens, emphasizing either community, authority, or markets.</td></tr>
+        <table style="color: #585c60; padding-right:10px;  padding-top:13px; width: 100%; height:100%;     font: 15px/16px 'Trebuchet MS', Helvetica, sans-serif;">
+      <tr><td style=" vertical-align:top;width:90px; "><b>Title:</b></td><td style="padding-bottom:6px;">Do People Understand the Benefits of Government? Experiments on Voting, Taxes, and Health Care</td></tr>
 
-        <tr><td style=" vertical-align:top;"><b>Committee: </b></td><td style="padding-bottom:6px;">Peter DeScioli, PhD (Chair)<br>Andrew Delton, PhD<br>John Ryan, PhD<br>Jason Barabas, PhD (Outside Member)</td></tr>
-        </table></p4></div><br>
+<td style=" vertical-align:top;width:90px; "><b>Summary:</b></td><td style="padding-bottom:6px;">My dissertation uses economic games I designed and programmed to answer several questions about why citizens oppose policies that would bring them benefits (for demos, see Games). For instance, do people understand who benefits from higher taxes? Do people find it more intuitive to tax only the rich? And, do people prefer lower taxes when they believe income is based on merit? Finally, I use a survey experiment to ask whether people feel differently about taxes and social spending if they imagine the citizen-government relationship is based on authority, a communal bond, or market efficiency. </td></tr>
+
+        <tr><td style=" vertical-align:top;width:90px; "><b>Committee: </b></td><td style="padding-bottom:6px;">Peter DeScioli, PhD (Chair)<br>Andrew Delton, PhD<br>John Ryan, PhD<br>Jason Barabas, PhD</td></tr>
+      </table></p4></div><br>
       <p3 id="content">
       <b><big>Peer Reviewed Publications</big></b></p3>
-        <div style="margin-left:18px; color: #585c60; margin-top:-15px;">
+        <div style="color: #585c60; padding-right:10px; padding-left:10px; margin-top:-5px;  font: 15px/16px 'Trebuchet MS', Helvetica, sans-serif;">
         <br>Barabas, J., Carter, B., & Shan, K. (2020). Analogical Framing: How Policy Comparisons Alter Political Support for Health Care Reform. <i>American Politics Research, 48,</i> 596–611.  <a target="_blank" href="publications/Barabas_Carter_Shan_APR-2020.pdf">[pdf]</a>
         <br><br></div>
-      <p3 id="content">
+      <p3 id="content" style="margin-top:5px;">
       <b><big>Works in Progress</big></b></p3>
-      <ul style="color: #585c60; margin-top:0px; margin-right:5px;">
-       <li style="padding:6px;"><b>Do people understand who benefits from higher taxes?</b><br>With Peter DeScioli and Alessandro Del Ponte <br>(Data Collection and Analysis)</li>
-      <li style="padding:6px;"><b>Is it more intuitive to tax only the rich?</b><br>With Peter DeScioli and Alessandro Del Ponte <br>(Data Collection and Analysis)</li>
-      <li style="padding:6px;"><b>Altruism in the Covid-19 Pandemic: Do People Who Wear a Mask Care More About Others?</b><br>With Alessandro Del Ponte and Andrew Delton <br>(Pre Data Collection)</li></ul>
+      <ul style="color: #585c60;  margin-top:4px;width: 100%; height:100%;     font: 15px/16px 'Trebuchet MS', Helvetica, sans-serif;">
+       <li style="padding:6px;padding-right:10px;"><b>Do people understand who benefits from higher taxes?</b><br>With Peter DeScioli and Alessandro Del Ponte <br>(Data Collection and Analysis)</li>
+      <li style="padding:6px;padding-right:10px;"><b>Is it more intuitive to tax only the rich?</b><br>With Peter DeScioli and Alessandro Del Ponte <br>(Data Collection and Analys is)</li>
+      <li style="padding:6px;padding-right:10px;"><b>Altruism in the Covid-19 Pandemic: Do People Who Wear a Mask Care More About Others?</b><br>With Alessandro Del Ponte and Andrew Delton <br>(Pre Data Collection)</li></ul>
 
 
   </div>
-<div id="games" style="display:none">
-  games
+<div id="games" style="display:none; color: #585c60; width: 100%; height:100%;     font: 15px/16px 'Trebuchet MS', Helvetica, sans-serif;">
+  I design web games in JavaScript and HTML to test hypotheses about political and economic behavior. The games run on all popular web browsers and can be embedded in survey software, such as Qualtrics. <br><br> Click below to play demos of the Taxes and Voting Game, in which players earn high or low income and then vote about the tax rate.
+  <br><br><br><center>
+      <div style="margin-bottom:8px;"><i><b>Voting about sharing in a remote village</b></i></div>
+  <img class="gameImg" src="CSS/vgVilSS.jpg" style="border:solid #092950 1px; border-radius:12px; max-width:90%;max-height:190px;"><br>
+<br><br>
+  <div style="margin-bottom:8px;"><i><b>Voting about taxes in a U.S. election</b></i></div>
+<img class="gameImg" src="CSS/vgPolSS.jpg" style="border:solid #092950 1px; border-radius:12px; max-width:90%;max-height:190px;"><br>
+</center>
 </div>
 
 </table>
