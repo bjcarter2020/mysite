@@ -623,10 +623,10 @@ function voteClick(){ //this is the major voting, taxing, and redistribution fun
 		var outcome = "";
 		if (voteOutcome == taxOutcomeLow){
 			shareVal = 0.2;
-			outcome = "Low taxes";}
+			outcome = "Less Sharing";}
 		if (voteOutcome == taxOutcomeHigh){
 			shareVal = 0.6;
-			outcome = "High taxes";}
+			outcome = "More Sharing";}
 		element('voteMore').innerHTML = moreVote;
 		element('voteLess').innerHTML = lessVote;
 		element('outcomeVote').innerHTML = outcome;
@@ -1206,9 +1206,9 @@ body {
   					<h2 style= "text-align:center";><b>Overview</b></h2>
   					In this game, you are a forager who lives in a small village settled deep in a remote forest.<br><br>
   					The village contains nine foragers who survive by eating berries <img src="CSS/berries_clipart_cranberries.png" style="width:18px; height:14px;"> to boost their health <img src="CSS/heart.png" style="width:15px; height:14px;">.
-  					<br><br>Each day, the villagers set out on their own to find berries.  Afterwards, they meet to vote on how much each villager will pay in taxes from their berries to the community.
-  					<br><br>You will be one of the villagers and the other villagers will be played by the computer. The computer will make decisions for the villagers similar to how people make decisions in this game.
-  					<br><br>At the end of the game, you will earn <font color="green">1 cent</font> per point of your final health score.  This money will be paid to you as a <b>Qualtrics bonus</b>.
+  					<br><br>Each day, the villagers set out on their own to find berries.  Afterwards, they meet to vote on how to share the berries.
+  					<br><br>You will be one of the villagers and the other eight villagers will be played by the computer. The computer will make decisions for the villagers similar to how people make decisions in this game.
+  					<br><br>At the end of the game, you will earn <font color="green">1 cent</font> per point of your final health score. This money will be paid to you as a <b>Qualtrics bonus</b>.
   					<center><br><button  id='button1' style="bottom: 38px; "class="lowerTitleA" onclick="turnPage('instructions1','instructions2');"> Next --></button></center>
   				</div>
   				<div id= "instructions2" class = "instructions">
@@ -1233,7 +1233,7 @@ body {
   				</div>
   				<div id= "instructions4" class = "instructions">
   					<h2 style= "text-align:center";><b>Sharing and Voting </b></h2>
-  					<p>After the villagers collect berries, they hold a village meeting to vote on how to tax their income.</p>
+  					<p>After the villagers collect berries, they hold a village meeting to vote on how to share them.</p>
   					<center>
   						<img src="CSS/villlager1.png" style="width:20px; height:40px;">
   						<img src="CSS/villlager2.png" style="width:20px; height:40px;">
@@ -1246,17 +1246,17 @@ body {
   						<img src="CSS/villlager9.png" style="width:20px; height:40px;">
   					</center><br>
   					<p>By custom, there are two options on the ballot:</p>
-  						<ul><li>Low Taxes: Each villager is taxed 1 out of every 5 berries they found (20%) which are added to the community basket, or</li>
-  							<li>High Taxes: Each villager is taxed 3 out of every 5 berries they found (60%) which are added to the community basket.</li>
+  						<ul><li>Less Sharing: Each villager shares 1 berry per 5 berries they find (20%), or</li>
+  							<li>More Sharing: Each villager shares 3 berries per 5 berries they find (60%).</li>
   						</ul>
-  					<p>The tax rule that receives the most votes is enacted. The rule is automatically applied to all of the villagers by withdrawing berries from each villager's basket according to the rule.</p>
+  					<p>The sharing rule that receives the most votes is enacted. The rule is automatically applied to all of the villagers by withdrawing berries from each villager's basket according to the rule.</p>
 
   					<center> <button  id='button31' style=" bottom: 38;" class="lowerTitleA"  onclick="turnPage('instructions4','instructions3'); "> <-- Back</button>
   					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   					<button id="button3" style="bottom: 38; " class="lowerTitleA" onclick="turnPage('instructions4','instructions5'); "> Next --></button></center>
   				</div>
   				<div id= "instructions5" class = "instructions">
-  					<h2 style= "text-align:center";><b>Sharing and Eating</b></h2>
+  					<h2 style= "text-align:center";><b>Distributing and Eating</b></h2>
   					<br><center><img src="CSS/garden-basket.png" style="width:150px;"></center>
                       <br><br>After voting, berries in the community basket are divided equally among the nine villagers and distributed to their baskets.
   					<br><br>At the end of the day, each villager eats their berries to gain health points. Then they continue to the next day for a total of 10 days.
@@ -1268,8 +1268,8 @@ body {
   					<h2 style= "text-align:center";><b>Summary</b></h2>
   					<ul><li>  You start with 60 health points and you lose 35 per day due to metabolism.</li>
   						<li> Each day, you have equal chances of finding 25 or 50 berries.</li>
-  						<li>You and the other villagers will vote on whether everyone pays a Low Taxes (1 out of 5) or High Taxes (3 out of 5).</li>
-  						<li>The tax rule that receives the most votes is enacted. Berries are collected into the community basket according to the rule and then these berries are divided equally among the nine villagers.</li>
+  						<li>You and the other villagers will vote for Less Sharing (1 per 5 berries found) or More Sharing (3 per 5 berries found).</li>
+  						<li>The sharing rule that receives the most votes is enacted. Berries are collected into the community basket according to the rule and then these berries are divided equally among the nine villagers.</li>
   						<li>After community berries are divided, you eat your berries to add to your health and proceed to the next day.</li>
   						<li>The game continues for 10 days. You will earn 1 cent per point of your final health score, paid to you as a Qualtrics bonus.<br><br>
   					</ul>
@@ -1320,7 +1320,7 @@ body {
 
   		<center><table id='popupTbl3' class = "tables" style="display:none"><tr>  <!--Large Eating and Redistributing Table -->
   			<td colspan="2" style="width:100%">
-  				<div id='eatTbl3' style="display:none; position: absolute; border-radius: 25px; font-size:22px; top: 170px; left: 276px; padding: 9px;"><center>Eating Berries...</center></div>
+  				<div id='eatTbl3' style="display:none; position: absolute; border-radius: 25px; font-size:22px; top: 170px; left: 276px; padding: 9px;"><center>Eating berries<br>to gain health...</center></div>
                   <center>
   			<div id='eatTbl1' style="display:none; position:absolute; max-width:240px; top:140px; left:220px; cursor:pointer;" onclick="newDayClick();"><center>Click here to begin a New Day! <br> <img src='CSS/3-2-sun-png-clipart.png' style="height:60px; cursor:pointer;"></center></div>
                       <div id='finalTbl' class='tables' style="display:none; position:absolute; top:130px; left:227px; box-shadow: 22px 12px 12px #55555596; cursor:pointer;" onclick="finishedClick();"><center><div id = "gameOver"><text style = "font-size:23px; font-family: comic sans ms; margin:0; text-align: center;">Congratulations!</text><br><br><text>You finished the game with <br><img src="CSS/heart.png" style="width:15px; height:14px;">&nbsp;<b><span id='final'></span></b>&nbsp;Health Points!</text><br><br><i>~Please click here to continue to a short survey~</i></div></center></div></center>
@@ -1366,14 +1366,14 @@ body {
   			 <!--Village Vote -->
   			<div id="voting" style='padding:4px; width: 355px;height: 310px;position: absolute;left: 260px;top: 20px;display: block;border-width: 2px; border-radius:10px; border-style: dashed;padding: 15;border-color: #96c769;'>
   				 <p style = "font-size:27px; font-family: Tahoma; margin:0; text-align: center;" >Village Vote</p>
-  				<font class="lowerTitleB"><input type="radio" name="voteShare" id="v1" value="0"  onchange="visible('button4');" style="cursor:pointer;"> <b>Low Taxes</b><br><font style="max-width:250px; position:relative; left:25px;"> Villagers are taxed 1 berry for every <br>5 berries found (20%).<br><br></font>
-  				<input type="radio" name="voteShare" id="v2" value="1"  onchange="visible('button4');" style="cursor:pointer;"> <b>High Taxes</b><br><font style="max-width:250px; position:relative; left:25px;"> Villagers are taxed 3 berries for every <br>5 berries found (60%).</font></font> <!--<font> tag is not supported in HTML5. Use CSS instead. See W3Schools.com for further details.-->
+  				<font class="lowerTitleB"><input type="radio" name="voteShare" id="v1" value="0"  onchange="visible('button4');" style="cursor:pointer;"> <b>Less Sharing</b><br><font style="max-width:250px; position:relative; left:25px;"> Villagers share 1 berry per 5 berries<br> they find (20%).<br><br></font>
+  				<input type="radio" name="voteShare" id="v2" value="1"  onchange="visible('button4');" style="cursor:pointer;"> <b>More Sharing</b><br><font style="max-width:250px; position:relative; left:25px;"> Villagers share 3 berries per 5 berries<br> they find (60%).</font></font> <!--<font> tag is not supported in HTML5. Use CSS instead. See W3Schools.com for further details.-->
   				<br><br><center><button class="lowerTitleA" id="button4" style="visibility:hidden; z-index:1;" onclick="voteClick();"> Vote!</button><br></center>
   			</div>   <!--Redistribution-->
   			<div id="redistribute" style=' padding:4px; display: none; width: 410px; position: absolute; left: 234px;top: 0px;'>
   				<div style="border-style: solid;background-color: #fff0ed;border-width: 2px;border-color: #701300;border-radius:25px;padding:9px;">
   					<div id="voteComp" style="display:none"><p id="lowerTitleVote" style = "font-size:23px; margin-top: -10; text-align: center;" >Vote Complete</p></div>
-  					<center><font class="lowerTitleB"><div id="voteHead">Results: <span id="voteLess"></span> for Low Taxes and <span id="voteMore"></span> for High Taxes.  <b>&nbsp;&nbsp;&nbsp;Outcome: </b><div id="outcome" style="visibility:hidden;"><span id="outcomeVote"></span> </div> <br></div></font></center>
+  					<center><font class="lowerTitleB"><div id="voteHead">Results: <span id="voteLess"></span> for Less Sharing and <span id="voteMore"></span> for More Sharing.  <b>&nbsp;&nbsp;&nbsp;Outcome: </b><div id="outcome" style="visibility:hidden;"><span id="outcomeVote"></span> </div> <br></div></font></center>
   				</div>
   				<div id="dist" style="display:none; border-color: #5a90b8; border-radius: 100px;">
                       <div style="max-width:250px; margin-top:30px; margin-left: 0px; padding-top:5px; border-color: #5a90b8; border-radius: 100px;"><center><img src="CSS/berries_clipart_cranberries.png" style="width:20px;"><b><span id="sharedBerries"></span> Berries</b> are collected into the community basket.</center></div>
@@ -1385,9 +1385,9 @@ body {
   				<div id="dist3" style="display: none;background-color: #f3feea;position: absolute;width: 200px;top: 125px;border-width: 2px;border-color: rgb(150, 199, 105);border-radius: 25px;right: 5px;border-style: dashed;">
   					<p id="lowerTitle1" style = "font-size:23px; font-family: comic sans ms; margin:0; text-align: center;">Today:</p>
   					<div>
-  						<div id="dist4" style="display:none; margin:10px">You were taxed <span id="shared"></span> <img src="CSS/berries_clipart_cranberries.png" style="width:18px; height:14px;"></div>
+  						<div id="dist4" style="display:none; margin:10px">You shared <span id="shared"></span> <img src="CSS/berries_clipart_cranberries.png" style="width:18px; height:14px;"></div>
   						<div id="dist5" style="display:none; margin:10px;">You received <span id="distVal2"></span> <img src="CSS/berries_clipart_cranberries.png" style="width:18px; height:14px;"></div>
-  						<div id="dist6" style="display:none; margin-bottom:9px; margin-left:10px;">Your net change after taxes was <span id="netChange"></span> <img src="CSS/berries_clipart_cranberries.png" style="width:18px; height:14px;"></div>
+  						<div id="dist6" style="display:none; margin-bottom:9px; margin-left:10px;">Your net change after sharing was <span id="netChange"></span> <img src="CSS/berries_clipart_cranberries.png" style="width:18px; height:14px;"></div>
   					</div>
                   </div></td></tr></table></center>
   					</div>
