@@ -20,7 +20,8 @@
 
 body {
           background-color: #23456f;
-}
+
+                  }
 #banner {
 background-color: #1168d2;
 
@@ -112,6 +113,7 @@ a:hover {
 
 }
 .lowerTbl{
+
   -moz-transition: all 0.25s ease;
   /* WebKit */
   -webkit-transition: all 0.25s ease;
@@ -129,6 +131,8 @@ max-width:645px;
 box-shadow: 4px 5px 8px 4px #173150;
          padding: 18px;
     margin-bottom:40px;
+
+
 }
 button:hover {
   color:white;
@@ -270,8 +274,13 @@ p3: hover{
 	from {opacity: 0;}
 	to {opacity:1;}
 }
+@keyframes fadeOut {
+	from {opacity: 1;}
+	to {opacity:0;}
+}
+
 .fadingIn{
-	display:block !important;
+	display:inline-block !important;
 	-webkit-animation: fadeIn 0.5s linear !important;
 	animation-name: fadeIn ;!important;
 	animation-duration: 0.5s ;!important;
@@ -315,6 +324,8 @@ function classChange(id, class1){
 
 
 
+
+
     </script>
 
 
@@ -328,58 +339,19 @@ function classChange(id, class1){
 <table style="display:inline-block;">
 <center>
 
-    <tbody><div style="margin-top:20px;"></div>
-    <tr>
-      <td class="paddingCl" ><button id="aboutBtn"  class="buttonSelect button">About</button> </td><td class="paddingCl"><button id="researchBtn" onclick="location.href= 'research.html'" type="button" class="button">Research
-        </button></td><td class="paddingCl">
-        <button id="gamesBtn" onclick="location.href= 'games.html'" type="button" class="button">Games</button>
+  <tbody><div style="margin-top:20px;" ></div>
+  <tr>
+    <td class="paddingCl" ><button id="aboutBtn" onclick="transitionToPage('index.html')" class=" button">About</button> </td><td class="paddingCl"><button id="researchBtn" onclick="location.href= 'research.html'" type="button" class="button">Research
+      </button></td><td class="paddingCl">
+      <button id="gamesBtn"  type="button" class="buttonSelect button">Games</button>
 
 		</center></td></tr></tbody></table></center></center>
 <div style="margin-top:5px;"></div>
   <table class='lowerTbl' id="lowerTbl" style="max-width:600px; display:inline-block;">
 
   <tr style="width:100%"><td>
-    <div id="about" class="fadingIn"><center><div style="margin-top:10px;"></div>
-    <p class="lowerTitle" style="font-size:30px">Benjamin Carter</p>  <div style="margin-top:20px;"></div>
-    <img src="CSS/profilePic.jpg" id="profilePic" style="border: 1.2px solid #c6dfff;top:10px; max-width:90%;max-height:240px;"><br></center>
 
-      <div style="margin-top:15px; margin-left:4%;margin-right:4%; text-align: justify;text-justify: inter-word;"><p3 id="content">
-      Hello. I am a PhD candidate in the Department of Political Science at Stony Brook University.
-      I am also a <a href="https://healthpolicyresearch-scholars.org/meetthescholars/benjamin-carter/" target="_blank" rel="noopener noreferrer">Health Policy Research Scholar</a> with the Robert Wood Johnson Foundation.<br><p></p>
-      In my research, I use incentivized economic experiments along with other quantitative methods to study how the public think and vote about health insurance, taxation, and social spending. For more information, see Research.
-      <!--Click to play an economic <a class="redlink" href="https://www.stonybrook.edu/commcms/cbpe/games/CSS/Voting.T.CBPE.demo.html" target="_blank" rel="noopener noreferrer">voting game</a> I designed and programmed to study how people vote about taxes and redistribution with <a class="redlink" href="http://pdescioli.com/home.html" target="_blank" rel="noopener noreferrer">Peter DeScioli</a> and <a class="redlink" href="https://sites.google.com/view/alessandrodelponte/home" target="_blank" rel="noopener noreferrer">Alessandro Del Ponte</a>.--><br><br>
-
-      A copy of my CV can be found <a class="redlink" href="Carter_CV.pdf" target="_blank" rel="noopener noreferrer">here</a>.</p3><br>
-<div id="about2">
-      <br><p3><small><small><center>Photo Credit: (c) 2018 Flynn Larsen. Photo Courtesy of the Robert Wood Johnson Foundation.</div></small></small></p3></center>
-  </div></div>
-<div id="research" style="display:none">
-
-        <div style="margin-top:15px; width:100%; column-span: all;margin-left:4%;margin-right:4%;">
-        <p3 id="content">
-        <b><big>Dissertation</big></b></p3>
-        <table style="color: #585c60; padding-right:10px;  padding-top:13px; width: 100%; height:100%;     font: 15px/16px 'Trebuchet MS', Helvetica, sans-serif;">
-      <tr><td style=" vertical-align:top;width:90px; "><b>Title:</b></td><td style="padding-bottom:6px;">Do People Understand the Benefits of Government? Experiments on Voting, Taxes, and Health Care</td></tr>
-
-<td style=" vertical-align:top;width:90px; "><b>Summary:</b></td><td style="padding-bottom:6px;">My dissertation uses economic games I designed and programmed to answer several questions about why citizens oppose policies that would bring them benefits (for demos, see Games). For instance, do people understand who benefits from higher taxes? Do people find it more intuitive to tax only the rich? And, do people prefer lower taxes when they believe income is based on merit? Finally, I use a survey experiment to ask whether people feel differently about taxes and social spending if they imagine the citizen-government relationship is based on authority, a communal bond, or market efficiency. </td></tr>
-
-        <tr><td style=" vertical-align:top;width:90px; "><b>Committee: </b></td><td style="padding-bottom:6px;">Peter DeScioli, PhD (Chair)<br>Andrew Delton, PhD<br>John Ryan, PhD<br>Jason Barabas, PhD</td></tr>
-      </table></p4></div><br>
-      <p3 id="content">
-      <b><big>Peer Reviewed Publications</big></b></p3>
-        <div style="color: #585c60; padding-right:10px; padding-left:10px; margin-top:-5px;  font: 15px/16px 'Trebuchet MS', Helvetica, sans-serif;">
-        <br>Barabas, J., Carter, B., & Shan, K. (2020). Analogical Framing: How Policy Comparisons Alter Political Support for Health Care Reform. <i>American Politics Research, 48,</i> 596–611.  <a target="_blank" href="publications/Barabas_Carter_Shan_APR-2020.pdf">[pdf]</a>
-        <br><br></div>
-      <p3 id="content" style="margin-top:5px;">
-      <b><big>Works in Progress</big></b></p3>
-      <ul style="color: #585c60;  margin-top:4px; margin-right:10px; height:100%;     font: 15px/16px 'Trebuchet MS', Helvetica, sans-serif;">
-      <li style="padding:6px; padding-right:10px;">State Choices Affect Perceptions of Federal Policy: The Feedback Effects of Expanding Medicaid under the Affordable Care Act &nbsp; (<i>Manuscript in Prep</i>)</li>
-       <li style="padding:6px;padding-right:10px;">Do people understand who benefits from higher taxes?<br>With Peter DeScioli and Alessandro Del Ponte <br>(<i>Data Collection and Analysis</i>)</li>
-      <li style="padding:6px;padding-right:10px;">Is it more intuitive to tax only the rich?<br>With Peter DeScioli and Alessandro Del Ponte <br>(<i>Data Collection and Analysis</i>)</li></ul>
-
-
-  </div>
-<div id="games" style="display:none; color: #585c60; width: 100%; height:100%;     font: 15px/16px 'Trebuchet MS', Helvetica, sans-serif;">
+<div id="games" style=" color: #585c60; width: 100%; height:100%;     font: 15px/16px 'Trebuchet MS', Helvetica, sans-serif;" class="fadingIn">
 	 <div style="margin-top:15px; width:96%; column-span: all;margin-left:4%;margin-right:4%;">
 	    <p3 id="content" style="color:black">
       <b><big>Play games!</big></b></p3><br><br>

@@ -111,6 +111,25 @@ a:hover {
   text-decoration: none;
 
 }
+button:link {
+ color: #6e93ad;
+  background-color: transparent;
+  text-decoration: none;
+
+}
+button:visited {
+  color: #6e93ad;
+  background-color: transparent;
+  text-decoration: none;
+
+}
+
+button:hover {
+  color: #01ad55;
+  background-color: transparent;
+  text-decoration: none;
+
+}
 .lowerTbl{
   -moz-transition: all 0.25s ease;
   /* WebKit */
@@ -165,6 +184,22 @@ button:hover {
     font-style:bold;
     color: #6e93ad;
      border-radius: 5px;
+
+}
+.button:hover{
+  padding:0px;
+  padding-left:9px;
+  padding-right:9px;
+  color:white;
+background-color: transparent;
+border-radius: 5px;
+border-style:solid;
+border-width:0px;
+cursor: pointer;
+margin: 6px;
+text-align: justify;
+  font-style:bold;
+font: 18px/26px "Lucida Console", Monaco, monospace;
 
 }
 .buttonSelect{
@@ -285,6 +320,9 @@ p3: hover{
 
 
     <script>
+
+
+
 function hide(id)  {
     var divelement = document.getElementById(id);
      divelement.style.display = 'none';
@@ -329,31 +367,17 @@ function classChange(id, class1){
 <center>
 
     <tbody><div style="margin-top:20px;"></div>
-    <tr>
-      <td class="paddingCl" ><button id="aboutBtn"  class="buttonSelect button">About</button> </td><td class="paddingCl"><button id="researchBtn" onclick="location.href= 'research.html'" type="button" class="button">Research
-        </button></td><td class="paddingCl">
-        <button id="gamesBtn" onclick="location.href= 'games.html'" type="button" class="button">Games</button>
+    <center><tr>
+      <td class="paddingCl" ><button id="aboutBtn" onclick="location.href= 'index.html'" type="button" class="button">About</a> </td><td class="paddingCl"><button id="researchBtn" class="buttonSelect button">Research
+        </button></a></td><td class="paddingCl">
+        <a id="gamesBtn" onclick="location.href= 'games.html'" type="button" class="button">Games</a>
 
-		</center></td></tr></tbody></table></center></center>
+		</td></tr></center></tbody></table></center></center>
 <div style="margin-top:5px;"></div>
   <table class='lowerTbl' id="lowerTbl" style="max-width:600px; display:inline-block;">
 
   <tr style="width:100%"><td>
-    <div id="about" class="fadingIn"><center><div style="margin-top:10px;"></div>
-    <p class="lowerTitle" style="font-size:30px">Benjamin Carter</p>  <div style="margin-top:20px;"></div>
-    <img src="CSS/profilePic.jpg" id="profilePic" style="border: 1.2px solid #c6dfff;top:10px; max-width:90%;max-height:240px;"><br></center>
-
-      <div style="margin-top:15px; margin-left:4%;margin-right:4%; text-align: justify;text-justify: inter-word;"><p3 id="content">
-      Hello. I am a PhD candidate in the Department of Political Science at Stony Brook University.
-      I am also a <a href="https://healthpolicyresearch-scholars.org/meetthescholars/benjamin-carter/" target="_blank" rel="noopener noreferrer">Health Policy Research Scholar</a> with the Robert Wood Johnson Foundation.<br><p></p>
-      In my research, I use incentivized economic experiments along with other quantitative methods to study how the public think and vote about health insurance, taxation, and social spending. For more information, see Research.
-      <!--Click to play an economic <a class="redlink" href="https://www.stonybrook.edu/commcms/cbpe/games/CSS/Voting.T.CBPE.demo.html" target="_blank" rel="noopener noreferrer">voting game</a> I designed and programmed to study how people vote about taxes and redistribution with <a class="redlink" href="http://pdescioli.com/home.html" target="_blank" rel="noopener noreferrer">Peter DeScioli</a> and <a class="redlink" href="https://sites.google.com/view/alessandrodelponte/home" target="_blank" rel="noopener noreferrer">Alessandro Del Ponte</a>.--><br><br>
-
-      A copy of my CV can be found <a class="redlink" href="Carter_CV.pdf" target="_blank" rel="noopener noreferrer">here</a>.</p3><br>
-<div id="about2">
-      <br><p3><small><small><center>Photo Credit: (c) 2018 Flynn Larsen. Photo Courtesy of the Robert Wood Johnson Foundation.</div></small></small></p3></center>
-  </div></div>
-<div id="research" style="display:none">
+<div id="research" class="fadingIn">
 
         <div style="margin-top:15px; width:100%; column-span: all;margin-left:4%;margin-right:4%;">
         <p3 id="content">
@@ -379,22 +403,7 @@ function classChange(id, class1){
 
 
   </div>
-<div id="games" style="display:none; color: #585c60; width: 100%; height:100%;     font: 15px/16px 'Trebuchet MS', Helvetica, sans-serif;">
-	 <div style="margin-top:15px; width:96%; column-span: all;margin-left:4%;margin-right:4%;">
-	    <p3 id="content" style="color:black">
-      <b><big>Play games!</big></b></p3><br><br>
-  I design games in JavaScript and HTML for experiments about politics. The games run on all popular web browsers and can be embedded in survey software, such as Qualtrics. <br>
-	<br> Click below to play demos of a Taxes and Voting Game I programmed for my research with <a style="font-weight:normal" target="_blank" rel="noopener noreferrer" href="http://pdescioli.com/home.html">Peter DeScioli</a> and <a style="font-weight:normal" target="_blank" rel="noopener noreferrer" href="https://sites.google.com/view/alessandrodelponte">Alessandro Del Ponte</a>. In the game, players earn high or low income and then vote about the tax rate.
-	</div> <br><br><center>
-      <div style="margin-bottom:8px;"><i><b>Voting about sharing in a remote village:</b></i></div>
-      <a href ="vgVilDEMO.html" target="_blank" rel="noopener noreferrer">
-  <img class="gameImg" src="CSS/vgVilSS.jpg"  style="border:solid #092950 1px; border-radius:12px; max-width:90%;max-height:190px;"></a><br>
-<br><br>
-  <div style="margin-bottom:8px;"><i><b>Voting about taxes in a U.S. election:</b></i></div>
-  <a href="vgPolDEMO.html" target="_blank" rel="noopener noreferrer">
-<img class="gameImg" src="CSS/vgPolSS.jpg"  style="border:solid #092950 1px; border-radius:12px; max-width:90%;max-height:190px;"></a><br>
-</center><br><br>
-</div>
+
 
 </table>
         <br><img class="cubes"  src="CSS/cubes2.png" ><br><br><br>
