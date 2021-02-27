@@ -457,7 +457,6 @@ function eatBerries(){ //console.log('foundBerries[0] == ' + foundBerries[0] + '
 					element('final').innerHTML =totalPoints;
 					classChange('finalTbl', 'fadingIn', 'fadingOut');
 				}, 1000);
-			element("code").innerHTML = playerID;
 			} //end continueCheck
 		}, 3000);
     }
@@ -798,6 +797,7 @@ body {
 	border: 5px solid #286090;
 }
 .instructions{
+  z-index: 4;
  	font-family: Tahoma;	font-size:16px;
 	size: 12px;
 	position: relative;
@@ -1026,11 +1026,12 @@ body {
 	padding: 9px;
 }
 #popupTbl3{
-	position: relative;
+	position: absolute;
 	width: 700px;
 	height: 350px;
 	table-layout: fixed;
 	top: 42px;
+  left:33px;
 	border-color: #701300;
 	background-color: #fffaf0;
 	padding-top: 5px;
