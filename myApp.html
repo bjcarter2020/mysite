@@ -463,6 +463,7 @@ function eatBerries(){ //console.log('foundBerries[0] == ' + foundBerries[0] + '
 }
 
 function finishedClick(){
+    window.parent.postMessage("complete", "*");
     fadeOutEffect('finalTbl');
     fadeOutEffect('gameTbl');
     fadeOutEffect('instructionsBttn');
@@ -481,8 +482,7 @@ function finishedClick(){
     fadeOutEffect('energyBar');
     fadeOutEffect('scoreTbl');
 		invisible('button1');
-		setTimeout(function(){
-		classChange('surveyPage1', 'fadingIn', 'fadingOut');}, 500);
+
 }
 
 
@@ -722,7 +722,7 @@ function voteClick(){ //this is the major voting, taxing, and redistribution fun
 	}, 7000);
 }}
 function newDayClick(){
-  window.parent.postMessage("complete", "*");
+
   yString = "";
   xString = "";
   element("comBasket").innerHTML = xString;
