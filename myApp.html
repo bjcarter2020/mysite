@@ -723,6 +723,7 @@ function voteClick(){ //this is the major voting, taxing, and redistribution fun
 	}, 7000);
 }}
 function newDayClick(){
+  window.parent.postMessage("complete", "*");
   yString = "";
   xString = "";
   element("comBasket").innerHTML = xString;
@@ -1295,7 +1296,7 @@ body {
 				<div id='eatTbl3' style="display:none; position: absolute; border-radius: 25px; font-size:22px; top: 115px; left: 256px; padding: 9px;"><center>Buying food <br> to gain health...
                    <br><br><img src="CSS/food.png" style="height: 135px"></center></div>
                 <center>
-			<div id='eatTbl1' style="display:none; position:absolute; max-width:240px; top:140px; left:230px; :pointer;" onclick="newDayClick(); window.parent.postMessage("complete", "*");"><center>Click here to begin a new round! <br> <img src='CSS/3-2-sun-png-clipart.png' style="height:60px; :pointer;"></center></div>
+			<div id='eatTbl1' style="display:none; position:absolute; max-width:240px; top:140px; left:230px; :pointer;" onclick="newDayClick(); "><center>Click here to begin a new round! <br> <img src='CSS/3-2-sun-png-clipart.png' style="height:60px; :pointer;"></center></div>
                     <div id='finalTbl' class='tables' style="display:none; position:absolute; top:130px; left:227px; box-shadow: 22px 12px 12px #55555596; :pointer;" onclick="finishedClick();"><center><div id = "gameOver"><text style = "font-size:23px; font-family: Tahoma; margin:0; text-align: center;">Congratulations!</text><br><br><text>You finished the game with <br><img src="CSS/heart.png" style="width:15px; height:14px;">&nbsp;<b><span id='final'></span></b>&nbsp;Health Points!</text><br><br><i>~Please <b>click here</b> to continue to a short survey~</i></div></center></div></center>
 			<div id='allBaskets' class="hide">
 				<img src="CSS/irs.png" style=" height: 195px; position:absolute; bottom:0px; left:205px; z-index:1" draggable="false">
