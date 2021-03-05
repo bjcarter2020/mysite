@@ -214,7 +214,7 @@ button:hover {
     font-color: antiquewhite;
     cursor: pointer;
     margin: 6px;
-    text-align: justify;
+
     font: 18px/26px "Lucida Console", Monaco, monospace;
     font-style:bold;
     color: #6e93ad;
@@ -232,7 +232,7 @@ button:hover {
   border-width:0px;
   cursor: pointer;
   margin: 6px;
-  text-align: justify;
+
     font-style:bold;
   font: 18px/26px "Lucida Console", Monaco, monospace;
   }
@@ -269,7 +269,7 @@ button:hover {
     text-shadow: 0px 1px 0px #092950;
     font-size: 15px;
     margin: 0px;
-    text-align: justify;
+
     }
     p2{
       color: #585c60;
@@ -279,7 +279,7 @@ font: 16px/16px 'Trebuchet MS', Helvetica, sans-serif;
 
     }
     p3{
-      text-align: justify;
+
       font: 16px/24px "Trebuchet MS", Helvetica, sans-serif;
     }
     p4{
@@ -293,7 +293,7 @@ p3: hover{
   color:black;
 }
   #content{
-    text-align: justify;
+
   }
 .paddingCl{
   padding-left:10px;
@@ -397,7 +397,7 @@ function classChange(id, class1){
   <tr>
     <td class="paddingCl" ><button id="aboutBtn" onclick="location.href= '/'" type="button" class="button">About</button> </td><td class="paddingCl"><button id="researchBtn" onclick="location.href= '/research'" type="button" class="button">Research
       </button></td><td class="paddingCl">
-      <button id="gamesBtn"  type="button" class="buttonSelect button">Games</button>
+      <button id="gamesBtn"  type="button" class="buttonSelect button">Software</button>
 
 		</center></td></tr></tbody></table></center></center>
 <div style="margin-top:5px;"></div>
@@ -408,11 +408,11 @@ function classChange(id, class1){
 <div id="games" style=" color: #585c60; width: 100%; height:100%;     font: 15px/16px 'Trebuchet MS', Helvetica, sans-serif;" class="fadingIn">
 	 <div style="margin-top:15px; width:96%; column-span: all;margin-left:4%;margin-right:4%;">
 	    <p3 id="content" style="color:black">
-      <b><big>Experimental Games</big></b></p3><br><br>
-  I design and program games in JavaScript and HTML for experiments about politics. The games run on all popular desktop web browsers and can be embedded in survey software, such as Qualtrics. Click below to learn more about hosting custom web applications on survey software.
+      <b><big>Custom Web Applications</big></b></p3><br><br>
+  I design and program games in JavaScript for experiments about politics.<br> <br>The games run on all popular desktop web browsers and can be embedded in survey software, such as Qualtrics. Click below to learn more about hosting custom web applications on survey software.
   <ul>
-    <li><a id="glink" onclick="show('integration'), classChange('game1', 'disabled'), classChange('game2', 'disabled'), classChange('glink', 'disabled'), classChange('lowerTbl', 'dimmer'), classChange('integration', 'fadingIn2')" style="font-weight:normal;">How can researchers use their web applications with popular survey platforms?</a></li></ul>
-<br><b><big><i><div style="color: black;">Play games!</i></big></b></p3><br>
+    <li><a id="glink" onclick="show('integration'), classChange('game1', 'disabled'), classChange('game2', 'disabled'), classChange('glink', 'disabled'), classChange('lowerTbl', 'dimmer'), classChange('integration', 'fadingIn2')" style="font-weight:normal;">How can researchers integrate their custom web applications with popular survey platforms?</a></li></ul>
+<br><b><big><i><div style="color: black;">Play games!</div></i></big></b></p3>
   <br> Click below to play demos of a Taxes and Voting Game I programmed for my research with <a id="glink" class="colleagues" style="font-weight:normal; " target="_blank" rel="noopener noreferrer" href="http://pdescioli.com/home.html">Peter DeScioli</a> and <a id="glink" class="colleagues" style="font-weight:normal; " target="_blank" rel="noopener noreferrer" href="https://sites.google.com/view/alessandrodelponte">Alessandro Del Ponte</a>. In the game, players earn high or low income and then vote on the tax rate.
 	</div> <br><br><center>
       <div style="margin-bottom:8px;"><i><b>Voting about sharing in a remote village:</b></i></div>
@@ -427,11 +427,12 @@ function classChange(id, class1){
 
 </table>
   <div id="integration" class="lowerTbl2 Absolute-Center" style="border-color:#4983c7; max-width:400px; width:75%; text-align: left; display:none;">
-  <p3 style="text-align: left;">  <center><b>How can researchers use their web applications with popular survey platforms?</b></center></p3>
-  <p2>  <ul>
+  <p3 style="text-align: left;"> <big><center><b>Running custom software on representative surveys:</b></center></big></p3>
+  <p2> Experimental researchers can embed their custom software into survey questions using some simple JavaScript. Below,I provide a written guide, along with a demonstration of a working integeration and a template file for download.
+    <ul>
       <li> Integrating Web Applications with Popular Survey Software [draft]</li><br>
       <li> Demonstration of hosting a web application on Qualtrics. <b><a target="_blank" rel="noopener noreferrer" href="https://stonybrookuniversity.co1.qualtrics.com/jfe/form/SV_1XEB9Yx5rk3djpj?fbclid=IwAR1NT-Ye_g5zr9nA8IU4P63C8vBwUrVZPJlXt1fAUS-cRFyAe4TqjEfDsjU">[link]</a></b></li><br>
-      <li> Template for integrating web applications with Qualtrics. [file] </li>
+      <li> Template for integrating web applications with Qualtrics. <a  href="https://benjaminjcarter.com/gamesfiles/Integrating_Web_Applications_Example.qsf" download="IntegratingWebApps">[file]</a> </li>
     </ul></p2>
      <button onclick="classChange('integration', 'hide'), hide('integration'),classChange('game1', 'enabled'), classChange('game2', 'enabled'), classChange('glink', 'enabled'), classChange('lowerTbl', 'normal') ">Close</button></div>
         <br><img class="cubes"  src="CSS/cubes2.png" ><br><br><br>
