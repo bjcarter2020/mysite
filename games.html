@@ -59,7 +59,25 @@ transition: all .7s ease;
 	/* Standard */
 	transform: rotate(-90deg) scale(1.3);
     }
+.colleagues{
+  color: #3e5f80 !important;
+}
+.colleagues:hover{
+    color:#396eaf !important;
+  }
+.dimmer{
+  filter: brightness(0.8);
+}
+.normal{
+  filter: brightness(1);
+}
+.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+.enabled{
 
+}
     .gameImg{
     filter: brightness(.95);
      /* Firefox */
@@ -84,7 +102,7 @@ transition: all .7s ease;
     	/* Standard */
     	transform: scale(1.03);
         }
-    a{
+    a{  color: #396eaf;
 	  font-weight: bold;
       /* Firefox */
      -moz-transition: all 0.2s ease;
@@ -94,6 +112,9 @@ transition: all .7s ease;
      -o-transition: all 0.2s ease;
      /* Standard */
      transition: all 0.2s ease;
+    }
+    a:hover{
+          cursor:pointer;
     }
 a:link {
   color: #396eaf;
@@ -116,7 +137,7 @@ a:hover {
 }
 .lowerTbl{
 
-  -moz-transition: all 0.25s ease;
+  -moz-transition: all .25s ease;
   /* WebKit */
   -webkit-transition: all 0.25s ease;
   /* Opera */
@@ -135,6 +156,33 @@ box-shadow: 4px 5px 8px 4px #173150;
     margin-bottom:40px;
 
 
+}
+.lowerTbl2{
+
+  -moz-transition: all 1.25s ease;
+  /* WebKit */
+  -webkit-transition: all 1.25s ease;
+  /* Opera */
+  -o-transition: all 1.25s ease;
+  /* Standard */
+  transition: all 1.25s ease;
+
+    border: solid 3px #475290;
+width:90%;
+max-width:645px;
+        background-color: #e2efff;
+    border-radius:12px;
+
+box-shadow: 6px 6px 32px 8px #000000a1;
+         padding: 18px;
+    margin-bottom:40px;
+
+
+}
+.Absolute-Center {
+  margin: auto;
+  position: absolute;
+  top: 224; left: 0;  right: 0;
 }
 button:hover {
   color:white;
@@ -216,7 +264,7 @@ button:hover {
     }
 
     p1{
-            font: 12px/22px "Trebuchet MS", Helvetica, sans-serif;
+            font: 15px/22px "Trebuchet MS", Helvetica, sans-serif;
     color:gainsboro;
     text-shadow: 0px 1px 0px #092950;
     font-size: 15px;
@@ -224,17 +272,15 @@ button:hover {
     text-align: justify;
     }
     p2{
-            font: 10px/16px "Lucida Console", Monaco, monospace;
-    color:floralwhite;
-    text-shadow: 0px 1px 0px #092950;
-    font-size: 15px;
-    margin:4px;
-    margin-top:5px;
-    text-align: justify;
+      color: #585c60;
+width: 100%;
+height: 100%;
+font: 16px/16px 'Trebuchet MS', Helvetica, sans-serif;
+
     }
     p3{
       text-align: justify;
-      font: 15px/24px "Trebuchet MS", Helvetica, sans-serif;
+      font: 16px/24px "Trebuchet MS", Helvetica, sans-serif;
     }
     p4{
       font: 15px/16px "Trebuchet MS", Helvetica, sans-serif;
@@ -287,6 +333,12 @@ p3: hover{
 	animation-name: fadeIn ;!important;
 	animation-duration: 0.5s ;!important;
 }
+.fadingIn2{
+	display:inline-block !important;
+	-webkit-animation: fadeIn 0.25s linear !important;
+	animation-name: fadeIn ;!important;
+	animation-duration: 0.25s ;!important;
+}
 .hide{
     display: none
 }
@@ -319,7 +371,7 @@ function selected(id, frameId){
 }
 function classChange(id, class1){
 	var divelement =  document.getElementById(id);
-	divelement.classList.remove('hide', 'fadingIn');
+	divelement.classList.remove('hide', 'fadingIn', 'fadingIn2', 'dimmer', 'normal', 'disabled');
 	divelement.classList.add(class1);
 
 }
@@ -356,21 +408,32 @@ function classChange(id, class1){
 <div id="games" style=" color: #585c60; width: 100%; height:100%;     font: 15px/16px 'Trebuchet MS', Helvetica, sans-serif;" class="fadingIn">
 	 <div style="margin-top:15px; width:96%; column-span: all;margin-left:4%;margin-right:4%;">
 	    <p3 id="content" style="color:black">
-      <b><big>Play games!</big></b></p3><br><br>
-  I design games in JavaScript and HTML for experiments about politics. The games run on all popular web browsers and can be embedded in survey software, such as Qualtrics. <br>
-	<br> Click below to play demos of a Taxes and Voting Game I programmed for my research with <a style="font-weight:normal" target="_blank" rel="noopener noreferrer" href="http://pdescioli.com/home.html">Peter DeScioli</a> and <a style="font-weight:normal" target="_blank" rel="noopener noreferrer" href="https://sites.google.com/view/alessandrodelponte">Alessandro Del Ponte</a>. In the game, players earn high or low income and then vote about the tax rate.
+      <b><big>Experimental Games</big></b></p3><br><br>
+  I design and program games in JavaScript and HTML for experiments about politics. The games run on all popular desktop web browsers and can be embedded in survey software, such as Qualtrics. Click below to learn more about hosting custom web applications on survey software.
+  <ul>
+    <li><a id="glink" onclick="show('integration'), classChange('game1', 'disabled'), classChange('game2', 'disabled'), classChange('glink', 'disabled'), classChange('lowerTbl', 'dimmer'), classChange('integration', 'fadingIn2')" style="font-weight:normal;">How can researchers use their web applications with popular survey platforms?</a></li></ul>
+<br><b><big><i><div style="color: black;">Play games!</i></big></b></p3><br>
+  <br> Click below to play demos of a Taxes and Voting Game I programmed for my research with <a id="glink" class="colleagues" style="font-weight:normal; " target="_blank" rel="noopener noreferrer" href="http://pdescioli.com/home.html">Peter DeScioli</a> and <a id="glink" class="colleagues" style="font-weight:normal; " target="_blank" rel="noopener noreferrer" href="https://sites.google.com/view/alessandrodelponte">Alessandro Del Ponte</a>. In the game, players earn high or low income and then vote on the tax rate.
 	</div> <br><br><center>
       <div style="margin-bottom:8px;"><i><b>Voting about sharing in a remote village:</b></i></div>
-      <a href ="vgVilDEMO.html" target="_blank" rel="noopener noreferrer">
+      <a id="game1" href ="vgVilDEMO.html" target="_blank" rel="noopener noreferrer">
   <img class="gameImg" src="CSS/vgVilSS.jpg"  style="border:solid #092950 1px; border-radius:12px; max-width:90%;max-height:190px;"></a><br>
 <br><br>
   <div style="margin-bottom:8px;"><i><b>Voting about taxes in a U.S. election:</b></i></div>
-  <a href="vgPolDEMO.html" target="_blank" rel="noopener noreferrer">
+  <a id="game2" href="vgPolDEMO.html" target="_blank" rel="noopener noreferrer">
 <img class="gameImg" src="CSS/vgPolSS.jpg"  style="border:solid #092950 1px; border-radius:12px; max-width:90%;max-height:190px;"></a><br>
 </center><br><br>
 </div>
 
 </table>
+  <div id="integration" class="lowerTbl2 Absolute-Center" style="border-color:#4983c7; max-width:400px; width:75%; text-align: left; display:none;">
+  <p3 style="text-align: left;">  <center><b>How can researchers use their web applications with popular survey platforms?</b></center></p3>
+  <p2>  <ul>
+      <li> Integrating Web Applications with Popular Survey Software [draft]</li><br>
+      <li> Demonstration of hosting a web application on Qualtrics. <b><a target="_blank" rel="noopener noreferrer" href="https://stonybrookuniversity.co1.qualtrics.com/jfe/form/SV_1XEB9Yx5rk3djpj?fbclid=IwAR1NT-Ye_g5zr9nA8IU4P63C8vBwUrVZPJlXt1fAUS-cRFyAe4TqjEfDsjU">[link]</a></b></li><br>
+      <li> Template for integrating web applications with Qualtrics. [file] </li>
+    </ul></p2>
+     <button onclick="classChange('integration', 'hide'), hide('integration'),classChange('game1', 'enabled'), classChange('game2', 'enabled'), classChange('glink', 'enabled'), classChange('lowerTbl', 'normal') ">Close</button></div>
         <br><img class="cubes"  src="CSS/cubes2.png" ><br><br><br>
 
 
