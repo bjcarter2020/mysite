@@ -722,8 +722,8 @@ function voteClick(){ //this is the major voting, taxing, and redistribution fun
 
             // redistribution calculations begin here
 
-    setTimeout(function(){fadeOutEffect('dist');}, 6000);
-    setTimeout(function(){classChange('dist2', 'fadingIn', 'fadingOut'); }, 7100);
+    setTimeout(function(){fadeOutEffect('dist');}, 7000);
+    setTimeout(function(){classChange('dist2', 'fadingIn', 'fadingOut'); }, 7900);
     setTimeout(function(){
 
 		collect();
@@ -739,11 +739,11 @@ function voteClick(){ //this is the major voting, taxing, and redistribution fun
 		villageRedistribute();
 		element('foundBerry').innerHTML = ' $' +foundBerries3[0];
 		element('foundBerries2').innerHTML = ' $' +foundBerries3[0];
-		setTimeout(function() {fadeOutEffect('allBaskets'); fadeOutEffect('dist2'); }, 5000);
+		setTimeout(function() {fadeOutEffect('allBaskets'); fadeOutEffect('dist2'); }, 7000);
 		setTimeout(function() {classChange('dist5', 'fadingIn', 'fadingOut');}, 1500);
 		setTimeout(function() {classChange('dist6', 'fadingIn', 'fadingOut');}, 4000);
-		setTimeout(function() {classChange('eatTbl3', 'fadingIn', 'fadingOut');}, 6000);
-		setTimeout(function(){eatBerries();}, 7000);
+		setTimeout(function() {classChange('eatTbl3', 'fadingIn', 'fadingOut');}, 8000);
+		setTimeout(function(){eatBerries();}, 8000);
 		vBasketCalc();
 	}, 7000);
 }}
@@ -1101,12 +1101,13 @@ body {
 #finalTbl{
     position: relative;
     width: 250px;
-    height: 200px;
+    height: 230px;
     top: 150px;
 	border-color:darkgreen;
     background-color:darkseagreen;
     padding: 18px;
     z-index: 1;
+    margin-top:-25px;
 }
 #blueBorder{
 	border-style: solid;
@@ -1253,7 +1254,7 @@ body {
 				</div>
 				<div id= "instructions5" class = "instructions">
 					<h2 style= "text-align:center";><b>Distributing Benefits and Buying Food</b></h2>
-				<br>After voting, the money collected by the government is divided equally among the nine citizens and distributed to their bank accounts.
+				<br>After collecting taxes, the government equally divides the money among the nine citizens.
         <br><center><img src="CSS/irs.png" style="width:250px;"></center>
           <br>At the end of the round, each citizen spends their money on food to gain health points. Then they continue to the next round for a total of 10 rounds.
 					<br><br><br><center> <button  id='button3d1' style=" bottom: 38;" class="lowerTitleA"  onclick="turnPage('instructions5','instructions4');"><-- Back</button>
@@ -1264,12 +1265,12 @@ body {
 					<h2 style= "text-align:center";><b>Summary</b></h2>
 					<ul><li>  You start with 60 health points and you lose 35 each round due to metabolism.</li>
                         <li> Each round, you have equal chances of earning $25 or $50.</li>
-						<li>You and the other citizens vote for the Republican candidate who proposes low taxes ($1 per $5 of income) or the Democratic candidate who proposes high taxes ($3 per $5 of income).</li>
-						<li>The candidate that receives the most votes is elected president and their tax rule is enacted. Money is collected by the government according to the rule and then it is divided equally among the nine citizens.</li>
-						<li>After the money is divided, you buy food to add to your health and proceed to the next round.</li>
+						<li>You and the other citizens vote for the Republican candidate proposing low taxes ($1 per $5 of income) or the Democratic candidate proposing high taxes ($3 per $5 of income). </li>
+						<li>The candidate who receives the most votes is elected president and their tax rule is enacted.  The government collects taxes according to the rule and then it equally divides the money among the nine citizens.</li>
+						<li>Then, you buy food to add to your health and proceed to the next round.</li>
 						<li>The game continues for 10 rounds. You will earn 1 cent per point of your final health score, paid to you as a bonus through your panel company.<br><br>
 					</ul>
-					<p>You can refer to these instructions at any point during the game by clicking the "Instructions" button.</p>
+					<p>You can refer to these instructions during the game by clicking the "Instructions" button.</p>
 					<center><button class="lowerTitleA" id='button4d2' style=" bottom: 38; " onclick="turnPage('instructions6','instructions5');"><-- Back</button>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<button id="buttonClose" style="bottom: 38;" class="lowerTitleA" onclick="hide('instructions6'); show('gameTbl'); show('energyBar'); show('scoreTbl');">Close</button>
@@ -1320,7 +1321,9 @@ body {
                    <br><br><img src="CSS/food.png" style="height: 135px"></center></div>
                 <center>
 			<div id='eatTbl1' style="display:none; position:absolute; max-width:240px; top:140px; left:230px; :pointer;" onclick="newDayClick();"><center>Click here to begin a new round! <br> <img src='CSS/3-2-sun-png-clipart.png' style="height:60px; :pointer;"></center></div>
-                    <div id='finalTbl' class='tables' style="display:none; position:absolute; top:130px; left:227px; box-shadow: 22px 12px 12px #55555596; :pointer;" onclick="finishedClick();"><center><div id = "gameOver"><text style = "font-size:23px; font-family: Tahoma; margin:0; text-align: center;">Congratulations!</text><br><br><text>You finished the game with <br><img src="CSS/heart.png" style="width:15px; height:14px;">&nbsp;<b><span id='final'></span></b>&nbsp;Health Points!</text><br><br><i>~Please click here to continue to a short survey~</i></div></center></div></center>
+                    <div id='finalTbl' class='tables' style="display:none; position:absolute; top:130px; left:227px; box-shadow: 22px 12px 12px #55555596; :pointer;" ><center><div id = "gameOver"><text style = "font-size:23px; font-family: Tahoma; margin:0; text-align: center;">
+                      Congratulations!</text><br><br><text>You finished the game with <br><img src="CSS/heart.png" style="width:15px; height:14px;">&nbsp;<b><span id='final'></span></b>&nbsp;Health Points!</text><br><br>
+                      Please answer a few questions. <br><br> <button onclick="finishedClick();">Continue</button> </div></center></div></center>
 			<div id='allBaskets' class="hide">
 				<img src="CSS/irs.png" style=" height: 195px; position:absolute; bottom:0px; left:205px; z-index:1" draggable="false">
 				<div id="comBasket" style="position:absolute; z-index: 2; bottom:60px; left:250px; border: 0px solid blue;"></div>
@@ -1373,10 +1376,10 @@ body {
 					<center><font class="lowerTitleB"><div id="voteHead">Results: <b><span id="voteLess" style="color:firebrick"></span></b> for Republican and <b><span id="voteMore" style="color:#337ab7"></span></b> for Democrat.  <b>&nbsp;&nbsp;&nbsp;<br>Outcome: </b><div id="outcome" style="visibility:hidden;"><span id="outcomeVote"></span>&nbsp;<img id="animal" src="CSS/dem.png" style="width: 16px;"> </div> <br></div></font></center>
 				</div>
 				<div id="dist" style="display:none; border-color: #5a90b8; border-radius: 100px;">
-                    <div style="max-width:250px; margin-top:10px; margin-left: 0px; padding-top:5px; border-color: #5a90b8; border-radius: 100px;"><center><b>$<span id="sharedBerries"></span></b> is collected by the government.</center></div>
+                    <div style="max-width:250px; margin-top:10px; margin-left: 0px; padding-top:5px; border-color: #5a90b8; border-radius: 100px;"><center>The government collects <b>$<span id="sharedBerries"></span></b> in taxes.</center></div>
 				</div>
 				<div id="dist2" style="display:none; border-color: #5a90b8; border-radius: 100px;">
-					<div style="max-width:250px; margin-top:10px;margin-left:0px; padding-top:5px; border-color: #5a90b8; border-radius: 100px;"><center><b>$<span id="distVal"></span></b> is distributed to every citizen. </center></div>
+					<div style="max-width:250px; margin-top:10px;margin-left:0px; padding-top:5px; border-color: #5a90b8; border-radius: 100px;"><center>The government distributes <b>$<span id="distVal"></span></b> to every citizen. </center></div>
 				</div>
 			</div>
 				<div id="dist3" style="display: none;background-color: #fbfdff;position: absolute;width: 200px;top: 125px;border-width: 2px;border-color: rgb(51, 122, 183);border-radius: 25px;right: 5px;border-style: dashed;">
@@ -1448,12 +1451,11 @@ body {
 					<option value="5">Moderately Conservative</option>
 					<option value="6">Very Conservative</option>
 				</select></p>
-				<p><b>6.</b>Who did you plan to vote for in the presidential election (whether or not you were able to vote)?
+				<p><b>6.</b>Who did you vote for in the 2020 presidential election?
         <select id="q7"><option selected value="blank" ></option>
           <option value="biden">Joe Biden</option>
           <option value="trump">Donald Trump</option>
-          <option value="other">Other</option>
-          <option value="dnv">I did not plan to vote</option>
+          <option value="other">Other or no one</option>
         </select></p>
 				<p><b>7.</b> What is your sex?
 				<select id="q8"><option selected value="blank" ></option>
