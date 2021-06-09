@@ -234,7 +234,7 @@ function search1(){
     element("findBasket").innerHTML =  x1String;
     element('foundBerry').innerHTML = ' $' +iBasket;
     element('foundBerries2').innerHTML = ' $' +iBasket;
-    element('p1Berries').innerHTML = '$' + iBasket;
+    element('p1Berries').innerHTML = ' $' + iBasket;
 	if (iBasket < foundBerries[0]){
          search1();
         }
@@ -491,6 +491,7 @@ function finishedClick(){
     var BASE_URL = 'https://sharinggame10.firebaseio.com/';
     var lobbyRef = new Firebase(BASE_URL);
     var sharingData = {};
+
     //This sends data to firebase via the push command
 function submitSurvey(){
   window.parent.postMessage("complete", "*");
@@ -503,6 +504,7 @@ function submitSurvey(){
     survey.Q3 = element("q3").value;
     survey.Q4 = element("q4").value;
     survey.Q5 = element("q5").value;
+    survey.Q6 = element("q6").value;
     survey.Q7 = element("q7").value;
     survey.Q8 = element("q8").value;
     survey.Q9 = element("q9").value;
@@ -541,7 +543,7 @@ function getData(){
 		csvString += "player, MTurkId, correctHigh, correctLow, DecisionHow,GovBenefits,GovTaxes,PayTaxes,Ideology,PID,President,Gender,Age,Ethnicity,AnyComments,FinalScore,Time,gameVersion\n";
 		for (x in data){
 			if(data[x].survey != undefined){
-				csvString += data[x].survey.playerID + "," + data[x].survey.MTurkID + "," + data[x].survey.CorrectHigh + "," + data[x].survey.CorrectLow + "," +  data[x].survey.Q1 + "," + data[x].survey.Q2 + "," + data[x].survey.Q3 + "," + data[x].survey.Q4 + "," + data[x].survey.Q5 + "," +  data[x].survey.Q7 + "," + data[x].survey.Q8 + "," + data[x].survey.Q9 + "," + data[x].survey.Q10 + "," + data[x].survey.Q11 + ","+ data[x].survey.finalScore + "," + data[x].survey.TimeStamp +  "," + data[x].survey.gameVersion + "\n";
+				csvString += data[x].survey.playerID + "," + data[x].survey.MTurkID + "," + data[x].survey.CorrectHigh + "," + data[x].survey.CorrectLow + "," +  data[x].survey.Q1 + "," + data[x].survey.Q2 + "," + data[x].survey.Q3 + "," + data[x].survey.Q4 + "," + data[x].survey.Q5 + "," + data[x].survey.Q6 + "," +  data[x].survey.Q7 + "," + data[x].survey.Q8 + "," + data[x].survey.Q9 + "," + data[x].survey.Q10 + "," + data[x].survey.Q11 + ","+ data[x].survey.finalScore + "," + data[x].survey.TimeStamp +  "," + data[x].survey.gameVersion + "\n";
 			     }
 		      }
 		//if this breaks, put into a setTimeout
@@ -1217,7 +1219,7 @@ body {
 					You are one of nine citizens who survive by earning money <img src="CSS/dollar.png" style="width:22px;"> to boost their health <img src="CSS/heart.png" style="width:15px; height:14px;">.
 					<br><br>Each round, the citizens set out on their own to find jobs that earn them money. Afterwards, they meet to vote for the next president based on each candidate's policy for taxing income.
 					<br><br>You will be one of the citizens and the other eight citizens will be played by the computer. The computer will make decisions for the citizens similar to how people make decisions in this game.
-					<br><br>At the end of the game, you will earn <font color="green">1 cent</font> per point of your final health score. This money will be paid to you as a <b>bonus</b> through your panel company.
+					<br><br>At the end of the game, you will earn <font color="green">1 cent</font> per point of your final health score. This money will be paid to you as a <b>bonus</b> through your survey firm.
 					<center><br><button  id='button1' style="bottom: 38px; "class="lowerTitleA" onclick="turnPage('instructions1','instructions2');"> Next --></button></center>
 				</div>
 				<div id= "instructions2" class = "instructions">
@@ -1246,7 +1248,7 @@ body {
 						<ul><li>Republican Candidate <img src="CSS/rep.png" style="width: 19px;">, Low Taxes: Each citizen is taxed $1 per $5 they earn (20%).</li>
 							<li>Democratic Candidate <img src="CSS/dem.png" style="width: 19px;">, High Taxes: Each citizen is taxed $3 per $5 they earn (60%).</li>
 						</ul>
-					<p>The candidate that receives the most votes is elected president and their tax rule is enacted. The rule is automatically applied to all of the citizens by deducting money from each citizen's bank account according to the rule.</p>
+					<p>The candidate who receives the most votes is elected president and their tax rule is enacted. The rule is automatically applied to all of the citizens by deducting money from each citizen's bank account according to the rule.</p>
 
 					<br><center> <button  id='button31' style=" bottom: 38;" class="lowerTitleA"  onclick="turnPage('instructions4','instructions3'); "> <-- Back</button>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -1267,8 +1269,8 @@ body {
                         <li> Each round, you have equal chances of earning $25 or $50.</li>
 						<li>You and the other citizens vote for the Republican candidate proposing low taxes ($1 per $5 of income) or the Democratic candidate proposing high taxes ($3 per $5 of income). </li>
 						<li>The candidate who receives the most votes is elected president and their tax rule is enacted.  The government collects taxes according to the rule and then it equally divides the money among the nine citizens.</li>
-						<li>Then, you buy food to add to your health and proceed to the next round.</li>
-						<li>The game continues for 10 rounds. You will earn 1 cent per point of your final health score, paid to you as a bonus through your panel company.<br><br>
+						<li>Then you buy food to add to your health and proceed to the next round.</li>
+						<li>The game continues for 10 rounds. You will earn 1 cent per point of your final health score, paid to you as a bonus through your survey firm.<br><br>
 					</ul>
 					<p>You can refer to these instructions during the game by clicking the "Instructions" button.</p>
 					<center><button class="lowerTitleA" id='button4d2' style=" bottom: 38; " onclick="turnPage('instructions6','instructions5');"><-- Back</button>
@@ -1451,22 +1453,32 @@ body {
 					<option value="5">Moderately Conservative</option>
 					<option value="6">Very Conservative</option>
 				</select></p>
-				<p><b>6.</b>Who did you vote for in the 2020 presidential election?
+        <p><b>6.</b> Generally speaking, are you a Democrat, Republican, Independent, or something else?
+        <select id="q6"><option selected value="blank" ></option>
+          <option value="0">Democrat</option>
+          <option value="1">Republican</option>
+          <option value="2">Independent, but closer to Democrat than Republican</option>
+          <option value="3">Independent, but closer to Republican than Democrat</option>
+          <option value="4">Independent, no preference for Democrat or Republican</option>
+          <option value="5">Other
+        </select></p>
+				<p><b>7.</b>Who did you vote for in the 2020 presidential election?
         <select id="q7"><option selected value="blank" ></option>
           <option value="biden">Joe Biden</option>
           <option value="trump">Donald Trump</option>
           <option value="other">Other or no one</option>
         </select></p>
-				<p><b>7.</b> What is your sex?
+				<p><b>8.</b> What is your sex?
 				<select id="q8"><option selected value="blank" ></option>
 					<option value="Female">Female</option>
 					<option value="Male">Male</option>
+          <option value="Other">Other</option>
 				</select></p>
-				<p><b>8.</b> What is your age? <input type="number" id="q9" value="" style="width:50px;"></p>
-				<p><b>9.</b> What is your ethnicity? <input type="text" id="q10"></p>
-				<p><b>10.</b> Please write any other comments about the study below.</p>
+				<p><b>9.</b> What is your age? <input type="number" id="q9" value="" style="width:50px;"></p>
+				<p><b>10.</b> What is your race and ethnicity? <input type="text" id="q10"></p>
+				<p><b>11.</b> Please write any other comments about the study below.</p>
 				<textarea id="q11" rows="2" cols="55" ></textarea>
-				<p><br>Please submit this survey to receive your bonus through your panel company.</p>
+
 				<button type="button" onclick="turnPage('surveyPage3','surveyPage2')" class="btn btn-primary">Previous</button>
 				<button type="button" class="btn btn-primary" onclick="submitSurvey();">Submit</button>
 			</div>
