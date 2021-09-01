@@ -10,6 +10,11 @@
 <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 <script>
 //Global Variables Declared
+
+var isMobile = false; //initiate as false
+// device detection
+
+
 var mTurkVersion = false;
 var playerID = "ID" + Math.random().toString().substring(2,7);
 window.parent.postMessage(playerID, "*");
@@ -63,6 +68,18 @@ var gameVersion = "vgVil";
 
 function element(id){ return document.getElementById(id); } //To Simplify code
 window.onload=function(){ //As window loads
+
+
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+  isMobile = true;
+  }
+
+    if(isMobile == true){
+    show("mobile");	//MTurk-mode
+
+  } else {
+    element("mobile").style.display="none";
+  }
 
     if(mTurkVersion == true){
 		show("welcome");	//MTurk-mode
@@ -792,6 +809,17 @@ body {
 	z-index: 8;
 	border: 5px solid #286090;
 }
+.greetings2 {
+	position: absolute;
+  top:0%;
+  height: 1000px;
+  width: 1000px;
+	font-size:16px;
+    background-color:#fffaf0;
+    text-align:center;
+	z-index: 8;
+	border: 5px solid #286090;
+}
 .instructions{
  	font-family: Tahoma;	font-size:16px;
 	size: 12px;
@@ -898,6 +926,7 @@ body {
 		-webkit-transform: scale(1);
 	}
 }
+
 .tables {
 	border-radius: 25px;
 	border-style: solid;
@@ -1153,6 +1182,11 @@ body {
   	<p> Please enter your Amazon Mechanical Turk Worker ID:</p><input id="MTurkId" >
   	<button type="button" class="btn btn-success" onclick="getMTurkId();">Submit</button>
   	<p id="validation" style="color:orangeRed"></p>
+  </div>
+
+  <div id="mobile" name="mobileNAME" class="greetings2" style="display:none">
+  	<h2 style="color:#337ab7; font-size:60px;"><br><br><br>Welcome to the Voting Game</h2>
+  	<p style="font-size:44px; padding:50px;"> This demo has not been formatted for mobile devices. Please open the game on a desktop or laptop computer.
   </div>
 
   		<div id ="startPage" style = "position:relative; margin: auto; width: 1020px;">
