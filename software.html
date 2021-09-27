@@ -33,32 +33,36 @@ background-color: #1168d2;
     top: 0;
        left: 0;
     box-shadow: 1px 1px 2px #1f3a5a;}
-.cubes{
-filter: brightness(1.35);
-  opacity:0.8;
-width: 80px;
-margin-top:-30px;
- z-index:-1;
- /* Firefox */
--moz-transition: all .7s ease;
-/* WebKit */
--webkit-transition: all .7s ease;
-/* Opera */
--o-transition: all .7s ease;
-/* Standard */
-transition: all .7s ease;
--webkit-user-drag: none;
-}
-.cubes:hover{
-  -moz-transform: rotate(-90deg) scale(1.3) ;
-
-	/* WebKit */
-	-webkit-transform:  rotate(-90deg) scale(1.3);
-	/* Opera */
-	-o-transform: rotate(-90deg) scale(1.3);
-	/* Standard */
-	transform: rotate(-90deg) scale(1.3);
+    .cubes{
+    filter: brightness(1.35);
+      opacity:0.8;
+    width: 80px;
+    margin-top:-30px;
+     z-index:-1;
+     /* Firefox */
+    -moz-transition: all .7s ease;
+    /* WebKit */
+    -webkit-transition: all .7s ease;
+    /* Opera */
+    -o-transition: all .7s ease;
+    /* Standard */
+    transition: all .7s ease;
+    -webkit-user-drag: none;
     }
+    .cubes:hover{
+      -moz-transform: rotate(-90deg) scale(1.3) ;
+      filter:brightness(15.5);
+
+    	/* WebKit */
+    	-webkit-transform:  rotate(-90deg) scale(1.3);
+        filter:brightness(15.5);
+    	/* Opera */
+    	-o-transform: rotate(-90deg) scale(1.3);
+        filter:brightness(15.5);
+    	/* Standard */
+    	transform: rotate(-90deg) scale(1.3);
+        filter:brightness(15.5);
+        }
 .colleagues{
   color: #3e5f80 !important;
 }
@@ -436,7 +440,7 @@ function classChange(id, class1){
       <li> <b>Template:</b> Integrating web applications with Qualtrics. <a  href="https://benjaminjcarter.com/documents/Integrating_Web_Applications_Example.qsf" download="IntegratingWebApps">[file]</a> </li>
     </ul></p2>
      <button onclick="classChange('integration', 'hide'), hide('integration'),classChange('game1', 'enabled'), classChange('game2', 'enabled'), classChange('glink', 'enabled'), classChange('lowerTbl', 'normal') ">Close</button></div>
-        <br><img class="cubes"  src="CSS/cubes2.png" ><br><br><br>
+        <br><img class="cubes"  src="CSS/cubes21.png" ><br><br><br>
 
 
 
