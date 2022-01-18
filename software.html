@@ -1,0 +1,446 @@
+<html>
+<head><title>Benjamin Carter</title> <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<style type="text/css">
+    header {
+    background-image: url(amFlag.jpg);
+    padding: 15px;
+    color:floralwhite;
+
+
+    font:  24px bold "Lucida Console", Monaco, monospace;
+    text-shadow: 1px 1px firebrick;
+        line-height: 50%;
+}
+
+body {
+  display:none;
+          background-color: #3968a2;
+
+                  }
+#banner {
+background-color: #1168d2;
+
+    width:100%;
+    position: absolute;
+
+    top: 0;
+       left: 0;
+    box-shadow: 1px 1px 2px #1f3a5a;}
+    .cubes{
+    filter: brightness(1.35);
+
+    width: 80px;
+    margin-top:-30px;
+     z-index:-1;
+     /* Firefox */
+    -moz-transition: all .7s ease;
+    /* WebKit */
+    -webkit-transition: all .7s ease;
+    /* Opera */
+    -o-transition: all .7s ease;
+    /* Standard */
+    transition: all .7s ease;
+    -webkit-user-drag: none;
+    }
+    .cubes:hover{
+      -moz-transform: rotate(-90deg) scale(1.3) ;
+
+    	/* WebKit */
+    	-webkit-transform:  rotate(-90deg) scale(1.3);
+    	/* Opera */
+    	-o-transform: rotate(-90deg) scale(1.3);
+    	/* Standard */
+    	transform: rotate(-90deg) scale(1.3);
+        }
+.colleagues{
+  color: #3e5f80 !important;
+}
+.colleagues:hover{
+    color:#396eaf !important;
+  }
+.dimmer{
+  filter: brightness(0.8);
+}
+.normal{
+  filter: brightness(1);
+}
+.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+.enabled{
+
+}
+    .gameImg{
+    filter: brightness(.95);
+     /* Firefox */
+    -moz-transition: all .1s ease;
+    /* WebKit */
+    -webkit-transition: all .1s ease;
+    /* Opera */
+    -o-transition: all .1s ease;
+    /* Standard */
+    transition: all .1s ease;
+    -webkit-user-drag: none;
+    }
+    .gameImg:hover{
+      cursor:pointer;
+      filter: brightness(1.03);
+      -moz-transform: scale(1.03) ;
+
+    	/* WebKit */
+    	-webkit-transform: scale(1.03);
+    	/* Opera */
+    	-o-transform: scale(1.03);
+    	/* Standard */
+    	transform: scale(1.03);
+        }
+    a{  color: #396eaf;
+	  font-weight: bold;
+      /* Firefox */
+     -moz-transition: all 0.2s ease;
+     /* WebKit */
+     -webkit-transition: all 0.2s ease;
+     /* Opera */
+     -o-transition: all 0.2s ease;
+     /* Standard */
+     transition: all 0.2s ease;
+    }
+    a:hover{
+          cursor:pointer;
+    }
+a:link {
+  color: #396eaf;
+  background-color: transparent;
+  text-decoration: none;
+
+}
+a:visited {
+  color: #396eaf;
+  background-color: transparent;
+  text-decoration: none;
+
+}
+
+a:hover {
+  color: #01ad55;
+  background-color: transparent;
+  text-decoration: none;
+
+}
+.lowerTbl{
+
+  -moz-transition: all 0.25s ease;
+  -webkit-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  border: solid 3px #184b88;
+  width: 90%;
+  max-width: 645px;
+  background-color: #ebf4ff;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 40px;
+
+}
+.lowerTbl2{
+
+  -moz-transition: all 1.25s ease;
+  /* WebKit */
+  -webkit-transition: all 1.25s ease;
+  /* Opera */
+  -o-transition: all 1.25s ease;
+  /* Standard */
+  transition: all 1.25s ease;
+
+    border: solid 3px #475290;
+width:90%;
+max-width:645px;
+        background-color: #e2efff;
+    border-radius:12px;
+
+box-shadow: 6px 6px 32px 8px #000000a1;
+         padding: 18px;
+    margin-bottom:40px;
+
+
+}
+.Absolute-Center {
+  margin: auto;
+  position: absolute;
+  top: 224; left: 0;  right: 0;
+}
+button:hover {
+  color:white;
+
+}
+
+
+
+.redlink{
+  font-color:firebrick;
+}
+.button{
+  /* Firefox */
+ -moz-transition: all 0.35s ease;
+ /* WebKit */
+ -webkit-transition: all 0.35s ease;
+ /* Opera */
+ -o-transition: all 0.35s ease;
+ /* Standard */
+ transition: all 0.35s ease;
+
+    padding: 0px;
+    padding-left: 9px;
+    padding-right: 9px;
+    background-color: transparent;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 0px;
+    font-color: antiquewhite;
+    cursor: pointer;
+    margin: 6px;
+
+    font: 18px/26px "Lucida Console", Monaco, monospace;
+    font-style:bold;
+    color: #7fa3bb;
+     border-radius: 5px;
+
+}
+.buttonSelect{
+    padding:0px;
+    padding-left:9px;
+    padding-right:9px;
+    color:white;
+  background-color: transparent;
+  border-radius: 5px;
+  border-style:solid;
+  border-width:0px;
+  cursor: pointer;
+  margin: 6px;
+
+    font-style:bold;
+  font: 18px/26px "Lucida Console", Monaco, monospace;
+  }
+  button:focus {
+  outline: 0px solid #396eaf;
+  box-shadow: 0 0 0 1pt #396eaf;
+}
+
+    #profilePic{
+       margin-bottom:10px;
+    }
+    .upperTitle{
+        font-size:30px;
+        margin:3;
+        text-align: center;
+
+    }
+
+    .lowerTitle{
+      margin: 12;
+      text-align: center;
+      font: 12px/22px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    }
+    h1{
+        font: 28px/28px "Trebuchet MS", Helvetica, sans-serif;
+        color: floralwhite;
+    text-shadow: 0px 2px 0px #092950;
+    margin: 0px;
+    }
+
+    p1{
+            font: 15px/22px "Trebuchet MS", Helvetica, sans-serif;
+    color:gainsboro;
+    text-shadow: 0px 1px 0px #092950;
+    font-size: 15px;
+    margin: 0px;
+
+    }
+    p2{
+      color: #585c60;
+width: 100%;
+height: 100%;
+font: 16px/16px 'Trebuchet MS', Helvetica, sans-serif;
+
+    }
+    p3{
+
+      font: 16px/24px "Trebuchet MS", Helvetica, sans-serif;
+    }
+    p4{
+      font: 15px/16px "Trebuchet MS", Helvetica, sans-serif;
+    }
+
+.notSelected{
+  color:#7b7b7b;
+}
+p3: hover{
+  color:black;
+}
+  #content{
+
+  }
+.paddingCl{
+  padding-left:10px;
+  padding-right:10px;
+}
+
+.objects{
+    display:inline-block;
+    background-image:url(block.png);
+    background-size:100%;
+    border: 2px solid antiquewhite;
+    width: 150px;
+    height: 75px;
+    box-shadow: 2px 2px 2px #999;
+    cursor: move;
+    }
+#Construction_Zone{
+    background-color:floralwhite;
+    border: darkslateblue 2px dashed;
+    width: 500px;
+    height: 155px;
+    align-self: center;
+
+}
+@keyframes fadeIn {
+	from {opacity: 0;}
+	to {opacity:1;}
+}
+@keyframes fadeOut {
+	from {opacity: 1;}
+	to {opacity:0;}
+}
+
+.fadingIn{
+	display:inline-block !important;
+	-webkit-animation: fadeIn 0.5s linear !important;
+	animation-name: fadeIn ;!important;
+	animation-duration: 0.5s ;!important;
+}
+.fadingIn2{
+	display:inline-block !important;
+	-webkit-animation: fadeIn 0.25s linear !important;
+	animation-name: fadeIn ;!important;
+	animation-duration: 0.25s ;!important;
+}
+.hide{
+    display: none
+}
+
+    </style>
+
+
+
+    <script>
+function hide(id)  {
+    var divelement = document.getElementById(id);
+     divelement.style.display = 'none';
+ }
+
+function show(id)  {
+    var divelement = document.getElementById(id);
+        divelement.style.display = 'block';
+ }
+
+function selected(id, frameId){
+
+
+  document.getElementById('aboutBtn').classList.remove("buttonSelect");
+  document.getElementById('researchBtn').classList.remove("buttonSelect");
+  document.getElementById('gamesBtn').classList.remove("buttonSelect");
+
+  var divelement = document.getElementById(id);
+  divelement.classList.add("buttonSelect");
+    $(frameId).fadeIn("slow");
+}
+function classChange(id, class1){
+	var divelement =  document.getElementById(id);
+	divelement.classList.remove('hide', 'fadingIn', 'fadingIn2', 'dimmer', 'normal', 'disabled');
+	divelement.classList.add(class1);
+
+}
+
+
+
+
+
+    </script>
+
+
+
+
+<body style="display:block">
+
+
+<div id="startpage" style="text-align:center; width:100%">
+<center>
+<table style="display:inline-block;">
+<center>
+
+  <tbody><div style="margin-top:20px;" ></div>
+  <tr>
+    <td class="paddingCl" ><button id="aboutBtn" onclick="location.href= '/'" type="button" class="button">About</button> </td><td class="paddingCl"><button id="researchBtn" onclick="location.href= '/research'" type="button" class="button">Research
+      </button></td><td class="paddingCl">
+      <button id="gamesBtn"  type="button" class="buttonSelect button">Software</button>
+
+		</center></td></tr></tbody></table></center></center>
+<div style="margin-top:5px;"></div>
+  <table class='lowerTbl' id="lowerTbl" style="max-width:750px; display:inline-block;">
+
+  <tr style="width:100%"><td>
+
+<div id="games" style=" color: #585c60; width: 100%; height:100%;     font: 15px/18px 'Trebuchet MS', Helvetica, sans-serif;" class="fadingIn">
+  <div style="margin-top:15px; width:92%; column-span: all;margin-left:4%;margin-right:4%;">
+
+	    <p3 id="content" style="color:black;">
+      <b><big><center>Web Games</center></big></b></p3><br>
+  I design and program games in JavaScript for experiments about politics. The games run on all popular desktop web browsers and can be embedded in survey software, such as Qualtrics.<br>
+
+
+</p3>
+  <br> Click below to play demos of a voting game I programmed for my research about taxes. In the game, players recieve high or low income and then vote on the tax rate.
+ <br><br><br><center>
+   <div style="margin-bottom:8px;"><b>Voting about taxes in a U.S. election:</b></div>
+   <a id="game2" href="vgPolDEMO.html" target="_blank" rel="noopener noreferrer">
+ <img class="gameImg" src="CSS/vgPolSS.jpg"  style="border:solid #092950 1px; border-radius:12px; max-width:90%;max-height:260px;"></a><br>
+
+<br><br>
+<div style="margin-bottom:8px;"><b>Voting about sharing in a remote village: </b></div>
+<a id="game1" href ="vgVilDEMO.html" target="_blank" rel="noopener noreferrer">
+<img class="gameImg" src="CSS/vgVilSS.jpg"  style="border:solid #092950 1px; border-radius:12px; max-width:90%;max-height:260px;"></a><br>
+</center><br><br>
+
+<br> <div style="color: black; "><p3><b><big><center>Embedding Software in Surveys</center></div></b></big></p3><br>
+  <p2 style="font: 15px/18px 'Trebuchet MS', Helvetica, sans-serif;"> How can researchers integrate their web applications into popular survey platforms? I provide a written guide, along with a demonstration and a template for download.
+    <ul>
+      <li> <b>Guide:</b> Carter, B. and Del Ponte, A. Integrating Web Applications with Popular Survey Software <a target="_blank" rel="noopener noreferrer" href="publications/Carter_Del_Ponte_BRM-2022.pdf">[draft]</a></li><br>
+      <li> <b>Demo:</b> Integrating web applications with Qualtrics. <b><a target="_blank" rel="noopener noreferrer" href="https://stonybrookuniversity.co1.qualtrics.com/jfe/form/SV_1XEB9Yx5rk3djpj?fbclid=IwAR1NT-Ye_g5zr9nA8IU4P63C8vBwUrVZPJlXt1fAUS-cRFyAe4TqjEfDsjU">[link]</a></b></li><br>
+      <li> <b>Template:</b> Integrating web applications with Qualtrics. <a  href="https://benjaminjcarter.com/documents/Integrating_Web_Applications_Example.qsf" download="IntegratingWebApps.qsf">[file]</a> </li>
+    </ul></p2>
+    	</div></div>
+</table>
+  <div id="integration" class="lowerTbl2 Absolute-Center" style="border-color:#4983c7; max-width:400px; width:75%; text-align: left; display:none;">
+  <p3 style="text-align: left;"> <big><center><b>How can researchers integrate their web applications into popular survey platforms?</b></center></big></p3><br>
+  <p2> Below, I provide a written guide, along with a demonstration and a template file for download.
+    <ul>
+      <li> <b>Guide:</b> Carter, B. & Del Ponte, A. Integrating Web Applications with Popular Survey Software [draft]</li><br>
+      <li> <b>Demonstration:</b> Integrating web applications with Qualtrics. <b><a target="_blank" rel="noopener noreferrer" href="https://stonybrookuniversity.co1.qualtrics.com/jfe/form/SV_83b6fvcoaK74J1k">[link]</a></b></li><br>
+      <li> <b>Template:</b> Integrating web applications with Qualtrics. <a target="_blank" rel="noopener noreferrer"  href="https://osf.io/w7qu2">[file]</a></li>
+    </ul></p2>
+     <button onclick="classChange('integration', 'hide'), hide('integration'),classChange('game1', 'enabled'), classChange('game2', 'enabled'), classChange('glink', 'enabled'), classChange('lowerTbl', 'normal') ">Close</button></div>
+        <br><img class="cubes"  src="CSS/cubes21.png" ><br><br><br>
+
+
+
+
+</body>
+</html>
