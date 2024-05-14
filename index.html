@@ -22,9 +22,51 @@
 body {
   display:none;
   background: #092950;
-background-image: linear-gradient(to left, #027ff4, #024097);
-
+background-image: linear-gradient(to left, #2b98ff, #012961);
 }
+* {
+  box-sizing: border-box;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: transparent;
+  border-radius:12px;
+color: #7fa3bb;
+font: 22px/24px "Trebuchet MS", Helvetica, sans-serif
+}
+
+/* Style the topnav links */
+.topnav a{
+  float: left;
+  display: block;
+  color: #c3daf7;
+  text-align: center;
+  padding: 14px 26px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #024097;
+  color: black;
+}
+
+/* On screens that are 600px wide or less, make the menu links stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
 #banner {
 background-color: #1168d2;
 
@@ -98,13 +140,13 @@ transition: all .7s ease;
      transition: all 0.2s ease;
     }
 a:link {
-  color: #396eaf;
+  color: #0b68df;
   background-color: transparent;
   text-decoration: none;
 
 }
 a:visited {
-  color: #396eaf;
+  color: #0b68df;
   background-color: transparent;
   text-decoration: none;
 
@@ -194,11 +236,9 @@ button:hover {
     }
 
     .lowerTitle{
-      font-family: Georgia, serif;
       margin: 12;
-      text-align: center;
-      font-size: 26px;
 
+font: 24px/28px "Trebuchet MS", Helvetica, sans-serif
     }
     h1{
         font: 28px/28px "Trebuchet MS", Helvetica, sans-serif;
@@ -319,8 +359,17 @@ function classChange(id, class1){
 <body style="display:block;" >
 
 
-<div id="startpage" style="text-align:center; width:100%">
-<center>
+<div id="startpage" style="text-align:center; ">
+<center style="padding-top:20px;">
+
+  <div class="topnav" style="width:max-content;  padding-left:25px; padding-right:25px;">
+  <a href="/index" style="color: floralwhite;">About</a>
+  <a href="/reserach" style="color: lightgrey;">Research</a>
+  <a href="Carter_CV.pdf" style="color: lightgrey;">CV</a>
+  <a href="/software" style="color: lightgrey;">Software</a>
+</div>
+
+<!--
 <table style="table-layout:fixed;  min-width:max-content; width: 90%; max-width:600px;">
 <center>
 
@@ -336,18 +385,22 @@ function classChange(id, class1){
 
 
 		</center></td></tr></tbody></table></center></center>
+-->
+
 <div style="margin-top:5px;"></div>
   <table class='lowerTbl' id="lowerTbl" style="max-width:800px; display:inline-block;">
 
   <tr style="width:100%"><td>
     <div id="about" class="fadingIn"><center><div style="margin-top:20px;"></div>
-    <p class="lowerTitle" style="font-size:26px">Benjamin Carter, Ph.D.</p>  <div style="margin-top:20px;"></div>
+
     </center>
 
       <center>
         <table style="max-width:275px;">
           <tr><td>
             <img src="CSS/profilePic.jpg" id="profilePic" style="box-shadow:5px 5px 9px #1f3f6145; margin-top:5px; margin-bottom: 18px; border-radius:12px;  max-width:100%;"><br>
+  <p class="lowerTitle" style="text-align:left; margin:auto;font-size:22px">Benjamin Carter, Ph.D.</p>  <div style="margin-top:20px;"></div>
+
         <p class="lowerTitle" style="text-align:left; margin:auto; line-height:20px;"><small><small><small>
       <b>Postdoctoral Fellow</b><br>
        <a href="https://tdi.dartmouth.edu/" style="font-weight: normal;" class="redlink" target="_blank" rel="noopener noreferrer">The Dartmouth Institute for Health Policy and Clinical Practice</a>
