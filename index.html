@@ -149,8 +149,6 @@ button:hover {
  transition: all 0.35s ease;
 
     padding: 0px;
-    padding-left: 9px;
-    padding-right: 9px;
     background-color: transparent;
     border-radius: 5px;
     border-style: solid;
@@ -159,16 +157,15 @@ button:hover {
     cursor: pointer;
     margin: 6px;
 
-    font: 18px/26px "Lucida Console", Monaco, monospace;
+    font: 18px/20px "Lucida Console", Monaco, monospace;
     font-style:bold;
     color: #7fa3bb;
      border-radius: 5px;
 
+
 }
 .buttonSelect{
     padding:0px;
-    padding-left:9px;
-    padding-right:9px;
     color:white;
   background-color: transparent;
   border-radius: 5px;
@@ -178,7 +175,7 @@ button:hover {
   margin: 6px;
 
     font-style:bold;
-  font: 18px/26px "Lucida Console", Monaco, monospace;
+  font: 18px/20px "Lucida Console", Monaco, monospace;
   }
   button:focus {
   outline: 0px solid #396eaf;
@@ -243,8 +240,7 @@ p3: hover{
 
   }
 .paddingCl{
-  padding-left:10px;
-  padding-right:10px;
+text-align: center;
 }
 
 .objects{
@@ -324,14 +320,18 @@ function classChange(id, class1){
 
 <div id="startpage" style="text-align:center; width:100%">
 <center>
-<table style="display:inline-block;">
+<table style="table-layout:fixed;  min-width:max-content; width: 90%; max-width:600px;">
 <center>
 
     <tbody><div style="margin-top:20px;"></div>
-    <tr>
-      <td class="paddingCl" ><button id="aboutBtn"  class="buttonSelect button">About</button> </td><td class="paddingCl"><button id="researchBtn" onclick="location.href= '/research'" type="button" class="button">Research
-        </button></td><td class="paddingCl">
-        <button id="gamesBtn" onclick="location.href= '/software'" type="button" class="button">Software</button>
+    <tr style="width:100%; max-width:400px;">
+      <td class="paddingCl" ><button id="aboutBtn"  class="buttonSelect button" >About</button> </td>
+      <td class="paddingCl"><button id="researchBtn" onclick="location.href= '/research'" type="button" class="button">Research</button></td>
+      <td class="paddingCl"><button id="CV" onclick="location.href= 'Carter_CV.pdf'" type="button" class="button">CV</button></td>
+
+        <td class="paddingCl"> <button id="gamesBtn" onclick="location.href= '/software'" type="button" class="button">Software</button>
+
+
 
 
 		</center></td></tr></tbody></table></center></center>
