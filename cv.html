@@ -34,7 +34,10 @@ background-image: linear-gradient(to left, #2b98ff, #012961);
   background-color: transparent;
   border-radius:12px;
 color: #7fa3bb;
-font: 22px/24px "Trebuchet MS", Helvetica, sans-serif
+font: 22px/24px "Trebuchet MS", Helvetica, sans-serif;
+
+
+
 }
 
 .topnav2 {
@@ -63,7 +66,6 @@ padding-top:200px;
 
 .topnav2 div{
   float: left;
-  display: block;
 
   text-align: center;
   padding: 14px 26px;
@@ -97,12 +99,11 @@ padding-top:200px;
     padding-top:0px;
   }
   .CVbig{
-    display:none;
+    display:none !important
   }
 .CVsmall{
-  display:block;
+  display:block !important
 }
-
 }
 
 
@@ -200,7 +201,6 @@ a:hover {
   color: white !important;
   background-color: transparent;
   text-decoration: none;
-
 }
 .lowerTbl{
   -moz-transition: all 0.25s ease;
@@ -301,9 +301,10 @@ font: 24px/28px "Trebuchet MS", Helvetica, sans-serif
     }
     p2{
             font: 10px/16px "Lucida Console", Monaco, monospace;
-
+    color:floralwhite;
+    text-shadow: 0px 1px 0px #092950;
     font-size: 15px;
-
+    margin:4px;
     margin-top:5px;
 
     }
@@ -408,63 +409,24 @@ function classChange(id, class1){
   <div class="topnav" style="width:max-content;  padding-left:25px; padding-right:25px;">
   <a href="/" style="color: lightgrey;">About</a>
   <a href="/research" style="color: lightgrey;">Research</a>
-  <a class="CVsmall"href="Carter_CV.pdf" style="color: lightgrey;target="_blank" rel="noopener noreferrer"">CV</a>
-  <a class="CVbig"href="/cv" style="color: lightgrey;">CV</a>
-    <a href="/software" style="color: floralwhite;">Software</a>
+  <a class="CVsmall"href="Carter_CV.pdf" style="color: floralwhite;target="_blank" rel="noopener noreferrer"">CV</a>
+  <a class="CVbig"href="/cv" style="color: floralwhite;">CV</a>
+  <a href="/software" style="color: lightgrey;">Software</a>
 </div>
 
 
-
-
-
-
-
 <div style="margin-top:5px;"></div>
-  <table class='lowerTbl' id="lowerTbl" style="max-width:800px; display:inline-block;">
+  <table class='lowerTbl' id="lowerTbl" style="max-width:800px; ">
+    <div style="width:100%"></div>
+<trwidth="100%"><td >
 
-  <tr style="width:100%"><td>
 
-<div id="games" style=" color: #585c60; width: 100%; height:100%;     font: 15px/18px 'Trebuchet MS', Helvetica, sans-serif;" class="fadingIn">
-  <div style="margin-top:15px; width:92%; column-span: all;margin-left:4%;margin-right:4%;">
 <center>
-	    <p style="color:black" class="lowerTitle">Web Games</p></center><br>
+<embed  src="Carter_CV.pdf" type="application/pdf"   height="700px" width="100%">
+ <br>
+</center>
 
-  I design and program games in JavaScript for experiments about politics. The games run on all popular desktop web browsers and can be embedded in survey software, such as Qualtrics.<br>
-
-
-</p3>
-  <br> Click below to play demos of a voting game I programmed for my research about taxes. In the game, players recieve high or low income and then vote on the tax rate.
- <br><br><br><center>
-   <div style="margin-bottom:8px;"><b>Voting about taxes in a U.S. election:</b></div>
-   <a id="game2" href="vgPolDEMO.html" target="_blank" rel="noopener noreferrer">
- <img class="gameImg" src="CSS/vgPolSS.jpg"  style="border:solid #092950 1px; border-radius:12px; max-width:90%;max-height:325px;"></a><br>
-
-<br><br>
-<div style="margin-bottom:8px;"><b>Voting about sharing in a remote village:</b></div>
-<a id="game1" href ="vgVilDEMO.html" target="_blank" rel="noopener noreferrer">
-<img class="gameImg" src="CSS/vgVilSS.jpg"  style="border:solid #092950 1px; border-radius:12px; max-width:90%;max-height:314px;"></a><br>
-</center><br><br>
-
-<br><center>
-<p style="color:black" class="lowerTitle">Embedding Software in Online Surveys</p></center><br>
-
-<p2 style="font: 15px/18px 'Trebuchet MS', Helvetica, sans-serif;">How can researchers integrate their web applications into popular survey platforms? I provide a written guide, along with a demonstration and a template for download.
-    <ul>
-      <li> <b>Guide:</b> Carter, B. and Del Ponte, A. (2022). Integrating web applications into popular survey platforms for online experiments. <i>Behavior Research Methods.</i> <a target="_blank" href="publications/Carter_Del_Ponte_BRM-2022.pdf">[pdf]</a></li><br>
-      <li> <b>Demonstration:</b> Integrating web applications with Qualtrics. <b><a target="_blank" rel="noopener noreferrer" href="https://stonybrookuniversity.co1.qualtrics.com/jfe/form/SV_83b6fvcoaK74J1k">[link]</a></b></li><br>
-      <li> <b>Template:</b> Integrating web applications with Qualtrics. <a target="_blank" rel="noopener noreferrer"  href="https://osf.io/w7qu2">[file]</a></li>
-    </ul></p2>
-    	</div></div>
 </table>
-  <div id="integration" class="lowerTbl2 Absolute-Center" style="border-color:#4983c7; max-width:400px; width:75%; text-align: left; display:none;">
-  <p3 style="text-align: left;"> <big><center><b>How can researchers integrate their web applications into popular survey platforms?</b></center></big></p3><br>
-  <p2> Below, I provide a written guide, along with a demonstration and a template file for download.
-    <ul>
-      <li> <b>Guide:</b> Carter, B. & Del Ponte, A. Integrating Web Applications with Popular Survey Software [draft]</li><br>
-      <li> <b>Demonstration:</b> Integrating web applications with Qualtrics. <b><a target="_blank" rel="noopener noreferrer" href="https://stonybrookuniversity.co1.qualtrics.com/jfe/form/SV_83b6fvcoaK74J1k">[link]</a></b></li><br>
-      <li> <b>Template:</b> Integrating web applications with Qualtrics. <a target="_blank" rel="noopener noreferrer"  href="https://osf.io/w7qu2">[file]</a></li>
-    </ul></p2>
-     <button onclick="classChange('integration', 'hide'), hide('integration'),classChange('game1', 'enabled'), classChange('game2', 'enabled'), classChange('glink', 'enabled'), classChange('lowerTbl', 'normal') ">Close</button></div>
         <br><img class="cubes"  src="CSS/cubes21.png" ><br><br><br>
 
 
