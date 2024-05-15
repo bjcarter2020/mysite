@@ -30,14 +30,12 @@ background-image: linear-gradient(to left, #2b98ff, #012961);
 
 /* Style the top navigation bar */
 .topnav {
+display:block;
   overflow: hidden;
   background-color: transparent;
   border-radius:12px;
 color: #7fa3bb;
-font: 22px/24px "Trebuchet MS", Helvetica, sans-serif;
-
-
-
+font: 22px/24px "Trebuchet MS", Helvetica, sans-serif
 }
 
 .topnav2 {
@@ -57,15 +55,17 @@ padding-top:200px;
 }
 /* Style the topnav links */
 .topnav a{
-  float: left;
+  float: left !important;
   color: #c3daf7;
   text-align: center;
   padding: 14px 26px;
   text-decoration: none;
+  max-width:300px !important;
 }
 
 .topnav2 div{
   float: left;
+  display: block;
 
   text-align: center;
   padding: 14px 26px;
@@ -90,6 +90,9 @@ padding-top:200px;
     float: none;
     width: 100%;
   }
+  .topnav{
+    max-width:300px;
+  }
   .bioTable{
     float: none;
     width: 100%;
@@ -99,10 +102,15 @@ padding-top:200px;
     padding-top:0px;
   }
   .CVbig{
-    display:none !important
+    float:none;
+    display:none;
+    width:100%
+
   }
 .CVsmall{
-  display:block !important
+  float:none;
+  width:100%;
+  display:block;
 }
 }
 
@@ -199,8 +207,9 @@ a:visited {
 
 a:hover {
   color: white !important;
-  background-color: transparent;
+    background-color: transparent;
   text-decoration: none;
+
 }
 .lowerTbl{
   -moz-transition: all 0.25s ease;

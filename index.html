@@ -6,7 +6,6 @@
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 <style type="text/css">
     header {
     background-image: url(amFlag.jpg);
@@ -30,6 +29,7 @@ background-image: linear-gradient(to left, #2b98ff, #012961);
 
 /* Style the top navigation bar */
 .topnav {
+display:block;
   overflow: hidden;
   background-color: transparent;
   border-radius:12px;
@@ -54,11 +54,12 @@ padding-top:200px;
 }
 /* Style the topnav links */
 .topnav a{
-  float: left;
+  float: left !important;
   color: #c3daf7;
   text-align: center;
   padding: 14px 26px;
   text-decoration: none;
+  max-width:300px !important;
 }
 
 .topnav2 div{
@@ -88,6 +89,9 @@ padding-top:200px;
     float: none;
     width: 100%;
   }
+  .topnav{
+    max-width:300px;
+  }
   .bioTable{
     float: none;
     width: 100%;
@@ -97,9 +101,14 @@ padding-top:200px;
     padding-top:0px;
   }
   .CVbig{
+    float:none;
     display:none;
+    width:100%
+
   }
 .CVsmall{
+  float:none;
+  width:100%;
   display:block;
 }
 }
@@ -360,7 +369,6 @@ text-align: center;
 }
 
     </style>
-
 
 
     <script>
