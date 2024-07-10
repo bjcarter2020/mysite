@@ -129,32 +129,37 @@ background-color: #1168d2;
     top: 0;
        left: 0;
     box-shadow: 1px 1px 2px #1f3a5a;}
-.cubes{
-filter: brightness(1.35);
 
-width: 80px;
-margin-top:-30px;
- z-index:-1;
- /* Firefox */
--moz-transition: all .7s ease;
-/* WebKit */
--webkit-transition: all .7s ease;
-/* Opera */
--o-transition: all .7s ease;
-/* Standard */
-transition: all .7s ease;
--webkit-user-drag: none;
-}
-.cubes:hover{
-  -moz-transform: rotate(-90deg) scale(1.3) ;
+    .cubes{
+    filter: brightness(1.25);
 
-  /* WebKit */
-  -webkit-transform:  rotate(-90deg) scale(1.3);
-  /* Opera */
-  -o-transform: rotate(-90deg) scale(1.3);
-  /* Standard */
-  transform: rotate(-90deg) scale(1.3);
+    width: 80px;
+    margin-top:-30px;
+     z-index:-1;
+     /* Firefox */
+    -moz-transition: all 1s ease;
+    /* WebKit */
+    -webkit-transition: all 1s ease;
+    /* Opera */
+    -o-transition: all 1s ease;
+    /* Standard */
+    transition: all 1s ease;
+    -webkit-user-drag: none;
     }
+    .cubes:hover{
+      filter: brightness(2);
+    }
+    .cubes:active{
+        filter: brightness(2);
+      -moz-transform: rotate(-180deg) scale(1.5) ;
+
+      /* WebKit */
+      -webkit-transform:  rotate(-180deg) scale(1.5);
+      /* Opera */
+      -o-transform: rotate(-180deg) scale(1.5);
+      /* Standard */
+      transform: rotate(-180deg) scale(1.5);
+        }
 
 
     .gameImg{
@@ -195,20 +200,20 @@ transition: all .7s ease;
      transition: all 0.4s ease;
     }
 a:link {
-  color: #0b68df;
+  color: #188146;
   background-color: transparent;
   text-decoration: none;
 
 }
 a:visited {
-  color: #0b68df;
+  color: #188146;
   background-color: transparent;
   text-decoration: none;
 
 }
 
 a:hover {
-  color: #0fc300 ;
+  color: #24c36a ;
     background-color: transparent;
   text-decoration: none;
 

@@ -144,72 +144,92 @@ margin-top:-30px;
 transition: all .7s ease;
 -webkit-user-drag: none;
 }
+.cubes{
+filter: brightness(1.25);
+
+width: 80px;
+margin-top:-30px;
+ z-index:-1;
+ /* Firefox */
+-moz-transition: all 1s ease;
+/* WebKit */
+-webkit-transition: all 1s ease;
+/* Opera */
+-o-transition: all 1s ease;
+/* Standard */
+transition: all 1s ease;
+-webkit-user-drag: none;
+}
 .cubes:hover{
-  -moz-transform: rotate(-90deg) scale(1.3) ;
+  filter: brightness(2);
+}
+.cubes:active{
+    filter: brightness(2);
+  -moz-transform: rotate(-180deg) scale(1.5) ;
 
   /* WebKit */
-  -webkit-transform:  rotate(-90deg) scale(1.3);
+  -webkit-transform:  rotate(-180deg) scale(1.5);
   /* Opera */
-  -o-transform: rotate(-90deg) scale(1.3);
+  -o-transform: rotate(-180deg) scale(1.5);
   /* Standard */
-  transform: rotate(-90deg) scale(1.3);
+  transform: rotate(-180deg) scale(1.5);
     }
 
 
-    .gameImg{
-    filter: brightness(.95);
-     /* Firefox */
-    -moz-transition: all .1s ease;
-    /* WebKit */
-    -webkit-transition: all .1s ease;
-    /* Opera */
-    -o-transition: all .1s ease;
-    /* Standard */
-    transition: all .1s ease;
-    -webkit-user-drag: none;
-    }
-    .gameImg:hover{
-      cursor:pointer;
-      filter: brightness(1.03);
-      -moz-transform: scale(1.03) ;
+.gameImg{
+filter: brightness(.95);
+ /* Firefox */
+-moz-transition: all .1s ease;
+/* WebKit */
+-webkit-transition: all .1s ease;
+/* Opera */
+-o-transition: all .1s ease;
+/* Standard */
+transition: all .1s ease;
+-webkit-user-drag: none;
+}
+.gameImg:hover{
+  cursor:pointer;
+  filter: brightness(1.03);
+  -moz-transform: scale(1.03) ;
 
-    	/* WebKit */
-    	-webkit-transform: scale(1.03);
-    	/* Opera */
-    	-o-transform: scale(1.03);
-    	/* Standard */
-    	transform: scale(1.03);
-        }
-    a{
-      position:relative;
-      z-index:3;
-	  font-weight: bold;
-      /* Firefox */
-     -moz-transition: all 0.4s ease;
-     /* WebKit */
-     -webkit-transition: all 0.4s ease;
-     /* Opera */
-     -o-transition: all 0.4s ease;
-     /* Standard */
-     transition: all 0.4s ease;
+  /* WebKit */
+  -webkit-transform: scale(1.03);
+  /* Opera */
+  -o-transform: scale(1.03);
+  /* Standard */
+  transform: scale(1.03);
     }
+a{
+  position:relative;
+  z-index:3;
+font-weight: bold;
+  /* Firefox */
+ -moz-transition: all 0.4s ease;
+ /* WebKit */
+ -webkit-transition: all 0.4s ease;
+ /* Opera */
+ -o-transition: all 0.4s ease;
+ /* Standard */
+ transition: all 0.4s ease;
+}
 a:link {
-  color: #0b68df;
-  background-color: transparent;
-  text-decoration: none;
+color: #188146;
+background-color: transparent;
+text-decoration: none;
 
 }
 a:visited {
-  color: #0b68df;
-  background-color: transparent;
-  text-decoration: none;
+color: #188146;
+background-color: transparent;
+text-decoration: none;
 
 }
 
 a:hover {
-  color: #0fc300 ;
-    background-color: transparent;
-  text-decoration: none;
+color: #24c36a ;
+background-color: transparent;
+text-decoration: none;
 
 }
 .lowerTbl{
